@@ -9,11 +9,11 @@ tags:
   contact: Facundo Santiago <fasantia@microsoft.com>
   helpDocument: https://github.com/santiagxf/aml-startingkit
 inputs:
-  EvaluationResults:
+  Evaluation_results:
     type: DataFrameDirectory
     optional: false
     description: Evaluation results with the metrics to promote.
-  PromoteMethod:
+  Promote_method:
     type: Enum
     optional: false
     default: Best model
@@ -21,7 +21,7 @@ inputs:
     enum:
       - Best model
       - All models
-  ComparedBy:
+  Compare_by:
     type: Enum
     optional: false
     description: Metric to compare
@@ -33,7 +33,7 @@ inputs:
       - F1 Score
       - Precision
       - Recall
-  ComparedByLogic:
+  Logic:
     type: Enum
     optional: false
     description: Comparing logic
@@ -42,11 +42,11 @@ inputs:
       - Bigger is better
       - Smaller is better
 outputs:
-  PromotionResults:
+  Promoted_metrics:
     type: DataFrameDirectory
 command: >-
-  python promote-metrics.py --evaluation-results {inputs.EvaluationResults} --promote-method {inputs.PromoteMethod} 
-  --compared-by {inputs.ComparedBy} --compared-by-logic {inputs.ComparedByLogic} --promotion-results {outputs.PromotionResults} 
+  python promote-metrics.py --evaluation-results {inputs.Evaluation_results} --promote-method {inputs.Promote_method} 
+  --compare-by {inputs.Compare_by} --compare-by-logic {inputs.Logic} --promoted-metrics {outputs.Promoted_metrics} 
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
