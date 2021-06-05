@@ -47,15 +47,15 @@ if promote_method == PROMOTE_BEST_MODEL:
         results = results.iloc[results[compare_by].argmin()]
 
 metrics = results.to_dict()
-for metric, values in metrics.items():
-    if type(values) is dict:
-        for model, point in values.items():
+for metric, value in metrics.items():
+    if type(value) is dict:
+        for model, point in value.items():
             if promote_method == PROMOTE_BEST_MODEL:
                 parent_run.log(name=f"{metric}", value=point)
             else:
                 parent_run.log(name=f"{metric} ({model})", value=point)
     else:
-        parent_run.log(name=f"{metric}", value=point)
+        parent_run.log(name=f"{metric}", value=value)
 
 # Save the promoted metrics
 save_data_frame_to_directory(promoted_metrics, data=results)
