@@ -1,6 +1,6 @@
 $schema: http://azureml/sdk-2-0/CommandComponent.json
 name: microsoft.csu.azureml.components.promote-metrics
-version: 0.0.7
+version: 0.0.8
 display_name: 'Promote metrics'
 type: CommandComponent
 is_deterministic: false
@@ -11,19 +11,19 @@ inputs:
   evaluation_results:
     type: DataFrameDirectory
     optional: false
-    description: Evaluation results with the metrics to promote.
+    description: Evaluation results from the Evaluate Model module.
   promote_method:
     type: Enum
     optional: false
-    default: Best model
+    default: Best model metrics
     description: Metric's promotion method
     enum:
-      - Best model
-      - All models
+      - Best model metrics
+      - All models metrics
   compare_by:
     type: Enum
     optional: false
-    description: Metric to compare
+    description: The metric to decide which model is the best.
     default: Accuracy
     enum:
       - Accuracy
@@ -35,7 +35,7 @@ inputs:
   logic:
     type: Enum
     optional: false
-    description: Comparing logic
+    description: Whether or not bigger values are better when comparing metrics.
     default: Bigger is better
     enum:
       - Bigger is better

@@ -1,17 +1,13 @@
-import os
-from random import choice
-import sys
 import argparse
 import pandas as pd
-import numpy as np
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.core import Run
 
 COMPARE_BIGGER_BETTER = 'Bigger is better'
 COMPARE_SMALLER_BETTER = 'Smaller is better'
-PROMOTE_ALL_MODELS = 'All models'
-PROMOTE_BEST_MODEL = 'Best model'
+PROMOTE_ALL_MODELS = 'All models metrics'
+PROMOTE_BEST_MODEL = 'Best model metrics'
 
 parser = argparse.ArgumentParser("promote-metrics")
 parser.add_argument("--evaluation-results", dest="evaluation_results", required=True, type=str, help="Evaluation results")
@@ -42,20 +38,23 @@ if compare_by not in results.columns:
 # logic to compare
 if promote_method == PROMOTE_BEST_MODEL:
     if compare_by_logic == COMPARE_BIGGER_BETTER:
-        results = results.iloc[results[compare_by].argmax()]
+        results = results.loc[results[compare_by].argmax()]
     else:
-        results = results.iloc[results[compare_by].argmin()]
+        results = results.loc[results[compare_by].argmin()]
 
 metrics = results.to_dict()
 for metric, value in metrics.items():
     if type(value) is dict:
         for model, point in value.items():
-            if promote_method == PROMOTE_BEST_MODEL:
-                parent_run.log(name=f"{metric}", value=point)
+            if len(value) > 1:
+                parent_run.log(name=f"{metric} (model {model})", value=point)
             else:
-                parent_run.log(name=f"{metric} ({model})", value=point)
+                parent_run.log(name=f"{metric}", value=point)
     else:
         parent_run.log(name=f"{metric}", value=value)
 
 # Save the promoted metrics
-save_data_frame_to_directory(promoted_metrics, data=results)
+if (type(results) is pd.DataFrame):
+    save_data_frame_to_directory(promoted_metrics, data=results)
+else:
+    print("Skipping saving since the filtered data is not a valid Pandas.DataFrame")
