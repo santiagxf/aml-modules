@@ -46,7 +46,7 @@ if promote_method == PROMOTE_BEST_MODEL:
     else:
         results = results.iloc[results[compare_by].argmin()]
 
-metrics = results.to_dict(orient='dict')
+metrics = results.to_dict()
 for metric, values in metrics.items():
     for model, point in values.items():
         if promote_method == PROMOTE_BEST_MODEL:
