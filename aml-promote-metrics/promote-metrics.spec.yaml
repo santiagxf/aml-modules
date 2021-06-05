@@ -1,0 +1,67 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.csu.azureml.components.promote-metrics
+version: 0.0.1
+display_name: 'Promote metrics'
+type: CommandComponent
+is_deterministic: false
+tags:
+  codegenBy: santiagxf
+  contact: Facundo Santiago <fasantia@microsoft.com>
+  helpDocument: https://github.com/santiagxf/aml-startingkit
+inputs:
+  EvaluationResults:
+    type: DataFrameDirectory
+    optional: false
+    description: Evaluation results with the metrics to promote.
+  PromoteMethod:
+    type: Enum
+    optional: false
+    default: Best model
+    description: Metric's promotion method
+    enum:
+      - Best model
+      - All models
+  ComparedBy:
+    type: Enum
+    optional: false
+    description: Metric to compare
+    default: Accuracy
+    enum:
+      - Accuracy
+      - AUC
+      - Confusion matrix
+      - F1 Score
+      - Precision
+      - Recall
+  ComparedByLogic:
+    type: Enum
+    optional: false
+    description: Comparing logic
+    default: Bigger is better
+    enum:
+      - Bigger is better
+      - Smaller is better
+outputs:
+  PromotionResults:
+    type: DataFrameDirectory
+command: >-
+  python promote-metrics.py --evaluation-results {inputs.EvaluationResults} --promote-method {inputs.PromoteMethod} 
+  --compared-by {inputs.ComparedBy} --compared-by-logic {inputs.ComparedByLogic} --promotion-results {outputs.PromotionResults} 
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.2
+      - pip:
+        - azureml-sdk==0.1.0.*
+        - azureml-designer-core==0.0.54
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+  os: Linux
