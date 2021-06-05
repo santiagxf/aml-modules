@@ -21,8 +21,14 @@ parser.add_argument("--compare-by-logic", dest="compare_by_logic", type=str, cho
 parser.add_argument("--promoted-metrics", dest="promoted_metrics", type=str, help="Promotion results")
 args = parser.parse_args()
 
+evaluation_results = args.evaluation_results
+promote_method = args.promote_method
+compare_by = args.compare_by
+compare_by_logic = args.compare_by_logic
+promoted_metrics = args.promoted_metrics
+
 # Load the metrics as a Pandas dataframe
-results = load_data_frame_from_directory(args.evaluation_results).data
+results = load_data_frame_from_directory(evaluation_results).data
 
 # Get the parent run
 parent_run = Run.get_context().parent
