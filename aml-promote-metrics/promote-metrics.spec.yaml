@@ -1,6 +1,6 @@
 $schema: http://azureml/sdk-2-0/CommandComponent.json
 name: microsoft.csu.azureml.components.promote-metrics
-version: 0.0.8
+version: 0.0.9
 display_name: 'Promote metrics'
 type: CommandComponent
 is_deterministic: false
@@ -49,7 +49,7 @@ outputs:
     type: DataFrameDirectory
 command: >-
   python promote-metrics.py --evaluation-results {inputs.evaluation_results} --promote-method {inputs.promote_method} 
-  --compare-by {inputs.compare_by} --compare-by-logic {inputs.logic} --models-name {inputs.models_name} 
+  --compare-by {inputs.compare_by} --compare-by-logic {inputs.logic} [--models-name {inputs.models_name}] 
   --promoted-metrics {outputs.promoted_metrics} 
 environment:
   docker:
