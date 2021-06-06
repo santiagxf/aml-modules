@@ -40,12 +40,17 @@ inputs:
     enum:
       - Bigger is better
       - Smaller is better
+  models_name:
+    type: String
+    optional: true
+    description: Name of the models being compared, comma separated.
 outputs:
   promoted_metrics:
     type: DataFrameDirectory
 command: >-
   python promote-metrics.py --evaluation-results {inputs.evaluation_results} --promote-method {inputs.promote_method} 
-  --compare-by {inputs.compare_by} --compare-by-logic {inputs.logic} --promoted-metrics {outputs.promoted_metrics} 
+  --compare-by {inputs.compare_by} --compare-by-logic {inputs.logic} --models-name {inputs.models_name} 
+  --promoted-metrics {outputs.promoted_metrics} 
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
