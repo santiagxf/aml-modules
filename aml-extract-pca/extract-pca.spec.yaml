@@ -22,11 +22,13 @@ inputs:
     default: True
     description: Whether or not to normalize data to zero mean.
 outputs:
-  pca_dataset:
+  transformed_dataset:
     type: DataFrameDirectory
+  transformation:
+    type: ModelDirectory
 command: >-
   python extract_pca.py --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} 
-  --normalize {inputs.normalize} --output {outputs.pca_dataset} 
+  --normalize {inputs.normalize} --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04

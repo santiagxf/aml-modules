@@ -38,10 +38,10 @@ if compare_by not in results.columns:
     compare_by = results.columns[0]
 
 if models_name:
-    models_name = models_name.split(',')
+    models_name = [name.strip() for name in models_name.split(',')]
 else:
     # Generate models names like 'model A', 'model B' on the fly
-    models_name = [f"model {chr(65 + index)}" for index in range(0,5)]
+    models_name = [f"model {chr(65 + index)}" for index in range(0, results.shape[0])]
 
 # Filter the rows based on the metric you are looking for to compare and the
 # logic to compare
