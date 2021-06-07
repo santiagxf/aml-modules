@@ -63,4 +63,4 @@ if __name__ == "__main__":
     parser.add_argument("--promoted-metrics", dest="promoted_metrics", type=str, help="Promotion results")
     args = parser.parse_args()
 
-    RunModule(vars(args))
+    RunModule(**vars(args))
