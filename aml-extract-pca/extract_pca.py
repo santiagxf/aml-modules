@@ -16,4 +16,4 @@ if __name__ == "__main__":
     parser.add_argument("--output-model", dest="output_model", type=str, help="Trained model")
     args = parser.parse_args()
 
-    RunModule(**args)
+    RunModule(vars(args))
