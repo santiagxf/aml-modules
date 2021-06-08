@@ -1,5 +1,5 @@
 $schema: http://azureml/sdk-2-0/CommandComponent.json
-name: microsoft.csu.azureml.components.promote-metrics
+name: microsoft.csu.azureml.components.extract-pca
 version: 0.0.1
 display_name: 'Principal Component Analysis extraction'
 type: CommandComponent
