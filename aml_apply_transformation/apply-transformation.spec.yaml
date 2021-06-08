@@ -3,7 +3,7 @@ name: microsoft.csu.azureml.components.apply-transformation
 version: 0.0.2
 display_name: 'Apply Transformation (Scikit API)'
 type: CommandComponent
-is_deterministic: false
+is_deterministic: true
 tags:
   contact: Facundo Santiago <fasantia@microsoft.com>
   helpDocument: https://github.com/santiagxf/aml-modules

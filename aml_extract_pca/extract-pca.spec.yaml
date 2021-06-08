@@ -1,9 +1,9 @@
 $schema: http://azureml/sdk-2-0/CommandComponent.json
 name: microsoft.csu.azureml.components.extract-pca
 version: 0.0.3
-display_name: 'Principal Component Analysis extraction'
+display_name: 'PCA extraction'
 type: CommandComponent
-is_deterministic: false
+is_deterministic: true
 tags:
   contact: Facundo Santiago <fasantia@microsoft.com>
   helpDocument: https://github.com/santiagxf/aml-modules

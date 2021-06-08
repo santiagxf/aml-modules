@@ -13,20 +13,26 @@ PROMOTE_BEST_MODEL = 'Best model metrics'
 def RunModule(evaluation_results: str, promote_method: str, compare_by: str, compare_by_logic: str, models_name: str, promoted_metrics: str):
     # Load the metrics as a Pandas dataframe
     results = load_data_frame_from_directory(evaluation_results).data
+    models_count = results.shape[0]
 
     # Get the parent run
     parent_run = Run.get_context().parent
 
     # Check if the metric exists in the available metrics
     if compare_by not in results.columns:
-        print(f'Failed to find {compare_by} in available metrics. Using the first one')
-        compare_by = results.columns[0]
+        # Try with underscores. AML seems not to be very consistent on this
+        compare_by = compare_by.replace(' ', '_')
+        if compare_by not in results.columns:
+            print(f'[WARNING] Failed to find {compare_by} in available metrics. Using the first one')
+            compare_by = results.columns[0]
 
     if models_name:
         models_name = [name.strip() for name in models_name.split(',')]
+        for missing_index in range(len(models_name), models_count):
+            models_name.append(f'unlabeled model {missing_index}')
     else:
         # Generate models names like 'model A', 'model B' on the fly
-        models_name = [f"model {chr(65 + index)}" for index in range(0, results.shape[0])]
+        models_name = [f"model {chr(65 + index)}" for index in range(0, models_count)]
 
     # Filter the rows based on the metric you are looking for to compare and the
     # logic to compare

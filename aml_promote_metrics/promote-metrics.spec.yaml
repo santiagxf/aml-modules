@@ -1,6 +1,6 @@
 $schema: http://azureml/sdk-2-0/CommandComponent.json
 name: microsoft.csu.azureml.components.promote-metrics
-version: 0.1.3
+version: 0.1.4
 display_name: 'Promote metrics'
 type: CommandComponent
 is_deterministic: false
@@ -32,6 +32,11 @@ inputs:
       - F1 Score
       - Precision
       - Recall
+      - Coefficient of Determination
+      - Mean Absolute Error
+      - Relative Absolute Error
+      - Relative Squared Error
+      - Root Mean Squared Error
   logic:
     type: Enum
     optional: false
@@ -48,7 +53,7 @@ outputs:
   promoted_metrics:
     type: DataFrameDirectory
 command: >-
-  python promote-metrics.py --evaluation-results {inputs.evaluation_results} --promote-method {inputs.promote_method} 
+  python promote_metrics.py --evaluation-results {inputs.evaluation_results} --promote-method {inputs.promote_method} 
   --compare-by {inputs.compare_by} --compare-by-logic {inputs.logic} [--models-name {inputs.models_name}] 
   --promoted-metrics {outputs.promoted_metrics} 
 environment:
