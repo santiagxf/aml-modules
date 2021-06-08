@@ -1,6 +1,6 @@
 $schema: http://azureml/sdk-2-0/CommandComponent.json
 name: microsoft.csu.azureml.components.extract-pca
-version: 0.0.1
+version: 0.0.2
 display_name: 'Principal Component Analysis extraction'
 type: CommandComponent
 is_deterministic: false
@@ -21,14 +21,27 @@ inputs:
     optional: false
     default: True
     description: Whether or not to normalize data to zero mean.
+  solver:
+    type: Enum
+    optional: false
+    default: auto
+    description: The solver to compute the components
+    Enum:
+      - auto
+      - full
+      - arpack
+      - randomized
 outputs:
   transformed_dataset:
     type: DataFrameDirectory
+  eigenvectors:
+    type: DataFrameDirectory
   transformation:
-    type: ModelDirectory
+    type: TransformationDirectory
 command: >-
-  python extract_pca.py --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} 
+  python extract_pca.py --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} --solver {inputs.solver}
   --normalize {inputs.normalize} --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
+  --output-eigenvectors {outputs.eigenvectors}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04

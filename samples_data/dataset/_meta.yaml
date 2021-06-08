@@ -1,0 +1,10 @@
+type: DataFrameDirectory
+visualization:
+- type: Visualization
+  path: data.visualization
+extension:
+  DataTableMeta: data.dataset
+format: Parquet
+data: data.dataset.parquet
+samples: _samples.json
+schema: schema/_schema.json

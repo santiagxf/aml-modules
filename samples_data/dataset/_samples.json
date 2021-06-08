@@ -1,0 +1,41 @@
+[
+  {
+    "default payment next month": 0.0,
+    "PAY_0": 2.0,
+    "PAY_2": 2.0,
+    "PAY_3": 3.0,
+    "PAY_4": 2.0,
+    "PAY_5": 0.0,
+    "PAY_6": 0.0,
+    "LIMIT_BAL": 11.982929094215963,
+    "PAY_AMT1": 15000.0,
+    "PAY_AMT2": 0.0,
+    "PAY_AMT4": 6100.0
+  },
+  {
+    "default payment next month": 0.0,
+    "PAY_0": 1.0,
+    "PAY_2": -1.0,
+    "PAY_3": -1.0,
+    "PAY_4": -2.0,
+    "PAY_5": -2.0,
+    "PAY_6": -2.0,
+    "LIMIT_BAL": 11.918390573078392,
+    "PAY_AMT1": 53.0,
+    "PAY_AMT2": 0.0,
+    "PAY_AMT4": 0.0
+  },
+  {
+    "default payment next month": 0.0,
+    "PAY_0": 1.0,
+    "PAY_2": 2.0,
+    "PAY_3": 0.0,
+    "PAY_4": 0.0,
+    "PAY_5": 0.0,
+    "PAY_6": 0.0,
+    "LIMIT_BAL": 9.210340371976184,
+    "PAY_AMT1": 2.0,
+    "PAY_AMT2": 1281.0,
+    "PAY_AMT4": 294.0
+  }
+]
