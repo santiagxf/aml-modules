@@ -1,11 +1,19 @@
 import argparse
 from numpy.core.fromnumeric import partition
-import pandas as pd
+from sklearn.decomposition import PCA
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
+from azureml.studio.core.io.transformation_directory import save_pickle_transform_to_directory
+
 
 def RunModule(input_dataset: str, number_of_dimensions: int, normalize: bool, output_dataset: str, output_model: str):
-    pass
+    data = load_data_frame_from_directory(input_dataset).data
+
+    pca_transform = PCA(n_components=number_of_dimensions, svd_solver='randomized', whiten=True).fit(data)
+    transformed_data = pca_transform.transform(data)
+
+    save_data_frame_to_directory(output_dataset, transformed_data)
+    save_pickle_transform_to_directory(output_model, pca_transform)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("extract-pca")
