@@ -88,7 +88,7 @@ def RunModule(input_dataset: str, number_of_features: int, normalize: bool, conn
     plot_dendrogram(agglo, 'outputs/dendrogram.png')
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("extract-pca")
+    parser = argparse.ArgumentParser("aml-module")
     parser.add_argument("--dataset", dest="input_dataset", required=True, type=str, help="Input dataset")
     parser.add_argument("--number-of-features", dest="number_of_features", type=int, help="Number of dimensions to reduce to", required=True)
     parser.add_argument("--normalize", dest="normalize", type=bool, help="Whether or not to normalize data to zero mean", required=True, default=True)

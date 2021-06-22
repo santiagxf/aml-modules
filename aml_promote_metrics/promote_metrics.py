@@ -60,7 +60,7 @@ def RunModule(evaluation_results: str, promote_method: str, compare_by: str, com
         print("Skipping saving since the filtered data is not a valid Pandas.DataFrame")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("promote-metrics")
+    parser = argparse.ArgumentParser("aml-module")
     parser.add_argument("--evaluation-results", dest="evaluation_results", required=True, type=str, help="Evaluation results")
     parser.add_argument("--promote-method", dest="promote_method", type=str, choices= [PROMOTE_BEST_MODEL, PROMOTE_ALL_MODELS], required=False, default=PROMOTE_BEST_MODEL)
     parser.add_argument("--compare-by", dest="compare_by", type=str, help="Name of the metrics to compared against", required=False)

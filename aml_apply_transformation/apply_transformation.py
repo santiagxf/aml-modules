@@ -21,7 +21,7 @@ def RunModule(input_dataset: str, transformation: str, output_dataset: str):
     save_data_frame_to_directory(output_dataset, df)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("extract-pca")
+    parser = argparse.ArgumentParser("aml-module")
     parser.add_argument("--dataset", dest="input_dataset", required=True, type=str, help="Input dataset")
     parser.add_argument("--transformation", dest="transformation", type=str, help="Transformation with Scikit-learn transformation API")
     parser.add_argument("--output-dataset", dest="output_dataset", type=str, help="Transformed dataset")
