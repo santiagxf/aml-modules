@@ -1,4 +1,5 @@
 import argparse
+import math
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -69,8 +70,8 @@ def RunModule(input_dataset: str, number_of_features: int, normalize: bool, conn
 
     if connectivity_type == CONNECTIVITY_TYPE_GRID:
         connectivity = grid_to_graph(data[0].shape[0], 1)
-    else:
-        connectivity = kneighbors_graph(data.T, n_neighbors=number_of_features / 2, mode='connectivity', metric='minkowski', include_self=False)
+    elif connectivity_type == CONNECTIVITY_TYPE_KNN:
+        connectivity = kneighbors_graph(data.T, n_neighbors=math.floor(number_of_features/2), mode='connectivity', metric='minkowski', include_self=False)
 
     agglo = FeatureAgglomeration(connectivity=connectivity, n_clusters=number_of_features, affinity=affinity, linkage=linkage, compute_distances=True).fit(data)
     transformed_data = agglo.transform(data)
@@ -84,7 +85,7 @@ def RunModule(input_dataset: str, number_of_features: int, normalize: bool, conn
     # Save outputs
     save_data_frame_to_directory(output_dataset, df)
     save_pickle_transform_to_directory(output_model, tranformations_pipe)
-    plot_dendrogram(agglo, 'outputs/plot.png')
+    plot_dendrogram(agglo, 'outputs/dendrogram.png')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("extract-pca")
