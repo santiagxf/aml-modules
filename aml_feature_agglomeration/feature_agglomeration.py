@@ -16,8 +16,10 @@ CONNECTIVITY_TYPE_NONE = 'none'
 CONNECTIVITY_TYPE_KNN = 'knn'
 CONNECTIVITY_TYPE_GRID = 'grid'
 AFFINITY_EUCLIDEAN = 'euclidean'
+LINKAGE_WARD = 'ward'
 CONNECTIVITY_TYPE = [CONNECTIVITY_TYPE_NONE, CONNECTIVITY_TYPE_KNN, CONNECTIVITY_TYPE_GRID]
 AFFINITY = [AFFINITY_EUCLIDEAN, 'l1', 'l2', 'manhattan', 'cosine']
+LINKAGE = [LINKAGE_WARD, 'complete', 'average', 'single']
 
 
 def plot_dendrogram(model, file_name:str, **kwargs):
@@ -44,7 +46,7 @@ def plot_dendrogram(model, file_name:str, **kwargs):
     plt.savefig(file_name, format='png', bbox_inches='tight')
 
 def RunModule(input_dataset: str, number_of_features: int, normalize: bool, connectivity_type: str,
-              affinity:str, output_dataset: str, output_model: str):
+              affinity:str, linkage: str, output_dataset: str, output_model: str):
 
     data_folder = load_data_frame_from_directory(input_dataset)
     data = data_folder.data
@@ -56,6 +58,9 @@ def RunModule(input_dataset: str, number_of_features: int, normalize: bool, conn
 
     if data.shape[-1] <= number_of_features:
         raise ValueError(f'The number of components ({number_of_features}) should be smaller than the number of features ({data.shape[-1]})')
+
+    if linkage == LINKAGE_WARD and affinity != AFFINITY_EUCLIDEAN:
+        raise ValueError(f"Affinity '{affinity}' cannot be used with linkage '{LINKAGE_WARD}'. Only '{AFFINITY_EUCLIDEAN} can be used")
  
     if normalize:
         scaler = StandardScaler().fit(data)
@@ -65,9 +70,9 @@ def RunModule(input_dataset: str, number_of_features: int, normalize: bool, conn
     if connectivity_type == CONNECTIVITY_TYPE_GRID:
         connectivity = grid_to_graph(data[0].shape[0], 1)
     else:
-        connectivity = kneighbors_graph(data.T, number_of_features - 1, include_self=False)
+        connectivity = kneighbors_graph(data.T, n_neighbors=number_of_features / 2, mode='connectivity', metric='minkowski', include_self=False)
 
-    agglo = FeatureAgglomeration(connectivity=connectivity, n_clusters=number_of_features, affinity=affinity, compute_distances=True).fit(data)
+    agglo = FeatureAgglomeration(connectivity=connectivity, n_clusters=number_of_features, affinity=affinity, linkage=linkage, compute_distances=True).fit(data)
     transformed_data = agglo.transform(data)
     tranformations.append(('agglomeration', agglo))
 
@@ -88,6 +93,7 @@ if __name__ == "__main__":
     parser.add_argument("--normalize", dest="normalize", type=bool, help="Whether or not to normalize data to zero mean", required=True, default=True)
     parser.add_argument("--connectivity-type", dest="connectivity_type", choices=CONNECTIVITY_TYPE, default=CONNECTIVITY_TYPE_NONE)
     parser.add_argument("--affinity", dest="affinity", choices=AFFINITY, default=AFFINITY_EUCLIDEAN)
+    parser.add_argument("--linkage", dest="linkage", choices=LINKAGE, default=LINKAGE_WARD)
     parser.add_argument("--output-dataset", dest="output_dataset", type=str, help="Transformed dataset")
     parser.add_argument("--output-model", dest="output_model", type=str, help="Trained model")
     args = parser.parse_args()
