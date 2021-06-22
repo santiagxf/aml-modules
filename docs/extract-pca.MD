@@ -20,7 +20,7 @@ You will typically connect this to a dataset containing numeric values to comput
  **Outputs:**
   - **Transformed dataset:** The input dataset after applying the PCA transformation. The new dataset will have dimensionality `[samples, components]`.
   - **Eigenvectors:** The components that resulted from the PCA execution. These are the eigenvectors that can be use to transform the dataset into the lower-dimensional space.
-  - **Transformation:}** The transformation associated with this operation. Use this output to save the transformation and apply it later to another dataset. This transformation can be paired with the module `Apply Transformation (Scikit-learn API)`.
+  - **Transformation:** The transformation associated with this operation. Use this output to save the transformation and apply it later to another dataset. This transformation can be paired with the module `Apply Transformation (Scikit-learn API)`.
 
   For example:
 

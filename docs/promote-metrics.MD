@@ -3,7 +3,7 @@
 This repository contains un-official Azure Machine Learning modules to use along with Designer. The modules contain a variety of functionalities to improve the current capabilities.
 
 ## Promote metrics to experiment
-When using the 'Evaluate Model' module, Azure ML will not report the computed metrics back to the experiment. If you are working using both designer and custom-code, this can prevent you from comparing the metrics across those runs inside of an experiment. This module promotes the metrics back to the experiment. In the case of evaluating more than one model, this module allows you to log either both of the metrics are the model with the best one. 
+When using the 'Evaluate Model' module, Azure ML will not report the computed metrics back to the experiment. if you are working on different pipelines in the same experiment, this can prevent you from comparing the metrics across such runs. You can also leverage in this way the experiment's UI. This module promotes the metrics back to the experiment. In the case of evaluating more than one model, this module allows you to log either both of the metrics or the model with the best one. 
 
 The following image shows how metrics are reported:
 
