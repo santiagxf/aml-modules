@@ -54,7 +54,7 @@ def RunModule(input_dataset: str, number_of_features: int, normalize: bool, conn
     if number_of_features <= 0:
         raise ValueError('The number of components cannot be less or equal to zero.')
 
-    if data.shape[-1] >= number_of_features:
+    if data.shape[-1] <= number_of_features:
         raise ValueError(f'The number of components ({number_of_features}) should be smaller than the number of features ({data.shape[-1]})')
  
     if normalize:
