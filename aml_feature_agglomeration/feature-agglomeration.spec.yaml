@@ -26,7 +26,7 @@ inputs:
     optional: false
     default: none
     description: The connectivity map to consider while building the agglomeration
-    Enum:
+    enum:
       - none
       - grid
       - knn
