@@ -1,6 +1,6 @@
 $schema: http://azureml/sdk-2-0/CommandComponent.json
 name: microsoft.csu.azureml.components.feature-agglomeration
-version: 0.0.1
+version: 0.0.2
 display_name: 'Hicherical feature agglomeration'
 type: CommandComponent
 is_deterministic: true
@@ -64,6 +64,7 @@ environment:
         - azureml-designer-core==0.0.54
         - scikit-learn==0.24.*
         - scipy==1.6.2
+        - matplotlib==3.4.2
         - azureml-dataset-runtime[fuse,pandas]
         - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
         - --extra-index-url https://pypi.org/simple
