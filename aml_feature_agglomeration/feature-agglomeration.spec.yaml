@@ -1,0 +1,70 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.csu.azureml.components.feature-agglomeration
+version: 0.0.1
+display_name: 'Hicherical feature agglomeration'
+type: CommandComponent
+is_deterministic: true
+tags:
+  contact: Facundo Santiago <fasantia@microsoft.com>
+  helpDocument: https://github.com/santiagxf/aml-modules
+inputs:
+  dataset:
+    type: DataFrameDirectory
+    optional: false
+    description: Input dataset.
+  number_of_features:
+    type: Integer
+    optional: false
+    description: Number of dimensions to reduce to.
+  normalize:
+    type: Boolean
+    optional: false
+    default: True
+    description: Whether or not to normalize data to zero mean.
+  connectivity:
+    type: Enum
+    optional: false
+    default: none
+    description: The connectivity map to consider while building the agglomeration
+    Enum:
+      - none
+      - grid
+      - knn
+  affinity:
+    type: Enum
+    optional: false
+    default: euclidean
+    enum:
+      - euclidean
+      - l1
+      - l2
+      - manhattan
+      - cosine
+outputs:
+  transformed_dataset:
+    type: DataFrameDirectory
+  transformation:
+    type: TransformationDirectory
+command: >-
+  python feature_agglomeration.py --dataset {inputs.dataset} --number-of-features {inputs.number_of_features} --affinity {inputs.affinity}
+  --connectivity-type {inputs.connectivity} --normalize {inputs.normalize} --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.2
+      - pip:
+        - azureml-sdk==0.1.0.*
+        - azureml-designer-core==0.0.54
+        - scikit-learn==0.24.*
+        - scipy==1.6.2
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+  os: Linux
