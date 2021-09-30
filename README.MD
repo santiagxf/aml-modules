@@ -2,7 +2,7 @@
 
 This repository contains un-official Azure Machine Learning modules to use along with Designer. The modules contain a variety of functionalities to improve the current capabilities.
 
-![experiments](assets/promote-metrics-exp.png)
+![experiments](docs/assets/agglomeration-sample.png)
 
 ## Modules:
 The following modules are available.
