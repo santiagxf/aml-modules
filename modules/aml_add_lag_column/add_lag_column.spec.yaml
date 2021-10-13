@@ -1,0 +1,53 @@
+$schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
+name: microsoft.csu.azureml.components.transformation.add-lag-column
+version: 0.0.1
+display_name: 'Add lag column'
+description: Adds one or many lag columns into the current dataset.
+type: CommandComponent
+is_deterministic: true
+tags:
+  contact: Facundo Santiago <fasantia@microsoft.com>
+  helpDocument: https://github.com/santiagxf/aml-modules
+inputs:
+  dataset:
+    type: DataFrameDirectory
+    optional: false
+    description: Input dataset.
+  column_name:
+    type: String
+    optional: false
+    description: Name of the column to split.
+  lag_columns:
+    type: Integer
+    optional: false
+    default: 1
+    description: The amount of lag columns to add into the dataset
+  lag_by:
+    type: Integer
+    optional: false
+    default: 1
+    description: The amount of rows each column should lag
+outputs:
+  transformed_dataset:
+    type: DataFrameDirectory
+command: >-
+  python add_lag_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} --lag-columns {inputs.lag_columns}
+  --lag-by {inputs.lag_by} --output-dataset {outputs.transformed_dataset}
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.2
+      - pip:
+        - azureml-sdk==1.35.*
+        - azureml-designer-core==0.0.66
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+  os: Linux
