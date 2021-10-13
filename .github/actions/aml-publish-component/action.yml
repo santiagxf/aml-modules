@@ -31,11 +31,12 @@ runs:
     - id: publish
       shell: bash
       run: |
+        echo "::debug::Attaching folder for workspace ${{ inputs.workspace }} at resource group ${{ inputs.resource-group }}"
         az ml folder attach --workspace-name ${{ inputs.workspace }} --resource-group ${{ inputs.resource-group }}
 
         INSTALLED=$(az ml component list | jq .[].name)
 
-        COMP_FILES=$(find ${{ inputs.component-spec }} -exec realpath --relative-to=${{ github.workspace }} {} \);
+        COMP_FILES=$(find ${{ inputs.component-spec }} -exec realpath --relative-to=${{ github.workspace }} {} \;)
 
         for COMP in $COMP_FILES
         do
