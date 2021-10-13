@@ -21,8 +21,10 @@ jobs:
 
       - name: Logining in into Azure
         uses: Azure/login@v1
+        env:
+          CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ env.CREDENTIALS }}
 
       - name: Validating componets
         uses: ./.github/actions/aml-validate-component
