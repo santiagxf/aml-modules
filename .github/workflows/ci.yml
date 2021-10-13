@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    paths:
+    - '.github/**'
+    - 'modules/**'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      COMPONENTS_PATH: modules
+      WORKSPACE: aa-ml-aml-showroom-ws
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Logining in into Azure
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Validating componets
+        uses: ./.github/actions/aml-validate-component
+        with:
+          workspace: ${{ env.WORKSPACE }}
+          component-spec: ${{ env.COMPONENTS_PATH }}/*/*.yaml
