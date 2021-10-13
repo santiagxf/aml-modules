@@ -15,6 +15,7 @@ The following modules are available.
 
 - **Dimensionality reduction**
     - **PCA extraction:** The module analyzes your data and creates a reduced feature set that captures all the information contained in the dataset, but in a smaller number of features. The module also creates a transformation that you can apply to new data, to achieve a similar reduction in dimensionality and compression of features, without requiring additional training. The computed eigenvectors are also returned as a dataset. [See documentation.](docs/extract-pca.MD)
+    - **Trunked-SVD extration:**
     - **Hicherical feature aggreation:** This module is a dimensionality reduction method that groups together features that look very similar, thus decreasing the number of features. The module performs a hierarchical clustering using a bottom up approach: each observation starts in its own cluster, and clusters are successively merged together. [See documentation.](docs/feature-agglomeration.MD)
 
  - **Transformations**
@@ -37,11 +38,27 @@ You can add a new module by following this steps:
 
 > Important: Notice that you will need to perform this action for each module you want to install. If you have multiple Azure Machine Learning workspaces available, then you will have to perform the operation on each of them. For automatic deployment options see Script-based installation.
 
-### Script-based installation
+### Continous deployment
+
+You can automate the deployment of the actions by using the CI/CD GitHub Actions workflow provided in this repository. The workflow can automatically validate all the modules and deploy them if new versions are available.
+
+![image](docs/assets/cd-steps.png)
 
 #### Requirements:
- - Azure CLI with Azure ML extension 2.0 installed. See [installation instruction for more information](https://docs.microsoft.com/en-us/azure/machine-learning/reference-azure-machine-learning-cli)
- - Python 3.7+
- - Git
+- A Service Principal created in the tenant.
+- The Client ID, Client Secret and Tenant ID associated with the indicated service principal.
+- Grant permissions to the service principal in the target resource group/Azure Machine Learning Workspace.
 
-> Work in progress
+
+#### Configuration:
+
+Configure the `env` sections in the `CI.yml` and `CD.yml` according to your workspace
+
+```yml
+    env:
+      COMPONENTS_PATH: modules
+      WORKSPACE: aa-ml-aml-showroom-ws
+      RESOURE_GROUP: Analytics.Aml.Experiments.Workspaces
+```
+
+> Note: This CI/CD workflow will look for any module definition inside the `COMPONENTS_PATH` and will try to install them in the workspace. If the component is already there, it will be upgraded too and the new default version upgraded.
