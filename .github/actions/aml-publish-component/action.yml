@@ -46,7 +46,8 @@ runs:
 
           echo "::debug::Installing component $COMPONENT_NAME @ $COMPONENT_VERSION"
 
-          if [[ az ml component list | jq  '.[].name | select(contains("'"$COMPONENT_NAME"'"))' ==  '$COMPONENT_NAME' ]]
+          if [[ az ml component list | jq  '.[].name | select(contains("'"$COMPONENT_NAME"'"))' ==  '$COMPONENT_NAME' ]];
+          then
             az ml component create --file $COMP 
 
             echo "::debug::Updating default version for component $COMPONENT_NAME to $COMPONENT_VERSION"
