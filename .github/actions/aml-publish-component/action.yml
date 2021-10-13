@@ -40,15 +40,15 @@ runs:
 
         for COMP in $COMP_FILES
         do
-          COMPONENT_NAME=$(yq .name $COMP)
-          COMPONENT_VERSION=$(yq .version $COMP)
+          COMPONENT_NAME=$(yq -r .name $COMP)
+          COMPONENT_VERSION=$(yq -r .version $COMP)
           COMPONENT_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/${GITHUB_REF##*/}/$COMP
 
           echo "::debug::Verifying component installation for $COMPONENT_NAME @ $COMPONENT_VERSION"
-          COMPONENT_INSTALLED=$(az ml component list | jq  '.[].name | select(contains("'"$COMPONENT_NAME"'"))')
+          COMPONENT_INSTALLED=$(az ml component list | jq -r --arg COMPONENT_NAME $COMPONENT_NAME '.[].name | select(contains($COMPONENT_NAME))')
 
           echo "::debug::Installing component $COMPONENT_NAME @ $COMPONENT_VERSION"
-          if [[ $COMPONENT_INSTALLED ==  '$COMPONENT_NAME' ]];
+          if [[ "$COMPONENT_INSTALLED" == "$COMPONENT_NAME" ]];
           then
             az ml component create --file $COMP 
 
