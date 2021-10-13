@@ -1,0 +1,1493 @@
+{
+  "visualizationType": "default",
+  "data": {
+    "name": null,
+    "numberOfColumns": 6,
+    "numberOfRows": 40108,
+    "features": [
+      {
+        "name": "imdbId",
+        "index": 0,
+        "elementType": "int64",
+        "featureType": "Numeric Feature"
+      },
+      {
+        "name": "Imdb Link",
+        "index": 1,
+        "elementType": "str",
+        "featureType": "String Feature"
+      },
+      {
+        "name": "Title",
+        "index": 2,
+        "elementType": "str",
+        "featureType": "String Feature"
+      },
+      {
+        "name": "IMDB Score",
+        "index": 3,
+        "elementType": "float64",
+        "featureType": "Numeric Feature"
+      },
+      {
+        "name": "Genre",
+        "index": 4,
+        "elementType": "str",
+        "featureType": "String Feature"
+      },
+      {
+        "name": "Poster",
+        "index": 5,
+        "elementType": "str",
+        "featureType": "String Feature"
+      }
+    ],
+    "records": [
+      [
+        114709,
+        "http://www.imdb.com/title/tt114709",
+        "Toy Story (1995)",
+        8.3,
+        "Animation|Adventure|Comedy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113497,
+        "http://www.imdb.com/title/tt113497",
+        "Jumanji (1995)",
+        6.9,
+        "Action|Adventure|Family",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZTk2ZmUwYmEtNTcwZS00YmMyLWFkYjMtNTRmZDA3YWExMjc2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY268_CR10,0,182,268_AL_.jpg"
+      ],
+      [
+        113228,
+        "http://www.imdb.com/title/tt113228",
+        "Grumpier Old Men (1995)",
+        6.6,
+        "Comedy|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQxM2YyNjMtZjUxYy00OGYyLTg0MmQtNGE2YzNjYmUyZTY1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114885,
+        "http://www.imdb.com/title/tt114885",
+        "Waiting to Exhale (1995)",
+        5.7,
+        "Comedy|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTczMTMyMTgyM15BMl5BanBnXkFtZTcwOTc4OTQyMQ@@._V1_UY268_CR4,0,182,268_AL_.jpg"
+      ],
+      [
+        113041,
+        "http://www.imdb.com/title/tt113041",
+        "Father of the Bride Part II (1995)",
+        5.9,
+        "Comedy|Family|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BOTEyNzg5NjYtNDU4OS00MWYxLWJhMTItYWU4NTkyNDBmM2Y0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113277,
+        "http://www.imdb.com/title/tt113277",
+        "Heat (1995)",
+        8.2,
+        "Action|Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNGMwNzUwNjYtZWM5NS00YzMyLWI4NjAtNjM0ZDBiMzE1YWExXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114319,
+        "http://www.imdb.com/title/tt114319",
+        "Sabrina (1995)",
+        6.3,
+        "Comedy|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA3OTQ2NTk2ODNeQTJeQWpwZ15BbWU4MDQ3NTM4MDMx._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112302,
+        "http://www.imdb.com/title/tt112302",
+        "Tom and Huck (1995)",
+        5.6,
+        "Adventure|Comedy|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUxNDYzMDY1OV5BMl5BanBnXkFtZTcwNDA2MzYxMQ@@._V1_UY268_CR2,0,182,268_AL_.jpg"
+      ],
+      [
+        114576,
+        "http://www.imdb.com/title/tt114576",
+        "Sudden Death (1995)",
+        5.7,
+        "Action|Crime|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BN2NjYWE5NjMtODlmZC00MjJhLWFkZTktYTJlZTI4YjVkMGNmXkEyXkFqcGdeQXVyNDc2NjEyMw@@._V1_UY268_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113189,
+        "http://www.imdb.com/title/tt113189",
+        "GoldenEye (1995)",
+        7.2,
+        "Action|Adventure|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMzk2OTg4MTk1NF5BMl5BanBnXkFtZTcwNjExNTgzNA@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112346,
+        "http://www.imdb.com/title/tt112346",
+        "The American President (1995)",
+        6.8,
+        "Comedy|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI5NDU2NDYzOF5BMl5BanBnXkFtZTYwNDk5MDI5._V1_UY268_CR4,0,182,268_AL_.jpg"
+      ],
+      [
+        112896,
+        "http://www.imdb.com/title/tt112896",
+        "Dracula: Dead and Loving It (1995)",
+        5.8,
+        "Comedy|Fantasy|Horror",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZWQ0ZDFmYzMtZGMyMi00NmYxLWE0MGYtYzM2ZGNhMTE1NTczL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMjM5ODMxODc@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112453,
+        "http://www.imdb.com/title/tt112453",
+        "Balto (1995)",
+        7.1,
+        "Animation|Adventure|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjBhNmFlZjMtMzhlYy00NDBlLWFiMjctMmE0ZjgwOGM2MTNmXkEyXkFqcGdeQXVyNjExODE1MDc@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113987,
+        "http://www.imdb.com/title/tt113987",
+        "Nixon (1995)",
+        7.1,
+        "Biography|Drama|History",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNzBlOWY0ZmEtZjdkYS00ZGU0LWEwN2YtYzBkNDM5ZDBjMmI1XkEyXkFqcGdeQXVyMTAwMzUyOTc@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112760,
+        "http://www.imdb.com/title/tt112760",
+        "Cutthroat Island (1995)",
+        5.6,
+        "Action|Adventure|Comedy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMDg2YTI0YmQtYzgwMi00Zjk4LWJkZjgtYjg0ZDE2ODUzY2RlL2ltYWdlXkEyXkFqcGdeQXVyNjQzNDI3NzY@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112641,
+        "http://www.imdb.com/title/tt112641",
+        "Casino (1995)",
+        8.2,
+        "Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTcxOWYzNDYtYmM4YS00N2NkLTk0NTAtNjg1ODgwZjAxYzI3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114388,
+        "http://www.imdb.com/title/tt114388",
+        "Sense and Sensibility (1995)",
+        7.7,
+        "Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNzk1MjU3MDQyMl5BMl5BanBnXkFtZTcwNjc1OTM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113101,
+        "http://www.imdb.com/title/tt113101",
+        "Four Rooms (1995)",
+        6.7,
+        "Comedy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNDc3Y2YwMjUtYzlkMi00MTljLTg1ZGMtYzUwODljZTI1OTZjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112281,
+        "http://www.imdb.com/title/tt112281",
+        "Ace Ventura: When Nature Calls (1995)",
+        6.3,
+        "Adventure|Comedy|Crime",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNGFiYTgxZDctNGI4OS00MWU1LWIwOGUtZmMyNGQxYjVkZjQ3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113845,
+        "http://www.imdb.com/title/tt113845",
+        "Money Train (1995)",
+        5.6,
+        "Action|Comedy|Crime",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNDEwNzcyNjkzNl5BMl5BanBnXkFtZTcwNzQyMzYxMQ@@._V1_UY268_CR4,0,182,268_AL_.jpg"
+      ],
+      [
+        113161,
+        "http://www.imdb.com/title/tt113161",
+        "Get Shorty (1995)",
+        6.9,
+        "Comedy|Crime|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjAwODYzNDY4Ml5BMl5BanBnXkFtZTcwODkwNTgzNA@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112722,
+        "http://www.imdb.com/title/tt112722",
+        "Copycat (1995)",
+        6.6,
+        "Crime|Drama|Mystery",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BYWUwNDk2ZDYtNmFkMi00NjE5LWE1M2ItYTRkNTFjZDU3ZDU4L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTYxNjkxOQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112401,
+        "http://www.imdb.com/title/tt112401",
+        "Assassins (1995)",
+        6.3,
+        "Action|Crime|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMGY2OWI5ZjQtYjY0Zi00Y2M4LWEwMmMtOTJhODYxYTExNWZlL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        114168,
+        "http://www.imdb.com/title/tt114168",
+        "Powder (1995)",
+        6.5,
+        "Drama|Fantasy|Mystery",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM2NDczNjYwMV5BMl5BanBnXkFtZTYwNTI3Mjc4._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113627,
+        "http://www.imdb.com/title/tt113627",
+        "Leaving Las Vegas (1995)",
+        7.6,
+        "Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNDg3MDM5NTI0MF5BMl5BanBnXkFtZTcwNDY0NDk0NA@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114057,
+        "http://www.imdb.com/title/tt114057",
+        "Othello (1995)",
+        6.9,
+        "Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMzA2ODk2NV5BMl5BanBnXkFtZTcwMzQ4ODIyMQ@@._V1_UY268_CR4,0,182,268_AL_.jpg"
+      ],
+      [
+        114011,
+        "http://www.imdb.com/title/tt114011",
+        "Now and Then (1995)",
+        6.8,
+        "Comedy|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM2MDQ1YjUtMGM0NC00NmFlLTljMDktZjJiNWRhMWYxOWYyXkEyXkFqcGdeQXVyNjgzMjI4ODE@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114117,
+        "http://www.imdb.com/title/tt114117",
+        "Persuasion",
+        7.7,
+        "Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc5NzAwNDAyN15BMl5BanBnXkFtZTYwMjYzMDc5._V1_UY268_CR1,0,182,268_AL_.jpg"
+      ],
+      [
+        112682,
+        "http://www.imdb.com/title/tt112682",
+        "The City of Lost Children (1995)",
+        7.7,
+        "Fantasy|Sci-Fi",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZGQxZDMwYzYtYmFjNi00NWYyLThjZjAtMDJhODZhYTkyZDNhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UY268_CR7,0,182,268_AL_.jpg"
+      ],
+      [
+        115012,
+        "http://www.imdb.com/title/tt115012",
+        "Yao a yao, yao dao wai po qiao (1995)",
+        7.2,
+        "Crime|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgyMzAwOTQyNF5BMl5BanBnXkFtZTcwNDU1MjgxMQ@@._V1_UY268_CR1,0,182,268_AL_.jpg"
+      ],
+      [
+        112792,
+        "http://www.imdb.com/title/tt112792",
+        "Dangerous Minds (1995)",
+        6.4,
+        "Biography|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZjk2YjNkYTYtOTZkNy00ZmRkLWI5ODEtYzA4MTM3MzMyZjhlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114746,
+        "http://www.imdb.com/title/tt114746",
+        "Twelve Monkeys (1995)",
+        8.0,
+        "Mystery|Sci-Fi|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BN2Y2OWU4MWMtNmIyMy00YzMyLWI0Y2ItMTcyZDc3MTdmZDU4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114952,
+        "http://www.imdb.com/title/tt114952",
+        "Wings of Courage (1995)",
+        6.5,
+        "Adventure|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc3ODY1MjA3OF5BMl5BanBnXkFtZTcwODgzOTgyMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112431,
+        "http://www.imdb.com/title/tt112431",
+        "Babe (1995)",
+        6.8,
+        "Comedy|Drama|Family",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BYjg4ZjUzMzMtYzlmYi00YTcwLTlkOWUtYWFmY2RhNjliODQzXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112637,
+        "http://www.imdb.com/title/tt112637",
+        "Carrington (1995)",
+        6.9,
+        "Biography|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZjQ3MTBkNDEtMGRlZS00OTY0LTkzYjktOWU2MzI3ZDRiMjY5XkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112818,
+        "http://www.imdb.com/title/tt112818",
+        "Dead Man Walking (1995)",
+        7.6,
+        "Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM3NzA1MjM2N15BMl5BanBnXkFtZTcwMzY3MTMzNA@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112286,
+        "http://www.imdb.com/title/tt112286",
+        "Across the Sea of Time (1995)",
+        6.4,
+        "Adventure|Drama|Family",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BOTIwMzk1MDc1MF5BMl5BanBnXkFtZTcwMTEzNDkyMQ@@._V1_UY268_CR43,0,182,268_AL_.jpg"
+      ],
+      [
+        113442,
+        "http://www.imdb.com/title/tt113442",
+        "It Takes Two (1995)",
+        5.7,
+        "Comedy|Family|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMzdhMGU0MzEtZjg1Ny00YzE5LWE0MGQtMTNiN2UwN2I5ZDBjXkEyXkFqcGdeQXVyNTgzMzU5MDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112697,
+        "http://www.imdb.com/title/tt112697",
+        "Clueless (1995)",
+        6.8,
+        "Comedy|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxODIxODE2MF5BMl5BanBnXkFtZTgwOTA4NjQxMTE@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112749,
+        "http://www.imdb.com/title/tt112749",
+        "Cry, the Beloved Country (1995)",
+        6.9,
+        "Drama|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwMDU1OTEwOF5BMl5BanBnXkFtZTcwMTg5NjEyMQ@@._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        114279,
+        "http://www.imdb.com/title/tt114279",
+        "Richard III (1995)",
+        7.5,
+        "Drama|War",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI3MzMwMzIxMF5BMl5BanBnXkFtZTYwNTM0Nzc5._V1_UY268_CR2,0,182,268_AL_.jpg"
+      ],
+      [
+        112819,
+        "http://www.imdb.com/title/tt112819",
+        "Dead Presidents (1995)",
+        6.8,
+        "Action|Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMzE0NTI0MTM5MV5BMl5BanBnXkFtZTcwMzYwMTYyMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114272,
+        "http://www.imdb.com/title/tt114272",
+        "Restoration (1995)",
+        6.7,
+        "Biography|Drama|History",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE5ODY5MTU5OF5BMl5BanBnXkFtZTYwNjcwNTY5._V1_UY268_CR1,0,182,268_AL_.jpg"
+      ],
+      [
+        113855,
+        "http://www.imdb.com/title/tt113855",
+        "Mortal Kombat (1995)",
+        5.8,
+        "Action|Adventure|Fantasy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNzJhYjYxMTctNmY4My00NGIzLThmN2MtYjgwMjlmZWNjMTJlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114681,
+        "http://www.imdb.com/title/tt114681",
+        "To Die For (1995)",
+        6.8,
+        "Comedy|Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNGZhYzgwNzItNDljNC00MDM4LThiYjEtNDRhNmE5NDk2MTQ0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113347,
+        "http://www.imdb.com/title/tt113347",
+        "How to Make an American Quilt (1995)",
+        6.2,
+        "Comedy|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNzY3NTQ0NTM0NV5BMl5BanBnXkFtZTcwODkwMzgxMQ@@._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        114369,
+        "http://www.imdb.com/title/tt114369",
+        "Se7en (1995)",
+        8.6,
+        "Crime|Drama|Mystery",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114148,
+        "http://www.imdb.com/title/tt114148",
+        "Pocahontas (1995)",
+        6.7,
+        "Animation|Adventure|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMzc4YzhiN2ItY2Y4NC00YTA0LWEyMjEtNzllNTcxZDdjODhiXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114916,
+        "http://www.imdb.com/title/tt114916",
+        "When Night Is Falling (1995)",
+        6.7,
+        "Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI2OTU5MDMzN15BMl5BanBnXkFtZTcwMTkxNTEzMQ@@._V1_UY268_CR2,0,182,268_AL_.jpg"
+      ],
+      [
+        114814,
+        "http://www.imdb.com/title/tt114814",
+        "The Usual Suspects (1995)",
+        8.6,
+        "Crime|Drama|Mystery",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMzI1MjI5MDQyOV5BMl5BanBnXkFtZTcwNzE4Mjg3NA@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        109950,
+        "http://www.imdb.com/title/tt109950",
+        "Guardian Angel (1994)",
+        4.8,
+        "Action|Drama|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI1OTA0NDQzN15BMl5BanBnXkFtZTcwMjIwNjQyMQ@@._V1_UY268_CR102,0,182,268_AL_.jpg"
+      ],
+      [
+        113819,
+        "http://www.imdb.com/title/tt113819",
+        "Mighty Aphrodite (1995)",
+        7.1,
+        "Comedy|Fantasy|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMGM1NzM2ZjktNDM5ZS00YmExLTk5ZmYtNDdkNjdkNTdhZWZkXkEyXkFqcGdeQXVyNjE5MjUyOTM@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        110299,
+        "http://www.imdb.com/title/tt110299",
+        "Lamerica (1994)",
+        7.6,
+        "Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk0MTI5MjU3MF5BMl5BanBnXkFtZTcwMjMzODUyMQ@@._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        112499,
+        "http://www.imdb.com/title/tt112499",
+        "The Big Green (1995)",
+        5.5,
+        "Comedy|Family|Sport",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwODc3MDk3Nl5BMl5BanBnXkFtZTcwMTE5NTUyMQ@@._V1_UY268_CR5,0,182,268_AL_.jpg"
+      ],
+      [
+        113158,
+        "http://www.imdb.com/title/tt113158",
+        "Georgia (1995)",
+        6.5,
+        "Drama|Music",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZWJiNjMwYzMtZWU5Yi00NGI0LTg5NGYtZDY4MWRiYjEwYTYzXkEyXkFqcGdeQXVyMTAwMzUyOTc@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113541,
+        "http://www.imdb.com/title/tt113541",
+        "Kids of the Round Table (1995)",
+        5.0,
+        "Adventure|Comedy|Family",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTEwMTM0MzI3OTheQTJeQWpwZ15BbWU3MDQzNTQ2MTE@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113321,
+        "http://www.imdb.com/title/tt113321",
+        "Home for the Holidays (1995)",
+        6.6,
+        "Comedy|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjExMTMyNzU4MV5BMl5BanBnXkFtZTcwMzIwMDkxMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        110877,
+        "http://www.imdb.com/title/tt110877",
+        "Il Postino: The Postman (1994)",
+        7.7,
+        "Biography|Comedy|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5NDI4NjQyOV5BMl5BanBnXkFtZTYwODI1NDE5._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        112714,
+        "http://www.imdb.com/title/tt112714",
+        "Le confessionnal (1995)",
+        7.6,
+        "Drama|Mystery|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2MDE1MTYyNl5BMl5BanBnXkFtZTcwMzc3NDEzMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113419,
+        "http://www.imdb.com/title/tt113419",
+        "The Indian in the Cupboard (1995)",
+        5.9,
+        "Drama|Family|Fantasy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk0NjQ5NzQxMl5BMl5BanBnXkFtZTcwMDc5NjUyMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        116260,
+        "http://www.imdb.com/title/tt116260",
+        "Eye for an Eye (1996)",
+        6.1,
+        "Crime|Drama|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwMzc5NTk0NF5BMl5BanBnXkFtZTYwOTYyMzU5._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113862,
+        "http://www.imdb.com/title/tt113862",
+        "Mr. Holland's Opus (1995)",
+        7.3,
+        "Drama|Music",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZDZhNDRlZjAtYzdhNy00ZjU1LWFlMDYtNjA5NjliM2Y5ZmVjL2ltYWdlXkEyXkFqcGdeQXVyNjE5MjUyOTM@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        116126,
+        "http://www.imdb.com/title/tt116126",
+        "Don't Be a Menace to South Central While Drinking Your Juice in the Hood (1996)",
+        6.6,
+        "Comedy|Crime",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BY2NmM2M2MWItNjdlMC00ZWI3LTkwODUtZDNkYWZjYjgzZjY3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        118002,
+        "http://www.imdb.com/title/tt118002",
+        "Two If by Sea (1996)",
+        5.2,
+        "Comedy|Crime|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5MDcxNjY5MV5BMl5BanBnXkFtZTYwNDMxMTk5._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        115683,
+        "http://www.imdb.com/title/tt115683",
+        "Bio-Dome (1996)",
+        4.4,
+        "Comedy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BYzY0ZjI0NTUtNDE4Yi00OGU2LWExZDMtNTY1MTM3ZWE3MzEyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        116839,
+        "http://www.imdb.com/title/tt116839",
+        "Lawnmower Man 2: Beyond Cyberspace (1996)",
+        2.4,
+        "Action|Sci-Fi|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZGI0ZDZhOGUtZDZiOS00NWE2LThjNzQtYzI3ZGFjODUwZjlkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114753,
+        "http://www.imdb.com/title/tt114753",
+        "Two Bits (1995)",
+        6.3,
+        "Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BOGE1NmM0MjYtZmJjYS00ODI5LWI0MjgtOGM2MTY3ZmIyNDZkXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113149,
+        "http://www.imdb.com/title/tt113149",
+        "French Twist (1995)",
+        6.4,
+        "Comedy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg3NjczMTU1OF5BMl5BanBnXkFtZTcwOTAzNTQyMQ@@._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        113118,
+        "http://www.imdb.com/title/tt113118",
+        "Friday (1995)",
+        7.3,
+        "Comedy|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BYmEwNjNlZTUtNzkwMS00ZTlhLTkyY2MtMjM2MzlmODQyZGVhXkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        116367,
+        "http://www.imdb.com/title/tt116367",
+        "From Dusk Till Dawn (1996)",
+        7.3,
+        "Action|Crime|Horror",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZjk3YmZhMDAtOWUzMS00YjE5LTkxNzAtY2I1NGZjMDA2ZTk0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113010,
+        "http://www.imdb.com/title/tt113010",
+        "Fair Game (1995)",
+        4.1,
+        "Action|Crime|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4NjM0MDI1OF5BMl5BanBnXkFtZTcwMDQ1ODMyMQ@@._V1_UY268_CR11,0,182,268_AL_.jpg"
+      ],
+      [
+        113537,
+        "http://www.imdb.com/title/tt113537",
+        "Kicking and Screaming (1995)",
+        7.0,
+        "Comedy|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEzMjkwMzE4Nl5BMl5BanBnXkFtZTcwNzY0NzMzMQ@@._V1_UY268_CR4,0,182,268_AL_.jpg"
+      ],
+      [
+        113828,
+        "http://www.imdb.com/title/tt113828",
+        "Les mis\u00ed\u00a9rables (1995)",
+        7.5,
+        "Drama|History",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg1NzgyNTk0N15BMl5BanBnXkFtZTYwNjk4MDU5._V1_UY268_CR2,0,182,268_AL_.jpg"
+      ],
+      [
+        115644,
+        "http://www.imdb.com/title/tt115644",
+        "Bed of Roses (1996)",
+        6.1,
+        "Romance|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjg4MzcxMzk3M15BMl5BanBnXkFtZTcwNzkzOTMyMQ@@._V1_UY268_CR8,0,182,268_AL_.jpg"
+      ],
+      [
+        115676,
+        "http://www.imdb.com/title/tt115676",
+        "Big Bully (1996)",
+        4.5,
+        "Comedy|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BYzAzMmUyNTYtNTQ4Yi00ZDJmLTliMTAtOTFlY2U0ODNiMGNmXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114367,
+        "http://www.imdb.com/title/tt114367",
+        "Screamers (1995)",
+        6.4,
+        "Sci-Fi|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BM2M2ZGM0NDUtODRhNS00MjcxLTg3ZWYtYjkyZDJkYmVjOWYwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113973,
+        "http://www.imdb.com/title/tt113973",
+        "Nico Icon (1995)",
+        7.3,
+        "Documentary|Biography|Music",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNTY2MDM2NzcyM15BMl5BanBnXkFtZTcwMjk3MzcyMQ@@._V1_UY268_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112744,
+        "http://www.imdb.com/title/tt112744",
+        "The Crossing Guard (1995)",
+        6.3,
+        "Drama|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjkwNWMyZjQtNmU5MS00ZWE1LWE3NzMtNGZjNTlhYzcwNjIzXkEyXkFqcGdeQXVyMTAwMzUyOTc@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        116731,
+        "http://www.imdb.com/title/tt116731",
+        "The Juror (1996)",
+        5.6,
+        "Drama|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgwOTc5MjYzNl5BMl5BanBnXkFtZTcwMjYzMTYyMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112445,
+        "http://www.imdb.com/title/tt112445",
+        "The White Balloon (1995)",
+        7.8,
+        "Drama|Family",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTE5ODk5MDAwN15BMl5BanBnXkFtZTYwNDA3MjE5._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114660,
+        "http://www.imdb.com/title/tt114660",
+        "Things to Do in Denver When You're Dead (1995)",
+        6.8,
+        "Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMzI0OWEzZmItOGUyOC00M2Y2LWIzNDEtY2EzYzAwNWI0ZDkyXkEyXkFqcGdeQXVyNTc1NTQxODI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112379,
+        "http://www.imdb.com/title/tt112379",
+        "Antonia's Line (1995)",
+        7.5,
+        "Comedy|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgwNjkwOTQ5NV5BMl5BanBnXkFtZTcwNjc3ODAyMQ@@._V1_UY268_CR1,0,182,268_AL_.jpg"
+      ],
+      [
+        114039,
+        "http://www.imdb.com/title/tt114039",
+        "Once Upon a Time... When We Were Colored (1995)",
+        7.2,
+        "Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI4NDk2MDcyNV5BMl5BanBnXkFtZTcwMTQxNTMyMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113612,
+        "http://www.imdb.com/title/tt113612",
+        "Last Summer in the Hamptons (1995)",
+        6.1,
+        "Comedy|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2OTM4MDI2OV5BMl5BanBnXkFtZTcwNTQxMTYxMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        112365,
+        "http://www.imdb.com/title/tt112365",
+        "Angels and Insects (1995)",
+        7.0,
+        "Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BOTgwMTExNjk2M15BMl5BanBnXkFtZTcwNzQxNTEzMQ@@._V1_UY268_CR2,0,182,268_AL_.jpg"
+      ],
+      [
+        118158,
+        "http://www.imdb.com/title/tt118158",
+        "White Squall (1996)",
+        6.6,
+        "Adventure|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI5NjIzMTI5OV5BMl5BanBnXkFtZTcwMjY0MzAyMQ@@._V1_UY268_CR2,0,182,268_AL_.jpg"
+      ],
+      [
+        116151,
+        "http://www.imdb.com/title/tt116151",
+        "Dunston Checks In (1996)",
+        5.3,
+        "Comedy|Adventure|Family",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BN2RhOTA4YzAtNTg3NC00NmYxLWI1YjQtYzM4NTJlYzVhZGYwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        115697,
+        "http://www.imdb.com/title/tt115697",
+        "Black Sheep (1996)",
+        6.2,
+        "Comedy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BYjc2NzU0YjUtYzkyNS00NjcwLWJiM2QtM2Y3YjFhMTQ0M2I3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113972,
+        "http://www.imdb.com/title/tt113972",
+        "Nick of Time (1995)",
+        6.3,
+        "Action|Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE1OTk4OTM2NF5BMl5BanBnXkFtZTYwNzE4OTc4._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        113490,
+        "http://www.imdb.com/title/tt113490",
+        "The Journey of August King (1995)",
+        6.6,
+        "Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA2MTMxMDQyMV5BMl5BanBnXkFtZTcwMDEzMzcyMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        117002,
+        "http://www.imdb.com/title/tt117002",
+        "Mary Reilly (1996)",
+        5.8,
+        "Drama|Horror|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM2MzEzNTc2NF5BMl5BanBnXkFtZTYwNTI5NjU5._V1_UY268_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        114825,
+        "http://www.imdb.com/title/tt114825",
+        "Vampire in Brooklyn (1995)",
+        4.5,
+        "Comedy|Fantasy|Horror",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNWFlYjJiYzUtNWE1YS00YzM5LTkxYzMtN2FlMjI4NTNlNzExXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        115639,
+        "http://www.imdb.com/title/tt115639",
+        "Beautiful Girls (1996)",
+        7.2,
+        "Comedy|Drama|Romance",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI4NjU0NDM0NV5BMl5BanBnXkFtZTYwODU5MjY5._V1_UY268_CR2,0,182,268_AL_.jpg"
+      ],
+      [
+        115759,
+        "http://www.imdb.com/title/tt115759",
+        "Broken Arrow (1996)",
+        6.0,
+        "Action|Crime|Thriller",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NTQzMDQwMF5BMl5BanBnXkFtZTYwOTQ1OTk4._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        113403,
+        "http://www.imdb.com/title/tt113403",
+        "A Midwinter's Tale (1995)",
+        7.3,
+        "Comedy",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTIyMDEwMDAyMl5BMl5BanBnXkFtZTYwOTUwNTk4._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        113247,
+        "http://www.imdb.com/title/tt113247",
+        "La Haine (1995)",
+        8.1,
+        "Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNDNiOTA5YjktY2Q0Ni00ODgzLWE5MWItNGExOWRlYjY2MjBlXkEyXkFqcGdeQXVyNjQ2MjQ5NzM@._V1_UY268_CR3,0,182,268_AL_.jpg"
+      ],
+      [
+        111173,
+        "http://www.imdb.com/title/tt111173",
+        "Shopping (1994)",
+        5.4,
+        "Action|Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA5NzE3MjQ4MzFeQTJeQWpwZ15BbWU3MDQ1MDU2MjE@._V1_UY268_CR4,0,182,268_AL_.jpg"
+      ],
+      [
+        113283,
+        "http://www.imdb.com/title/tt113283",
+        "Heidi Fleiss: Hollywood Madam (1995)",
+        6.6,
+        "Documentary|Biography",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc4NDc5NzQzNF5BMl5BanBnXkFtZTcwMDUyODkxMQ@@._V1_UY268_CR4,0,182,268_AL_.jpg"
+      ],
+      [
+        115907,
+        "http://www.imdb.com/title/tt115907",
+        "City Hall (1996)",
+        6.2,
+        "Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BZDg3M2YzZWQtMmZjZC00NzJmLThiNDMtZjM3Mjk0MjFkOTQ0XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      ],
+      [
+        115734,
+        "http://www.imdb.com/title/tt115734",
+        "Bottle Rocket (1996)",
+        7.1,
+        "Comedy|Crime|Drama",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI2NDY4Mzc1Nl5BMl5BanBnXkFtZTcwNzUyNDk5MQ@@._V1_UY268_CR4,0,182,268_AL_.jpg"
+      ]
+    ]
+  },
+  "statistics": {
+    "name": null,
+    "numberOfColumns": 7,
+    "numberOfRows": 6,
+    "features": [
+      {
+        "name": "Mean",
+        "index": 0,
+        "elementType": "float64",
+        "featureType": "Numeric Feature"
+      },
+      {
+        "name": "Median",
+        "index": 1,
+        "elementType": "float64",
+        "featureType": "Numeric Feature"
+      },
+      {
+        "name": "Min",
+        "index": 2,
+        "elementType": "float64",
+        "featureType": "Numeric Feature"
+      },
+      {
+        "name": "Max",
+        "index": 3,
+        "elementType": "float64",
+        "featureType": "Numeric Feature"
+      },
+      {
+        "name": "Standard Deviation",
+        "index": 4,
+        "elementType": "float64",
+        "featureType": "Numeric Feature"
+      },
+      {
+        "name": "Unique Values",
+        "index": 5,
+        "elementType": "float64",
+        "featureType": "Numeric Feature"
+      },
+      {
+        "name": "Missing Values",
+        "index": 6,
+        "elementType": "float64",
+        "featureType": "Numeric Feature"
+      }
+    ],
+    "records": [
+      [
+        848751.0299441508,
+        259966.0,
+        3.0,
+        6098922.0,
+        1151825.2131005013,
+        39515,
+        0
+      ],
+      [
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        39515,
+        0
+      ],
+      [
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        39470,
+        0
+      ],
+      [
+        6.410568963797745,
+        6.6,
+        0.0,
+        9.5,
+        1.1623734428963206,
+        85,
+        0
+      ],
+      [
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        1308,
+        0
+      ],
+      [
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        {
+          "isNan": true
+        },
+        38655,
+        0
+      ]
+    ]
+  },
+  "layout": {
+    "name": null,
+    "numberOfColumns": 2,
+    "numberOfRows": 6,
+    "features": [
+      {
+        "name": "Histogram",
+        "index": 0,
+        "elementType": "object",
+        "featureType": "Object Feature"
+      },
+      {
+        "name": "Boxplot",
+        "index": 1,
+        "elementType": "object",
+        "featureType": "Object Feature"
+      }
+    ],
+    "records": [
+      [
+        {
+          "Bins": [
+            {
+              "x": 3.0,
+              "dx": 609891.9,
+              "y": 25835,
+              "numElements": 0
+            },
+            {
+              "x": 609894.9,
+              "dx": 609891.9,
+              "y": 3378,
+              "numElements": 0
+            },
+            {
+              "x": 1219786.8,
+              "dx": 609891.9000000001,
+              "y": 4112,
+              "numElements": 0
+            },
+            {
+              "x": 1829678.7000000002,
+              "dx": 609891.8999999999,
+              "y": 2728,
+              "numElements": 0
+            },
+            {
+              "x": 2439570.6,
+              "dx": 609891.8999999999,
+              "y": 1201,
+              "numElements": 0
+            },
+            {
+              "x": 3049462.5,
+              "dx": 609891.9000000004,
+              "y": 1161,
+              "numElements": 0
+            },
+            {
+              "x": 3659354.4000000004,
+              "dx": 609891.8999999994,
+              "y": 844,
+              "numElements": 0
+            },
+            {
+              "x": 4269246.3,
+              "dx": 609891.9000000004,
+              "y": 460,
+              "numElements": 0
+            },
+            {
+              "x": 4879138.2,
+              "dx": 609891.9000000004,
+              "y": 293,
+              "numElements": 0
+            },
+            {
+              "x": 5489030.100000001,
+              "dx": 609891.8999999994,
+              "y": 96,
+              "numElements": 0
+            }
+          ],
+          "NumberOfRecords": 40108
+        },
+        {
+          "median": 259966.0,
+          "boxBottom": 82258.25,
+          "boxTop": 1328869.0,
+          "whiskerBottom": 3,
+          "whiskerTop": 3198698,
+          "outliers": [
+            5910280,
+            5912454,
+            5912600,
+            5918028,
+            5917230,
+            5935392,
+            5957584,
+            5943936,
+            5937770,
+            5946232,
+            5952332,
+            5953804,
+            5958174,
+            6098922,
+            5973626,
+            5988898,
+            6041048,
+            6047684,
+            6029122,
+            6038506,
+            6037818,
+            6028446,
+            6043942,
+            6081882,
+            6071534
+          ]
+        }
+      ],
+      [
+        {
+          "Bins": [
+            {
+              "x": "http://www.imdb.com/title/tt758798",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt486572",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt425395",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt466664",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt480011",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt498097",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt443680",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt54745",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt42281",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "http://www.imdb.com/title/tt59496",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            }
+          ],
+          "NumberOfRecords": 40108
+        },
+        null
+      ],
+      [
+        {
+          "Bins": [
+            {
+              "x": "Persuasion",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "Aladdin (1992)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "Emma (1996)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "Men with Guns (1997)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "Soldier (1998)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "Hamlet (1964)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "Hamlet (2000)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "The Blue Angel (1930)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "Clockstoppers (2002)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            },
+            {
+              "x": "Confessions of a Dangerous Mind (2002)",
+              "dx": "",
+              "y": 2,
+              "numElements": 0
+            }
+          ],
+          "NumberOfRecords": 40108
+        },
+        null
+      ],
+      [
+        {
+          "Bins": [
+            {
+              "x": 0.0,
+              "dx": 0.95,
+              "y": 48,
+              "numElements": 0
+            },
+            {
+              "x": 0.95,
+              "dx": 0.95,
+              "y": 30,
+              "numElements": 0
+            },
+            {
+              "x": 1.9,
+              "dx": 0.9499999999999997,
+              "y": 335,
+              "numElements": 0
+            },
+            {
+              "x": 2.8499999999999996,
+              "dx": 0.9500000000000002,
+              "y": 795,
+              "numElements": 0
+            },
+            {
+              "x": 3.8,
+              "dx": 0.9500000000000002,
+              "y": 2313,
+              "numElements": 0
+            },
+            {
+              "x": 4.75,
+              "dx": 0.9499999999999993,
+              "y": 5064,
+              "numElements": 0
+            },
+            {
+              "x": 5.699999999999999,
+              "dx": 0.9500000000000002,
+              "y": 12416,
+              "numElements": 0
+            },
+            {
+              "x": 6.6499999999999995,
+              "dx": 0.9500000000000002,
+              "y": 13582,
+              "numElements": 0
+            },
+            {
+              "x": 7.6,
+              "dx": 0.9499999999999993,
+              "y": 5265,
+              "numElements": 0
+            },
+            {
+              "x": 8.549999999999999,
+              "dx": 0.9500000000000011,
+              "y": 260,
+              "numElements": 0
+            }
+          ],
+          "NumberOfRecords": 40108
+        },
+        {
+          "median": 6.6,
+          "boxBottom": 5.8,
+          "boxTop": 7.2,
+          "whiskerBottom": 3.7,
+          "whiskerTop": 9.3,
+          "outliers": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            9.4,
+            9.5,
+            9.5,
+            9.4,
+            9.5
+          ]
+        }
+      ],
+      [
+        {
+          "Bins": [
+            {
+              "x": "Drama",
+              "dx": "",
+              "y": 4299,
+              "numElements": 0
+            },
+            {
+              "x": "Comedy",
+              "dx": "",
+              "y": 2447,
+              "numElements": 0
+            },
+            {
+              "x": "Documentary",
+              "dx": "",
+              "y": 1753,
+              "numElements": 0
+            },
+            {
+              "x": "Comedy|Drama",
+              "dx": "",
+              "y": 1487,
+              "numElements": 0
+            },
+            {
+              "x": "Drama|Romance",
+              "dx": "",
+              "y": 1459,
+              "numElements": 0
+            },
+            {
+              "x": "Comedy|Drama|Romance",
+              "dx": "",
+              "y": 1132,
+              "numElements": 0
+            },
+            {
+              "x": "Comedy|Romance",
+              "dx": "",
+              "y": 1005,
+              "numElements": 0
+            },
+            {
+              "x": "Horror",
+              "dx": "",
+              "y": 716,
+              "numElements": 0
+            },
+            {
+              "x": "Action|Crime|Drama",
+              "dx": "",
+              "y": 559,
+              "numElements": 0
+            },
+            {
+              "x": "Crime|Drama",
+              "dx": "",
+              "y": 535,
+              "numElements": 0
+            }
+          ],
+          "NumberOfRecords": 40108
+        },
+        null
+      ],
+      [
+        {
+          "Bins": [
+            {
+              "x": "0",
+              "dx": "",
+              "y": 725,
+              "numElements": 0
+            },
+            {
+              "x": "http://ia.media-imdb.com/images/G/01/imdb/images/nopicture/180x268/film-173410679._CB522736558_.png",
+              "dx": "",
+              "y": 12,
+              "numElements": 0
+            },
+            {
+              "x": "https://images-na.ssl-images-amazon.com/images/M/MV5BMWM5YWViOWItOThlMC00ZjVjLWI5MTItMWZiMDNjNzUwNTVjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY268_CR4,0,182,268_AL_.jpg",
+              "dx": "",
+              "y": 6,
+              "numElements": 0
+            },
+            {
+              "x": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk1NDIxODA2Ml5BMl5BanBnXkFtZTcwMzk4MjAzMQ@@._V1_UY268_CR3,0,182,268_AL_.jpg",
+              "dx": "",
+              "y": 5,
+              "numElements": 0
+            },
+            {
+              "x": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI5Nzk3Mjc4MF5BMl5BanBnXkFtZTcwMDg4NzIyMQ@@._V1._CR60,141,225,308_UY268_CR7,0,182,268_AL_.jpg",
+              "dx": "",
+              "y": 5,
+              "numElements": 0
+            },
+            {
+              "x": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk3NjQ1OTk4M15BMl5BanBnXkFtZTYwMDczNDg5._V1_UY268_CR10,0,182,268_AL_.jpg",
+              "dx": "",
+              "y": 5,
+              "numElements": 0
+            },
+            {
+              "x": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjAwMTA2NTQzOV5BMl5BanBnXkFtZTcwNTg1NTIyMQ@@._V1_UY268_CR10,0,182,268_AL_.jpg",
+              "dx": "",
+              "y": 4,
+              "numElements": 0
+            },
+            {
+              "x": "https://images-na.ssl-images-amazon.com/images/M/MV5BNDhjOTE3YmYtNThjMC00MjdiLWFkZWMtNTM4ZjBkM2FhNDgzXkEyXkFqcGdeQXVyMTYxNjkxOQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+              "dx": "",
+              "y": 4,
+              "numElements": 0
+            },
+            {
+              "x": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTIwMzA0MTAyOV5BMl5BanBnXkFtZTcwODMxMjQzMQ@@._V1_UY268_CR10,0,182,268_AL_.jpg",
+              "dx": "",
+              "y": 3,
+              "numElements": 0
+            },
+            {
+              "x": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQyODc3NDc1Ml5BMl5BanBnXkFtZTcwNTA5MTM1Mg@@._V1_UY268_CR4,0,182,268_AL_.jpg",
+              "dx": "",
+              "y": 3,
+              "numElements": 0
+            }
+          ],
+          "NumberOfRecords": 40108
+        },
+        null
+      ]
+    ]
+  }
+}
