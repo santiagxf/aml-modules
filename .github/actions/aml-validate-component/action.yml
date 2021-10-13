@@ -28,7 +28,7 @@ runs:
       run: |
         az ml folder attach --workspace-name ${{ inputs.workspace }} --resource-group ${{ inputs.resource-group }}
 
-        SPECS_FILES=$(find ${{ inputs.component-spec }} -exec realpath --relative-to=${{ github.workspace }} {} \;
+        SPECS_FILES=$(find ${{ inputs.component-spec }} -exec realpath --relative-to=${{ github.workspace }} {} \;)
 
         for SPEC in $SPECS_FILES
         do
