@@ -1,4 +1,4 @@
-$schema: http://azureml/sdk-2-0/CommandComponent.json
+$schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.extract-pca
 version: 0.0.3
 display_name: 'PCA extraction'

@@ -26,6 +26,7 @@ runs:
     - id: validate
       shell: bash
       run: |
+        echo "::debug::Attaching folder for workspace ${{ inputs.workspace }} at resource group ${{ inputs.resource-group }}"
         az ml folder attach --workspace-name ${{ inputs.workspace }} --resource-group ${{ inputs.resource-group }}
 
         SPECS_FILES=$(find ${{ inputs.component-spec }} -exec realpath --relative-to=${{ github.workspace }} {} \;)
