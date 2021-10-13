@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     paths:
-    - '.github/**'
+    - '-.github/**'
     - 'modules/**'
 
   workflow_dispatch:
