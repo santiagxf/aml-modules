@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformations.extract-svd
-version: 0.0.1
+version: 0.0.2
 display_name: 'Truncated SVD extraction'
 description: 'Dimensionality reduction using truncated SVD (aka LSA). This transformer performs linear dimensionality reduction by means of truncated singular value decomposition (SVD).'
 type: CommandComponent
@@ -42,7 +42,7 @@ outputs:
 command: >-
   python extract_svd.py --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} --solver {inputs.solver}
   [--iterations {inputs.iterations}] --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
-  --output-singular-values {outputs.singular_values} --outout-components {outputs.components}
+  --output-singular-values {outputs.singular_values} --output-components {outputs.components}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
