@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    branches: [main]
+    types:
+      - completed
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      COMPONENTS_PATH: modules
+      WORKSPACE: aa-ml-aml-showroom-ws
+      RESOURE_GROUP: Analytics.Aml.Experiments.Workspaces
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Logining in into Azure
+        uses: Azure/login@v1
+        env:
+          CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+        with:
+          creds: ${{ env.CREDENTIALS }}
+
+      - name: Publishing componets
+        uses: ./.github/actions/aml-publish-component
+        with:
+          resource-group: ${{ env.RESOURE_GROUP }}
+          workspace: ${{ env.WORKSPACE }}
+          component-spec: ${{ env.COMPONENTS_PATH }}/*/*.yaml
