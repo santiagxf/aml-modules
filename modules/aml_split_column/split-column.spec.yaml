@@ -1,7 +1,7 @@
 $schema: http://azureml/sdk-2-0/CommandComponent.json
-name: microsoft.csu.azureml.components.extract-pca
-version: 0.0.3
-display_name: 'PCA extraction'
+name: microsoft.csu.azureml.components.transformation.split-column
+version: 0.0.1
+display_name: 'Split column values'
 type: CommandComponent
 is_deterministic: true
 tags:
