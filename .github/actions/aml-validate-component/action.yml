@@ -1,6 +1,9 @@
 name: 'Validating componets'
 description: 'Validates Azure ML components before publishing'
 inputs:
+  resource-group:
+    description: The resource group
+    required: true
   workspace:
     description: 'Azure ML workspace name where components will be published'
     required: true
@@ -23,7 +26,7 @@ runs:
     - id: validate
       shell: bash
       run: |
-        az ml folder attach --workspace-name ${{ inputs.workspace }}
+        az ml folder attach --workspace-name ${{ inputs.workspace }} --resource-group ${{ inputs.resource-group }}
 
         SPECS_FILES=$(find ${{ inputs.component-spec }} -exec realpath --relative-to=${{ github.workspace }} {} \;
 

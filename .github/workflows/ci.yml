@@ -15,6 +15,7 @@ jobs:
     env:
       COMPONENTS_PATH: modules
       WORKSPACE: aa-ml-aml-showroom-ws
+      RESOURE_GROUP: Analytics.Aml.Experiments.Workspaces
 
     steps:
       - uses: actions/checkout@v2
@@ -29,5 +30,6 @@ jobs:
       - name: Validating componets
         uses: ./.github/actions/aml-validate-component
         with:
+          resource-group: ${{ env.RESOURE_GROUP }}
           workspace: ${{ env.WORKSPACE }}
           component-spec: ${{ env.COMPONENTS_PATH }}/*/*.yaml
