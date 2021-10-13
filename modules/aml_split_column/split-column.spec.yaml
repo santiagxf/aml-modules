@@ -33,7 +33,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python split_columns.py --dataset {inputs.dataset} --column-name {inputs.column_name} [--split-by {inputs.split_by}]
+  python split_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} [--split-by {inputs.split_by}]
   --split-mode {inputs.split_mode} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
