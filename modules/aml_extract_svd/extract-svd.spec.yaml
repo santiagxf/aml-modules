@@ -41,7 +41,7 @@ outputs:
     type: TransformationDirectory
 command: >-
   python extract_svd.py --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} --solver {inputs.solver}
-  [--interations {inputs.interations}] --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
+  [--iterations {inputs.iterations}] --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
   --output-singular-values {outputs.singular_values} --outout-components {outputs.components}
 environment:
   docker:
