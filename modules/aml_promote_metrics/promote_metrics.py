@@ -56,7 +56,7 @@ def RunModule(evaluation_results: str, promote_method: str, compare_by: str, com
     if (type(results) is pd.DataFrame):
         save_data_frame_to_directory(promoted_metrics, data=results)
     else:
-        save_data_frame_to_directory(promoted_metrics, data=results.to_frame())
+        save_data_frame_to_directory(promoted_metrics, data=results.to_frame().T)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("aml-module")

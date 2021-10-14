@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.promote-metrics
-version: 0.1.7
+version: 0.1.8
 display_name: 'Promote metrics'
 type: CommandComponent
 is_deterministic: false
