@@ -37,10 +37,9 @@ def RunModule(evaluation_results: str, promote_method: str, compare_by: str, com
     # logic to compare
     if promote_method == PROMOTE_BEST_MODEL:
         if compare_by_logic == COMPARE_BIGGER_BETTER:
-            best_run = results.loc[results[compare_by].argmax()]
+            results = results.loc[results[compare_by].argmax()]
         else:
-            best_run = results.loc[results[compare_by].argmin()]
-        results = best_run.to_frame()
+            results = results.loc[results[compare_by].argmin()]
 
     metrics = results.to_dict()
     for metric, value in metrics.items():
@@ -57,7 +56,7 @@ def RunModule(evaluation_results: str, promote_method: str, compare_by: str, com
     if (type(results) is pd.DataFrame):
         save_data_frame_to_directory(promoted_metrics, data=results)
     else:
-        print(f"[DEBUG] Skipping saving since the filtered data is not a valid Pandas.DataFrame. Type is {str(type(results))}")
+        save_data_frame_to_directory(promoted_metrics, data=results.to_frame())
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("aml-module")
