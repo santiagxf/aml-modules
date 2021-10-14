@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.aggregate-columns
-version: 0.0.1
+version: 0.0.2
 display_name: 'Aggregate columns'
 description: Groups and aggregates the columns in a dataset depending on the their types.
 type: CommandComponent

@@ -113,7 +113,7 @@ if __name__ == "__main__":
     parser.add_argument("--aggregate-numbers-by", dest="aggregate_numbers_by", type=str, choices=NUMERIC_AGG.keys())
     parser.add_argument("--aggregate-strings-by", dest="aggregate_strings_by", type=str, choices=STRING_AGG.keys())
     parser.add_argument("--aggregate-dates-by", dest="aggregate_datetimes_by", type=str, choices=DATETIME_AGG.keys())
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str, Required=True)
+    parser.add_argument("--output-dataset", dest="output_dataset", type=str, required=True)
     args = parser.parse_args()
 
     RunModule(**vars(args))

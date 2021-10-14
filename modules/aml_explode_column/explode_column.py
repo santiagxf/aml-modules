@@ -49,7 +49,7 @@ if __name__ == "__main__":
     parser.add_argument("--column-name", dest="column_name", type=str, required=True)
     parser.add_argument("--explode-mode", dest="explode_mode", type=str, choices=EXPLODE_MODE, default=EXPLODE_MODE_ROWS)
     parser.add_argument("--output-dataset", dest="output_dataset", type=str)
-    parser.add_argument("--new-columns-name", dest="new_columns_name", type=str, Required=False)
+    parser.add_argument("--new-columns-name", dest="new_columns_name", type=str, required=False)
     args = parser.parse_args()
 
     RunModule(**vars(args))

@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.explode-column
-version: 0.0.1
+version: 0.0.2
 display_name: 'Explode column values'
 description: Transform each element of a list-like to a row or a column, replicating index values.
 type: CommandComponent
