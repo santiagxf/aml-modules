@@ -23,7 +23,7 @@ def RunModule(input_dataset: str, column_name: str, output_dataset: str):
     data[f'{column_name}_day'] = data[column_name].dt.day
     data[f'{column_name}_quarter'] = data[column_name].dt.quarter
     data[f'{column_name}_semester'] = np.where(data[f'{column_name}_quarter'].isin([1,2]),1,2)
-    data[f'{column_name}_dayofweek'] = data[column_name].dt.weekday_name
+    data[f'{column_name}_dayofweek'] = data[column_name].dt.day_name()
     data[f'{column_name}_weekend'] = np.where(data[f'{column_name}_dayofweek'].isin(['Sunday','Saturday']),1,0)
     data[f'{column_name}_dayofyear'] = data[column_name].dt.dayofyear
     data[f'{column_name}_weekofyear'] = data[column_name].dt.weekofyear

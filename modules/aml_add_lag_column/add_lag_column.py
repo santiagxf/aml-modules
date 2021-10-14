@@ -9,7 +9,13 @@ def RunModule(input_dataset: str, column_name: str, lag_columns: int, lag_by: in
     
     # Check if column is available
     if data_folder.schema:
-        _ = data_folder.get_column_index(column_name)
+        if ',' in column_name:
+            column_names = [col.strip() for col in column_name.split(',')]
+        else:
+            column_names = [column_name]
+
+        for column in column_names:
+            _ = data_folder.get_column_index(column)
     else:
         print('[DEBUG] Column checking ignored as schema not available.')
 
@@ -18,8 +24,9 @@ def RunModule(input_dataset: str, column_name: str, lag_columns: int, lag_by: in
 
     data = data_folder.data
     for lag in range(1, lag_columns+1):
-        print(f'[DEBUG] Creating column with lag {lag}')
-        data[f'{column_name}_lag{lag}'] = data[column_name].shift(lag*lag_by)
+        for column in column_names:
+            print(f'[DEBUG] Creating {column} with lag {lag}')
+            data[f'{column}_lag{lag}'] = data[column].shift(lag*lag_by)
 
     if drop_na:
         data.dropna(inplace=True)
