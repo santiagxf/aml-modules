@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.split-column
-version: 0.0.2
+version: 0.0.3
 display_name: 'Split column values'
 description: Splits the values of a given string column into either multiple columns, rows or into an array-like.
 type: CommandComponent

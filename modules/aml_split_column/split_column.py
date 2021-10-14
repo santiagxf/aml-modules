@@ -55,7 +55,7 @@ if __name__ == "__main__":
     parser.add_argument("--split-by", dest="split_by", type=str, required=False, default=' ')
     parser.add_argument("--split-mode", dest="split_mode", type=str, choices=SPLIT_MODE, default=SPLIT_MODE_ARRAY)
     parser.add_argument("--output-dataset", dest="output_dataset", type=str)
-    parser.add_argument("--new-columns-name", dest="new_columns_name", type=str, Required=False)
+    parser.add_argument("--new-columns-name", dest="new_columns_name", type=str, required=False)
     args = parser.parse_args()
 
     RunModule(**vars(args))
