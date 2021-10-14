@@ -1,8 +1,8 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
-name: microsoft.csu.azureml.components.transformation.split-column
-version: 0.0.2
-display_name: 'Split column values'
-description: Splits the values of a given string column into either multiple columns, rows or into an array-like.
+name: microsoft.csu.azureml.components.transformation.explode-column
+version: 0.0.1
+display_name: 'Explode column values'
+description: Transform each element of a list-like to a row or a column, replicating index values.
 type: CommandComponent
 is_deterministic: true
 tags:
@@ -16,20 +16,15 @@ inputs:
   column_name:
     type: String
     optional: false
-    description: Name of the column to split.
-  split_by:
-    type: String
-    optional: True
-    description: The character to use to split. Defaults to white-space
-  split_mode:
+    description: Name of the column to explode
+  explode_mode:
     type: Enum
     optional: false
-    default: As array-like
-    description: How the split should be done
+    default: Into rows
+    description: How to explode the column values
     enum:
       - Into columns
       - Into rows
-      - As array-like
   new_columns_name:
     type: String
     optional: True
@@ -38,8 +33,8 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python split_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} [--split-by {inputs.split_by}]
-  --split-mode {inputs.split_mode} [--new-columns-name {inputs.new_columns_name}] --output-dataset {outputs.transformed_dataset}
+  python explode_column.py --dataset {inputs.dataset} --column-name {inputs.column_name}
+  --explode-mode {inputs.explode_mode} [--new-columns-name {inputs.new_columns_name}] --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
