@@ -1,0 +1,87 @@
+$schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
+name: microsoft.csu.azureml.components.transformation.aggregate-columns
+version: 0.0.1
+display_name: 'Aggregate columns'
+description: Aggregates.
+type: CommandComponent
+is_deterministic: true
+tags:
+  contact: Facundo Santiago <fasantia@microsoft.com>
+  helpDocument: https://github.com/santiagxf/aml-modules
+inputs:
+  dataset:
+    type: DataFrameDirectory
+    optional: false
+    description: Input dataset.
+  group_by_columns:
+    type: String
+    optional: false
+    description: Name of the columns (comma separated) to group by.
+  aggregate_booleans_by:
+    type: Enum
+    optional: false
+    default: True for any
+    description: The solver to compute the components
+    enum:
+      - True for any
+      - True for all
+      - False for any
+      - False for all
+  aggregate_numbers_by:
+    type: Enum
+    optional: false
+    default: Maximum
+    description: The solver to compute the components
+    enum:
+      - Maximum
+      - Minimum
+      - Mean
+      - Mode
+      - Sum
+      - Variance
+      - Concatenate (comma separated)
+  aggregate_strings_by:
+    type: Enum
+    optional: false
+    default: Concatenate (comma separated)
+    description: The solver to compute the components
+    enum:
+      - Concatenate (comma separated)
+      - First
+      - Last
+      - Mode
+      - Count
+  aggregate_dates_by:
+    type: Enum
+    optional: false
+    default: Number of days
+    description: Function to aggregate date columns
+    enum:
+      - Maximum
+      - Minimum
+      - Number of days
+outputs:
+  transformed_dataset:
+    type: DataFrameDirectory
+command: >-
+  python aggregate_columns.py --dataset {inputs.dataset} --group-by-columns {inputs.group_by_columns} --aggregate-booleans-by {inputs.aggregate_booleans_by}
+  --aggregate-numbers-by {inputs.aggregate_numbers_by} --aggregate-strings-by {aggregate_strings_by} --aggregate-dates-by {inputs.aggregate_dates_by}
+  --output-dataset {outputs.transformed_dataset}
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.2
+      - pip:
+        - azureml-sdk==1.35.*
+        - azureml-designer-core==0.0.66
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+  os: Linux
