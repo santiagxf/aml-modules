@@ -7,13 +7,13 @@ from azureml.studio.core.io.data_frame_directory import load_data_frame_from_dir
 def RunModule(input_dataset: str, column_name: str, lag_columns: int, lag_by: int, output_dataset: str, drop_na: bool=True):
     data_folder = load_data_frame_from_directory(input_dataset)
     
+    if ',' in column_name:
+        column_names = [col.strip() for col in column_name.split(',')]
+    else:
+        column_names = [column_name]
+
     # Check if column is available
     if data_folder.schema:
-        if ',' in column_name:
-            column_names = [col.strip() for col in column_name.split(',')]
-        else:
-            column_names = [column_name]
-
         for column in column_names:
             _ = data_folder.get_column_index(column)
     else:
