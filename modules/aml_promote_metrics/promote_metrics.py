@@ -1,5 +1,4 @@
 import argparse
-from numpy.core.fromnumeric import partition
 import pandas as pd
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
@@ -57,7 +56,7 @@ def RunModule(evaluation_results: str, promote_method: str, compare_by: str, com
     if (type(results) is pd.DataFrame):
         save_data_frame_to_directory(promoted_metrics, data=results)
     else:
-        print("Skipping saving since the filtered data is not a valid Pandas.DataFrame")
+        print(f"[DEBUG] Skipping saving since the filtered data is not a valid Pandas.DataFrame. Type is {str(type(results))}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("aml-module")
