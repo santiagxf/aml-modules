@@ -66,7 +66,7 @@ outputs:
 command: >-
   python aggregate_columns.py --dataset {inputs.dataset} --group-by-columns {inputs.group_by_columns} 
   --aggregate-booleans-by {inputs.aggregate_booleans_by} --aggregate-numbers-by {inputs.aggregate_numbers_by} 
-  --aggregate-strings-by {aggregate_strings_by} --aggregate-dates-by {inputs.aggregate_dates_by} 
+  --aggregate-strings-by {inputs.aggregate_strings_by} --aggregate-dates-by {inputs.aggregate_dates_by} 
   --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
