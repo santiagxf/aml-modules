@@ -31,7 +31,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
     parser.add_argument("--column-name", dest="column_name", type=str, required=True)
     parser.add_argument("--lag-columns", dest="lag_columns", type=int, required=True)
-    parser.add_argument("--lag-by", dest="lag_by", type=int, requiered=False, default=1)
+    parser.add_argument("--lag-by", dest="lag_by", type=int, required=False, default=1)
     parser.add_argument("--output-dataset", dest="output_dataset", type=str)
     args = parser.parse_args()
 
