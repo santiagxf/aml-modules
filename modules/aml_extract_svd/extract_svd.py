@@ -8,7 +8,7 @@ from azureml.studio.core.io.transformation_directory import save_pickle_transfor
 
 SVD_SOLVERS = ['arpack', 'randomized']
 
-def RunModule(input_dataset: str, number_of_dimensions: int, interations: int, solver: str, 
+def RunModule(input_dataset: str, number_of_dimensions: int, iterations: int, solver: str, 
               output_dataset: str, output_model: str, output_singular_values: str, output_components: str):
     data_folder = load_data_frame_from_directory(input_dataset)
 
@@ -27,7 +27,7 @@ def RunModule(input_dataset: str, number_of_dimensions: int, interations: int, s
     data = data_folder.data
     tranformations = []
 
-    svd = TruncatedSVD(n_components=number_of_dimensions, n_iter=interations, algorithm=solver).fit(data)
+    svd = TruncatedSVD(n_components=number_of_dimensions, n_iter=iterations, algorithm=solver).fit(data)
     USigma = svd.transform(data)
     Sigma = svd.singular_values_
     VT = svd.components_
