@@ -37,9 +37,10 @@ def RunModule(evaluation_results: str, promote_method: str, compare_by: str, com
     # logic to compare
     if promote_method == PROMOTE_BEST_MODEL:
         if compare_by_logic == COMPARE_BIGGER_BETTER:
-            results = results.loc[results[compare_by].argmax()]
+            best_run = results.loc[results[compare_by].argmax()]
         else:
-            results = results.loc[results[compare_by].argmin()]
+            best_run = results.loc[results[compare_by].argmin()]
+        results = best_run.to_frame()
 
     metrics = results.to_dict()
     for metric, value in metrics.items():
