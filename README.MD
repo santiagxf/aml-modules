@@ -1,4 +1,9 @@
+[![CI](https://github.com/santiagxf/aml-modules/actions/workflows/ci.yml/badge.svg)](https://github.com/santiagxf/aml-modules/actions/workflows/ci.yml)
+[![CD](https://github.com/santiagxf/aml-modules/actions/workflows/cd.yml/badge.svg)](https://github.com/santiagxf/aml-modules/actions/workflows/cd.yml)
+
 # Azure Machine Learning modules repository
+
+> Update: Now CI/CD is supported! See [Continous deployment](#Continous-deployment)
 
 This repository contains un-official Azure Machine Learning modules to use along with Designer. The modules contain a variety of functionalities to improve the current capabilities.
 
@@ -12,10 +17,15 @@ The following modules are available.
 - **Promote metrics to experiment:** When using the 'Evaluate Model' module, Azure ML will not report the computed metrics back to the experiment. If you are working using both designer and custom-code, this can prevent you from comparing the metrics across those runs inside of an experiment. This module promotes the metrics back to the experiment. In the case of evaluating more than one model, this module allows you to log either both of the metrics are the model with the best one. [See documentation.](docs/promote-metrics.MD)
 
 ### Data transformation
-
+- **Feature Engineering**
+    - **Add lag column:** Adds one or many lag columns into the data set. The amount of time steps to go back can be indicated.
+    - **Aggregate column:** Groups values of columns in the dataset and aggregates the rest of them with functions depending on the type of data.
+    - **Split column values:** Splits the values of an string column into multiple rows or columns. It can also split them in an array-like.
+    - **Explode column:** Runs the typical `explode` function over a column. It can explode into rows or into columns.
+    - **Featurize date column:** Creates multiple feature columns based on a date column that can be use in a classification or regression problem later.
 - **Dimensionality reduction**
     - **PCA extraction:** The module analyzes your data and creates a reduced feature set that captures all the information contained in the dataset, but in a smaller number of features. The module also creates a transformation that you can apply to new data, to achieve a similar reduction in dimensionality and compression of features, without requiring additional training. The computed eigenvectors are also returned as a dataset. [See documentation.](docs/extract-pca.MD)
-    - **Trunked-SVD extration:**
+    - **Trunked-SVD extration:** The module analyzes your data and creates a reduced feature set that captures all the information contained in the dataset, but in a smaller number of features. Works similar than PCA but without centring your data.
     - **Hicherical feature aggreation:** This module is a dimensionality reduction method that groups together features that look very similar, thus decreasing the number of features. The module performs a hierarchical clustering using a bottom up approach: each observation starts in its own cluster, and clusters are successively merged together. [See documentation.](docs/feature-agglomeration.MD)
 
  - **Transformations**
