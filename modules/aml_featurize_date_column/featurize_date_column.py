@@ -6,7 +6,7 @@ from azureml.studio.core.io.data_frame_directory import load_data_frame_from_dir
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
 
-def RunModule(input_dataset: str, column_name: str, output_dataset: str):
+def RunModule(input_dataset: str, column_name: str, contains_time: bool, output_dataset: str):
     data_folder = load_data_frame_from_directory(input_dataset)
     
     # Check if column is available
@@ -28,12 +28,18 @@ def RunModule(input_dataset: str, column_name: str, output_dataset: str):
     data[f'{column_name}_dayofyear'] = data[column_name].dt.dayofyear
     data[f'{column_name}_weekofyear'] = data[column_name].dt.weekofyear
 
+    if contains_time:
+        data[f'{column_name}_hour'] = data[column_name].dt.hour
+        data[f'{column_name}_minute'] = data[column_name].dt.minute
+        data[f'{column_name}_ampm'] = np.where(data[f'{column_name}_hour'] < '12', 'am', 'pm')
+
     save_data_frame_to_directory(output_dataset, data)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("aml-module")
     parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
     parser.add_argument("--column-name", dest="column_name", type=str, required=True)
+    parser.add_argument("--contains-time", dest="contains_time", type=bool, default=False)
     parser.add_argument("--output-dataset", dest="output_dataset", type=str)
     args = parser.parse_args()
 
