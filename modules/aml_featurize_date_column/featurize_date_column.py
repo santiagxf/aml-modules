@@ -31,7 +31,7 @@ def RunModule(input_dataset: str, column_name: str, contains_time: bool, output_
     if contains_time:
         data[f'{column_name}_hour'] = data[column_name].dt.hour
         data[f'{column_name}_minute'] = data[column_name].dt.minute
-        data[f'{column_name}_ampm'] = np.where(data[f'{column_name}_hour'] < '12', 'am', 'pm')
+        data[f'{column_name}_ampm'] = np.where(data[f'{column_name}_hour'] < 12, 'am', 'pm')
 
     save_data_frame_to_directory(output_dataset, data)
 
