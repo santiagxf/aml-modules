@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.add-lag-column
-version: 0.0.4
+version: 0.0.5
 display_name: 'Add lag column'
 description: Adds one or many lag columns into the current dataset.
 type: CommandComponent
@@ -27,12 +27,17 @@ inputs:
     optional: false
     default: 1
     description: The amount of rows each column should lag
+  drop_nulls:
+    type: Boolean
+    optional: false
+    default: true
+    description: Indicates it null values introduced by the lag function has to be removed
 outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
   python add_lag_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} --lag-columns {inputs.lag_columns}
-  --lag-by {inputs.lag_by} --output-dataset {outputs.transformed_dataset}
+  --lag-by {inputs.lag_by} --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
