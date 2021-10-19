@@ -36,6 +36,4 @@ jobs:
       - name: Validating Azure ML componets
         uses: ./.github/actions/aml-component-validate
         with:
-          resource-group: ${{ env.RESOURE_GROUP }}
-          workspace: ${{ env.WORKSPACE }}
           component-spec: ${{ env.COMPONENTS_PATH }}/*/*.yaml
