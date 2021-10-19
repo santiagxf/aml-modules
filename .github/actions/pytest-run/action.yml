@@ -20,9 +20,9 @@ runs:
     - id: run-test
       shell: bash
       run: |
-        if [[ {{ inputs.configuration }}]]; then
-          pytest {{ inputs.test-folder }} -c {{ inputs.configuration }}
-        else
+        if [[ '{{ inputs.configuration }}' == '' ]]; then
           pytest {{ inputs.test-folder }}
+        else
+          pytest {{ inputs.test-folder }} -c {{ inputs.configuration }}
         fi
 
