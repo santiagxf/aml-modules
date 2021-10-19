@@ -27,8 +27,14 @@ jobs:
         with:
           creds: ${{ env.CREDENTIALS }}
 
-      - name: Validating componets
-        uses: ./.github/actions/aml-validate-component
+      - name: Attaching Azure ML workspace
+        uses: ./.github/actions/aml-workspace-set
+        with:
+          resource-group: ${{ env.RESOURE_GROUP }}
+          workspace: ${{ env.WORKSPACE }}
+
+      - name: Validating Azure ML componets
+        uses: ./.github/actions/aml-component-validate
         with:
           resource-group: ${{ env.RESOURE_GROUP }}
           workspace: ${{ env.WORKSPACE }}

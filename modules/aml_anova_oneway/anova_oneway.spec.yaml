@@ -1,0 +1,48 @@
+$schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
+name: microsoft.csu.azureml.components.evaluation.anova-one-way
+version: 0.0.1
+display_name: 'Run one-way ANOVA'
+description: Runs a one-way ANOVA evaluation.
+type: CommandComponent
+is_deterministic: true
+tags:
+  contact: Facundo Santiago <fasantia@microsoft.com>
+  helpDocument: https://github.com/santiagxf/aml-modules
+inputs:
+  dataset:
+    type: DataFrameDirectory
+    optional: false
+    description: Input dataset.
+  groups_column_name:
+    type: String
+    optional: false
+    description: The column that distinguishes groups.
+  control_group_value:
+    type: String
+    optional: false
+    description: The value that encodes the control group in your experiment
+outputs:
+  evaluation_results:
+    type: DataFrameDirectory
+command: >-
+  python anova_one_way.py --dataset {inputs.dataset} --group-column-name {inputs.groups_column_name} 
+  --control-group-value {inputs.control_group_value} --evaluation-results {outputs.evaluation_results}
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.2
+      - pip:
+        - statsmodels
+        - azureml-sdk==1.35.*
+        - azureml-designer-core==0.0.66
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+  os: Linux

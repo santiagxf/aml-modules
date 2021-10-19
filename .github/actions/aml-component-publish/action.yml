@@ -1,39 +1,35 @@
-name: 'Publishing componets'
-description: 'Publishes Azure ML components'
+name: 'Publishing Azure Machine Learning componets'
+description: 'Publishes Azure Machine Learning  components'
 inputs:
-  resource-group:
-    description: The resource group
-    required: true
-  workspace:
-    description: 'Azure ML workspace name where components will be published'
-    required: true
   component-spec:
     description: 'Component specification file. This parameters supports willcards'
     required: true
 runs:
   using: "composite"
   steps:
-    - id: install-azureml
+    - id: install-dependecies
       shell: bash
       run: |
         echo "::debug::Installing Azure CLI"
-        if test -f "az"; then
-          echo "::debug::Azure CLI is installed"
+        if [ -x "$(command -v az)" ]; then
+          echo "::debug::Azure CLI is already installed"
         else
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
         fi
 
-        echo "::debug::Installing azureml-cli with components support"
-        az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
-        
+        echo "::debug::Installing azure-cli-ml extension with components support"
+        if [[ $(az extension show --name azure-cli-ml) ]]; then
+          echo "::debug::azure-cli-ml extension is already installed."
+        else
+          az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
+        fi
+
         echo "::debug::Installing yq"
         pip install yq==2.12.2
+
     - id: publish
       shell: bash
       run: |
-        echo "::debug::Attaching folder for workspace ${{ inputs.workspace }} at resource group ${{ inputs.resource-group }}"
-        az ml folder attach --workspace-name ${{ inputs.workspace }} --resource-group ${{ inputs.resource-group }}
-
         INSTALLED=$(az ml component list | jq .[].name)
 
         COMP_FILES=$(find ${{ inputs.component-spec }} -exec realpath --relative-to=${{ github.workspace }} {} \;)

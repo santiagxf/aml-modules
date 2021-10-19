@@ -29,8 +29,14 @@ jobs:
         with:
           creds: ${{ env.CREDENTIALS }}
 
-      - name: Publishing componets
-        uses: ./.github/actions/aml-publish-component
+      - name: Attaching Azure ML workspace
+        uses: ./.github/actions/aml-workspace-set
+        with:
+          resource-group: ${{ env.RESOURE_GROUP }}
+          workspace: ${{ env.WORKSPACE }}
+
+      - name: Publishing Azure ML componets into workspace
+        uses: ./.github/actions/aml-component-publish
         with:
           resource-group: ${{ env.RESOURE_GROUP }}
           workspace: ${{ env.WORKSPACE }}
