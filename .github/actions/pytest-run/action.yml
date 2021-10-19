@@ -16,6 +16,11 @@ runs:
       run: |
         echo "::debug::Installing PyTest"
         pip install pytest
+
+        if test -f "${{ inputs.test-folder }}/requirements.txt"; then
+          echo "::debug::Installing requirements.txt"
+          pip install ${{ inputs.test-folder }}/requirements.txt
+        end
         
     - id: run-test
       shell: bash

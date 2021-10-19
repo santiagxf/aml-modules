@@ -22,7 +22,7 @@ runs:
         if [[ $(az extension show --name azure-cli-ml) ]]; then
           echo "::debug::azure-cli-ml extension is already installed."
         else
-          if [[ { inputs.component-support == 'true' }]]; then
+          if [[ ${{ inputs.component-support == 'true' }} ]]; then
             az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
           else
             az extension add azure-cli-ml
