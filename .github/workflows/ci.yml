@@ -27,6 +27,11 @@ jobs:
         with:
           creds: ${{ env.CREDENTIALS }}
 
+      - name: Running test on modules
+        uses: ./.github/actions/pytest-run
+        with:
+          test-folder: tests
+
       - name: Attaching Azure ML workspace
         uses: ./.github/actions/aml-workspace-set
         with:

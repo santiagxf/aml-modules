@@ -1,21 +1,22 @@
 from pathlib import Path
 import numpy as np
-import shutil
+import shutil, sys
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, DataFrameDirectory
 from azureml.studio.core.io.transformation_directory import PickleTransformationDirectory
 
 from modules.aml_extract_pca.extract_pca import RunModule as extract_pca
 from modules.aml_apply_transformation.apply_transformation import RunModule as apply_transformation
 
+
 def test_pca_matches_shapes():
     args = {
-        'input_dataset': 'modules/samples_data/dataset',
+        'input_dataset': 'samples_data/dataset',
         'number_of_dimensions': 5,
         'normalize': True,
         'solver': 'randomized',
-        'output_dataset': 'modules/samples_data/transformed',
-        'output_model': 'modules/samples_data/transform',
-        'output_eigenvectors': 'modules/samples_data/eigen'
+        'output_dataset': 'samples_data/transformed',
+        'output_model': 'samples_data/transform',
+        'output_eigenvectors': 'samples_data/eigen'
     }
 
     extract_pca(**args)
@@ -37,16 +38,16 @@ def test_pca_matches_shapes():
 
 def test_pca_apply_transform():
     args = {
-        'input_dataset': 'modules/samples_data/dataset',
+        'input_dataset': 'samples_data/dataset',
         'number_of_dimensions': 5,
         'normalize': True,
         'solver': 'randomized',
-        'output_dataset': 'modules/samples_data/transformed',
-        'output_model': 'modules/samples_data/transform',
-        'output_eigenvectors': 'modules/samples_data/eigen'
+        'output_dataset': 'samples_data/transformed',
+        'output_model': 'samples_data/transform',
+        'output_eigenvectors': 'samples_data/eigen'
     }
 
-    transform_output = 'modules/samples_data/transform_transformed'
+    transform_output = 'samples_data/transform_transformed'
 
     extract_pca(**args)
     apply_transformation(args['input_dataset'], args['output_model'], transform_output)

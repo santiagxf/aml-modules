@@ -1,0 +1,28 @@
+name: 'Running PyTest'
+description: 'Runs PyTest'
+inputs:
+  configuration:
+    description: 'Configuration file for tests'
+    required: false
+  test-folder:
+    description: 'Path where the tests are placed'
+    required: true
+    default: tests
+runs:
+  using: "composite"
+  steps:
+    - id: install-dependecies
+      shell: bash
+      run: |
+        echo "::debug::Installing PyTest"
+        pip install pytest
+        
+    - id: run-test
+      shell: bash
+      run: |
+        if [[ {{ inputs.configuration }}]]; then
+          pytest {{ inputs.test-folder }} -c {{ inputs.configuration }}
+        else
+          pytest {{ inputs.test-folder }}
+        fi
+
