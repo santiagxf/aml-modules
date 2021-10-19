@@ -1,5 +1,4 @@
 azureml-designer-core==0.0.54
 azureml-dataset-runtime[fuse,pandas]
-pandas
-numpy
-scikit-learn
+pandas==1.0.4
+scikit-learn==0.24.*
