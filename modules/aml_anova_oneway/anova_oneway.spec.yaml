@@ -25,7 +25,7 @@ outputs:
   evaluation_results:
     type: DataFrameDirectory
 command: >-
-  python anova_one_way.py --dataset {inputs.dataset} --group-column-name {inputs.groups_column_name} 
+  python anova_oneway.py --dataset {inputs.dataset} --group-column-name {inputs.groups_column_name} 
   --control-group-value {inputs.control_group_value} --evaluation-results {outputs.evaluation_results}
 environment:
   docker:

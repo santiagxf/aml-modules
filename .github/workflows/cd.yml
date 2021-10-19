@@ -38,6 +38,4 @@ jobs:
       - name: Publishing Azure ML componets into workspace
         uses: ./.github/actions/aml-component-publish
         with:
-          resource-group: ${{ env.RESOURE_GROUP }}
-          workspace: ${{ env.WORKSPACE }}
           component-spec: ${{ env.COMPONENTS_PATH }}/*/*.yaml
