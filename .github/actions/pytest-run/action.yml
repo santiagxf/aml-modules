@@ -19,7 +19,7 @@ runs:
 
         if test -f "${{ inputs.test-folder }}/requirements.txt"; then
           echo "::debug::Installing requirements.txt"
-          pip install ${{ inputs.test-folder }}/requirements.txt
+          pip install -r ${{ inputs.test-folder }}/requirements.txt
         fi
         
     - id: run-test
