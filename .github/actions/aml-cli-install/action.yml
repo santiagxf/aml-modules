@@ -5,10 +5,14 @@ inputs:
     default: 'false'
     description: Indicates if you want component support in the installation
     required: true
+  min-version:
+    default: '2.0'
+    description: Minimum version required
+    required: false
 runs:
   using: "composite"
   steps:
-    - id: install-dependecies
+    - id: install-cli
       shell: bash
       run: |
         echo "::debug::Installing Azure CLI"
@@ -17,14 +21,26 @@ runs:
         else
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
         fi
-
+  
+    - id: install-ml-cli
+      shell: bash
+      run: |
         echo "::debug::Installing azure-cli-ml extension with components support"
-        if [[ $(az extension show --name azure-cli-ml) ]]; then
-          echo "::debug::azure-cli-ml extension is already installed."
-        else
-          if [[ ${{ inputs.component-support == 'true' }} ]]; then
-            az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
+        if [[ ${{ inputs.component-support == 'true' }} ]]; then
+          if [[ $(az extension show --name azure-cli-ml) ]]; then
+            echo "::debug::azure-cli-ml extension is already installed."
           else
-            az extension add azure-cli-ml
+            az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
+          fi
+        else
+          if [[ $(az extension show --name ml) ]]; then
+            echo "::debug::azure-cli-ml extension is already installed."
+            
+            if [[ $(az extension show --name ml | jq -r .version) < "${{ inputs.min-version }}" ]]; then
+              echo "::debug::Updating version to ${{ inputs.min-version }}."
+              az extension update -n ml
+            fi
+          else
+            az extension add -n ml -y
           fi
         fi
