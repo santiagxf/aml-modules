@@ -3,12 +3,13 @@ import pandas as pd
 import numpy as pd
 import itertools
 from typing import Union
+from enum import Enum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 
-EXPLODE_MODE_COLUMNS = 'Into columns'
-EXPLODE_MODE_ROWS = 'Into rows'
-EXPLODE_MODE = [EXPLODE_MODE_COLUMNS, EXPLODE_MODE_ROWS]
+class ExplodeStrategy(Enum):
+    COLUMNS = 'Into columns'
+    ROWS = 'Into rows'
 
 def RunModule(input_dataset: str, column_name: str, explode_mode: str, output_dataset: str, new_columns_name:Union[str, None]=None):
     data_folder = load_data_frame_from_directory(input_dataset)
@@ -23,7 +24,7 @@ def RunModule(input_dataset: str, column_name: str, explode_mode: str, output_da
 
     data = data_folder.data
     if len(data.index) > 0:
-        if explode_mode == EXPLODE_MODE_COLUMNS:
+        if explode_mode == ExplodeStrategy.COLUMNS:
             # Calculate number of columns to use
             if new_columns_name:
                 columns_name = [col.strip() for col in new_columns_name.split(',')]
@@ -34,7 +35,7 @@ def RunModule(input_dataset: str, column_name: str, explode_mode: str, output_da
             padded_data = np.array(list(itertools.zip_longest(*data[column_name].tolist(), fillvalue=None))).T
             data[columns_name] = pd.DataFrame(padded_data, index=data.index)
 
-        elif explode_mode == EXPLODE_MODE_ROWS:
+        elif explode_mode == ExplodeStrategy.ROWS:
             data = data.explode(column_name)
         else:
             raise ValueError(f'{explode_mode} is not a valid explode mode')
@@ -47,7 +48,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser("aml-module")
     parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
     parser.add_argument("--column-name", dest="column_name", type=str, required=True)
-    parser.add_argument("--explode-mode", dest="explode_mode", type=str, choices=EXPLODE_MODE, default=EXPLODE_MODE_ROWS)
+    parser.add_argument("--explode-mode", dest="explode_mode", type=str, choices=list(map(str, ExplodeStrategy)), default=ExplodeStrategy.ROWS)
     parser.add_argument("--output-dataset", dest="output_dataset", type=str)
     parser.add_argument("--new-columns-name", dest="new_columns_name", type=str, required=False)
     args = parser.parse_args()

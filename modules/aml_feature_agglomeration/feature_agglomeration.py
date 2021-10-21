@@ -3,6 +3,8 @@ import math
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from enum import Enum
+
 from sklearn.cluster import FeatureAgglomeration
 from sklearn.feature_extraction.image import grid_to_graph
 from sklearn.neighbors import kneighbors_graph
@@ -13,15 +15,25 @@ from scipy.cluster.hierarchy import dendrogram
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.transformation_directory import save_pickle_transform_to_directory
 
-CONNECTIVITY_TYPE_NONE = 'none'
-CONNECTIVITY_TYPE_KNN = 'knn'
-CONNECTIVITY_TYPE_GRID = 'grid'
-AFFINITY_EUCLIDEAN = 'euclidean'
-LINKAGE_WARD = 'ward'
-CONNECTIVITY_TYPE = [CONNECTIVITY_TYPE_NONE, CONNECTIVITY_TYPE_KNN, CONNECTIVITY_TYPE_GRID]
-AFFINITY = [AFFINITY_EUCLIDEAN, 'l1', 'l2', 'manhattan', 'cosine']
-LINKAGE = [LINKAGE_WARD, 'complete', 'average', 'single']
 
+class ConnectivtyStrategy(Enum):
+    NONE = 'none'
+    KNN = 'knn'
+    GRID = 'grid'
+
+class AffinityStrategy(Enum):
+    EUCLIDEAN = 'euclidean'
+    L1 = 'l1'
+    L2 = 'l2'
+    MANHATTAN = 'manhattan'
+    COSINE = 'cosine'
+
+class LinkageStrategy(Enum):
+    WARD = 'ward'
+    COMPLETE = 'complete'
+    AVERAGE = 'average'
+    SINGLE = 'single'
+    
 
 def plot_dendrogram(model, file_name:str, **kwargs):
     # Create linkage matrix and then plot the dendrogram
@@ -60,17 +72,17 @@ def RunModule(input_dataset: str, number_of_features: int, normalize: bool, conn
     if data.shape[-1] <= number_of_features:
         raise ValueError(f'The number of components ({number_of_features}) should be smaller than the number of features ({data.shape[-1]})')
 
-    if linkage == LINKAGE_WARD and affinity != AFFINITY_EUCLIDEAN:
-        raise ValueError(f"Affinity '{affinity}' cannot be used with linkage '{LINKAGE_WARD}'. Only '{AFFINITY_EUCLIDEAN} can be used")
+    if linkage == LinkageStrategy.WARD and affinity != AffinityStrategy.EUCLIDEAN:
+        raise ValueError(f"Affinity '{affinity}' cannot be used with linkage '{LinkageStrategy.WARD}'. Only '{AffinityStrategy.EUCLIDEAN} can be used")
  
     if normalize:
         scaler = StandardScaler().fit(data)
         data = scaler.transform(data)
         tranformations.append(('normalize', scaler))
 
-    if connectivity_type == CONNECTIVITY_TYPE_GRID:
+    if connectivity_type == ConnectivtyStrategy.GRID:
         connectivity = grid_to_graph(data[0].shape[0], 1)
-    elif connectivity_type == CONNECTIVITY_TYPE_KNN:
+    elif connectivity_type == ConnectivtyStrategy.KNN:
         connectivity = kneighbors_graph(data.T, n_neighbors=math.floor(number_of_features/2), mode='connectivity', metric='minkowski', include_self=False)
 
     agglo = FeatureAgglomeration(connectivity=connectivity, n_clusters=number_of_features, affinity=affinity, linkage=linkage, compute_distances=True).fit(data)
@@ -92,9 +104,9 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", dest="input_dataset", required=True, type=str, help="Input dataset")
     parser.add_argument("--number-of-features", dest="number_of_features", type=int, help="Number of dimensions to reduce to", required=True)
     parser.add_argument("--normalize", dest="normalize", type=bool, help="Whether or not to normalize data to zero mean", required=True, default=True)
-    parser.add_argument("--connectivity-type", dest="connectivity_type", choices=CONNECTIVITY_TYPE, default=CONNECTIVITY_TYPE_NONE)
-    parser.add_argument("--affinity", dest="affinity", choices=AFFINITY, default=AFFINITY_EUCLIDEAN)
-    parser.add_argument("--linkage", dest="linkage", choices=LINKAGE, default=LINKAGE_WARD)
+    parser.add_argument("--connectivity-type", dest="connectivity_type", choices=list(map(str, ConnectivtyStrategy)), default=ConnectivtyStrategy.NONE)
+    parser.add_argument("--affinity", dest="affinity", choices=list(map(str, AffinityStrategy)), default=AffinityStrategy.EUCLIDEAN)
+    parser.add_argument("--linkage", dest="linkage", choices=list(map(str, LinkageStrategy)), default=LinkageStrategy.WARD)
     parser.add_argument("--output-dataset", dest="output_dataset", type=str, help="Transformed dataset")
     parser.add_argument("--output-model", dest="output_model", type=str, help="Trained model")
     args = parser.parse_args()
