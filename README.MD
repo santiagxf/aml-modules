@@ -57,7 +57,7 @@ You can add a new module by following this steps:
 
 ### Continous deployment
 
-You can automate the deployment of the actions by using the CI/CD GitHub Actions workflow provided in this repository. The workflow can automatically validate all the modules and deploy them if new versions are available.
+You can automate the deployment of the actions by using the CI/CD GitHub Actions workflow provided in this repository. The CI workflow can automatically run PyTest test over the modules code and validate modules against Azure ML API to ensure YML correctness. The CD workflow will take all the modules and install them inside the Azure ML Workspace. It will also upgrade the default version of the module to the indicated one.
 
 ![image](docs/assets/cd-steps.png)
 
