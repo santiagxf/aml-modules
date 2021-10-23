@@ -56,7 +56,7 @@ outputs:
     type: DataFrameDirectory
 command: >-
   python add_rolling_colum.py --dataset {inputs.dataset} --column-name {inputs.column_name} --window-size {inputs.window_size}
-  --aggregate-by {inputs.aggregate_by} --direction { inputs.direction } --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
+  --aggregate-by {inputs.aggregate_by} --direction {inputs.direction} --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
