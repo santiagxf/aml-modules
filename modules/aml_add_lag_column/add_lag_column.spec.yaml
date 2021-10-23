@@ -42,7 +42,7 @@ outputs:
     type: DataFrameDirectory
 command: >-
   python add_lag_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} --lag-columns {inputs.lag_columns}
-  --lag-by {inputs.lag_by} --average { inputs.average_lag } --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
+  --lag-by {inputs.lag_by} --average {inputs.average_lag} --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
