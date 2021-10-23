@@ -1,8 +1,8 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.add-lag-column
-version: 0.0.6
-display_name: 'Add lag column'
-description: Adds one or many lag columns into the current dataset.
+version: 0.0.1
+display_name: 'Add rolling window column'
+description: Adds a rolling window column into the dataset.
 type: CommandComponent
 is_deterministic: true
 tags:
@@ -16,33 +16,47 @@ inputs:
   column_name:
     type: String
     optional: false
-    description: Name of the column to split.
-  lag_columns:
+    description: Name of the column to apply the rolling window.
+  window_size:
     type: Integer
     optional: false
-    default: 1
-    description: The amount of lag columns to add into the dataset
-  lag_by:
-    type: Integer
+    description: The number of samples to use in the rolling window
+  direction:
+    type: Enum
     optional: false
-    default: 1
-    description: The amount of rows each column should lag
-  average_lag:
-    type: Boolean
+    description: Indicates how the rolling window should be created
+    enum:
+        - Backward
+        - Forward
+  aggregate_by:
+    type: Enum
     optional: false
-    default: false
-    description: Indicates if the lag columns should be averaged instead of creating individual columns for each lag.
+    default: Average
+    description: The agregation function to apply on each window.
+    enum:
+      - True for any
+      - True for all
+      - False for any
+      - False for all
+      - Maximum
+      - Minimum
+      - Mean
+      - Mode
+      - Sum
+      - Variance
+      - Concatenate (comma separated)
+      - Number of days
   drop_nulls:
     type: Boolean
     optional: false
     default: true
-    description: Indicates it null values introduced by the lag function has to be removed
+    description: Indicates if null values introduced by the rolling window function has to be removed
 outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python add_lag_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} --lag-columns {inputs.lag_columns}
-  --lag-by {inputs.lag_by} --average { inputs.average_lag } --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
+  python add_rolling_colum.py --dataset {inputs.dataset} --column-name {inputs.column_name} --window-size {inputs.window_size}
+  --aggregate-by {inputs.aggregate_by} --direction { inputs.direction } --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
