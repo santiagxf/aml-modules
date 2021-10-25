@@ -1,6 +1,7 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.apply-transformation
-version: 0.0.2
+description: Applies a transformation into a new dataset using the Scikit-lean API
+version: 0.0.3
 display_name: 'Apply Transformation (Scikit API)'
 type: CommandComponent
 is_deterministic: true
