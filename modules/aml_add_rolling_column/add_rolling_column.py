@@ -5,7 +5,11 @@ from enum import Enum
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
-class RollingDirection(Enum):
+class StringEnum(Enum):
+    def __str__(self):
+        return str(self.value)
+
+class RollingDirection(StringEnum):
     FORWARD='Forward'
     BACKWARD='Backward'
 

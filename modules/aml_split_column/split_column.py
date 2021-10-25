@@ -1,12 +1,15 @@
 import argparse
 from typing import Union
+from enum import Enum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 
-SPLIT_MODE_COLUMNS = 'Into columns'
-SPLIT_MODE_ROWS = 'Into rows'
-SPLIT_MODE_ARRAY = 'As array-like'
-SPLIT_MODE = [SPLIT_MODE_COLUMNS, SPLIT_MODE_ROWS, SPLIT_MODE_ARRAY]
+class SplitMode(Enum):
+    def __str__(self):
+        return str(self.value)
+    COLUMNS = 'Into columns'
+    ROWS = 'Into rows'
+    ARRAY = 'As array-like'
 
 def RunModule(input_dataset: str, column_name: str, split_mode: str, split_by: str, output_dataset: str, new_columns_name:Union[str, None]=None):
     data_folder = load_data_frame_from_directory(input_dataset)
@@ -25,7 +28,7 @@ def RunModule(input_dataset: str, column_name: str, split_mode: str, split_by: s
 
     data = data_folder.data
     if len(data.index) > 0:
-        if split_mode == SPLIT_MODE_COLUMNS:
+        if split_mode == SplitMode.COLUMNS:
             # Calculate number of columns to use
             if new_columns_name:
                 columns_name = [col.strip() for col in new_columns_name.split(',')]
@@ -36,10 +39,10 @@ def RunModule(input_dataset: str, column_name: str, split_mode: str, split_by: s
             
             data[columns_name] = data[column_name].str.split(split_by, expand=True)
 
-        elif split_mode == SPLIT_MODE_ROWS or split_mode == SPLIT_MODE_ARRAY:
+        elif split_mode == SplitMode.ROWS or split_mode == SplitMode.ARRAY:
             data[column_name] = data[column_name].apply(lambda x: x.split(split_by))
         
-            if split_mode == SPLIT_MODE_ROWS:
+            if split_mode == SplitMode.ROWS:
                 data = data.explode(column_name)
         else:
             raise ValueError(f'{split_mode} is not a valid split mode')
@@ -53,7 +56,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
     parser.add_argument("--column-name", dest="column_name", type=str, required=True)
     parser.add_argument("--split-by", dest="split_by", type=str, required=False, default=' ')
-    parser.add_argument("--split-mode", dest="split_mode", type=str, choices=SPLIT_MODE, default=SPLIT_MODE_ARRAY)
+    parser.add_argument("--split-mode", dest="split_mode", type=str, choices=list(map(str, SplitMode)), default=SplitMode.ARRAY)
     parser.add_argument("--output-dataset", dest="output_dataset", type=str)
     parser.add_argument("--new-columns-name", dest="new_columns_name", type=str, required=False)
     args = parser.parse_args()

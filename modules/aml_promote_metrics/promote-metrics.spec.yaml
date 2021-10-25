@@ -1,7 +1,7 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.promote-metrics
 description: Promotes all the metrics from the evaluate module into the experiment
-version: 0.1.9
+version: 0.2.0
 display_name: 'Promote metrics'
 type: CommandComponent
 is_deterministic: false

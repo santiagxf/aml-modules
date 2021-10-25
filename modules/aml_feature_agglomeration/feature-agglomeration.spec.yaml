@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
-name: microsoft.csu.azureml.components.feature-agglomeration
-version: 0.0.5
+name: microsoft.csu.azureml.components.transformations.feature-agglomeration
+version: 0.0.7
 display_name: 'Hicherical feature agglomeration'
 type: CommandComponent
 is_deterministic: true

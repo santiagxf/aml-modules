@@ -15,20 +15,23 @@ from scipy.cluster.hierarchy import dendrogram
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.transformation_directory import save_pickle_transform_to_directory
 
+class StringEnum(Enum):
+    def __str__(self):
+        return str(self.value)
 
-class ConnectivtyStrategy(Enum):
+class ConnectivtyStrategy(StringEnum):
     NONE = 'none'
     KNN = 'knn'
     GRID = 'grid'
 
-class AffinityStrategy(Enum):
+class AffinityStrategy(StringEnum):
     EUCLIDEAN = 'euclidean'
     L1 = 'l1'
     L2 = 'l2'
     MANHATTAN = 'manhattan'
     COSINE = 'cosine'
 
-class LinkageStrategy(Enum):
+class LinkageStrategy(StringEnum):
     WARD = 'ward'
     COMPLETE = 'complete'
     AVERAGE = 'average'

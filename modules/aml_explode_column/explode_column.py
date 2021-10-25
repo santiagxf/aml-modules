@@ -7,7 +7,11 @@ from enum import Enum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 
-class ExplodeStrategy(Enum):
+class StringEnum(Enum):
+    def __str__(self):
+        return str(self.value)
+
+class ExplodeStrategy(StringEnum):
     COLUMNS = 'Into columns'
     ROWS = 'Into rows'
 

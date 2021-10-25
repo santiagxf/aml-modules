@@ -5,10 +5,14 @@ from azureml.studio.core.io.data_frame_directory import load_data_frame_from_dir
 from azureml.core import Run
 
 class PromoteStrategy(Enum):
+    def __str__(self):
+        return str(self.value)
     ALL_MODELS = 'All models metrics'
     BEST_MODEL = 'Best model metrics'
 
 class CompareStrategy(Enum):
+    def __str__(self):
+        return str(self.value)
     BIGGER_BETTER = 'Bigger is better'
     SMALLER_BETTER = 'Smaller is better'
 
@@ -65,7 +69,7 @@ def RunModule(evaluation_results: str, promote_method: str, compare_by: str, com
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("aml-module")
     parser.add_argument("--evaluation-results", dest="evaluation_results", required=True, type=str, help="Evaluation results")
-    parser.add_argument("--promote-method", dest="promote_method", type=str, choices= list(map(str, PromoteStrategy)), required=False, default=PromoteStrategy.BEST_MODEL)
+    parser.add_argument("--promote-method", dest="promote_method", type=str, choices=list(map(str, PromoteStrategy)), required=False, default=PromoteStrategy.BEST_MODEL)
     parser.add_argument("--compare-by", dest="compare_by", type=str, help="Name of the metrics to compared against", required=False)
     parser.add_argument("--compare-by-logic", dest="compare_by_logic", type=str, choices=list(map(str, CompareStrategy)), required=False, default=CompareStrategy.BIGGER_BETTER)
     parser.add_argument("--models-name", dest="models_name", type=str, required=False, default=None)
