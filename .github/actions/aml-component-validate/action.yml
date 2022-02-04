@@ -4,6 +4,12 @@ inputs:
   component-spec:
     description: 'Component specification file. This parameters supports willcards'
     required: true
+  resource-group:
+    description: The resource group
+    required: true
+  workspace:
+    description: Azure ML workspace
+    required: true
 runs:
   using: "composite"
   steps:
@@ -33,6 +39,6 @@ runs:
         do
           COMPONENT_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/${GITHUB_REF##*/}/$COMP
           echo "::debug::Validating file at $COMPONENT_URL"
-          az ml component validate --file $COMPONENT_URL 
+          az ml component validate --file $COMPONENT_URL -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }}
         done
 
