@@ -1,23 +1,23 @@
 import argparse
 import pandas as pd
-from enum import Enum
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.core import Run
+from jobtools.runner import TaskRunner
+from jobtools.arguments import StringEnum
 
-class PromoteStrategy(Enum):
-    def __str__(self):
-        return str(self.value)
+class PromoteStrategy(StringEnum):
     ALL_MODELS = 'All models metrics'
     BEST_MODEL = 'Best model metrics'
 
-class CompareStrategy(Enum):
-    def __str__(self):
-        return str(self.value)
+class CompareStrategy(StringEnum):
     BIGGER_BETTER = 'Bigger is better'
     SMALLER_BETTER = 'Smaller is better'
 
 
-def RunModule(evaluation_results: str, promote_method: str, compare_by: str, compare_by_logic: str, models_name: str, promoted_metrics: str):
+def RunModule(evaluation_results: str, promoted_metrics: str, compare_by: str,
+             promote_method: PromoteStrategy = PromoteStrategy.BEST_MODEL,
+             compare_by_logic: CompareStrategy = CompareStrategy.BIGGER_BETTER, 
+             models_name: str = None):
     # Load the metrics as a Pandas dataframe
     results = load_data_frame_from_directory(evaluation_results).data
     models_count = results.shape[0]
@@ -67,13 +67,5 @@ def RunModule(evaluation_results: str, promote_method: str, compare_by: str, com
         save_data_frame_to_directory(promoted_metrics, data=results.to_frame().T)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--evaluation-results", dest="evaluation_results", required=True, type=str, help="Evaluation results")
-    parser.add_argument("--promote-method", dest="promote_method", type=str, choices=list(map(str, PromoteStrategy)), required=False, default=PromoteStrategy.BEST_MODEL)
-    parser.add_argument("--compare-by", dest="compare_by", type=str, help="Name of the metrics to compared against", required=False)
-    parser.add_argument("--compare-by-logic", dest="compare_by_logic", type=str, choices=list(map(str, CompareStrategy)), required=False, default=CompareStrategy.BIGGER_BETTER)
-    parser.add_argument("--models-name", dest="models_name", type=str, required=False, default=None)
-    parser.add_argument("--promoted-metrics", dest="promoted_metrics", type=str, help="Promotion results")
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

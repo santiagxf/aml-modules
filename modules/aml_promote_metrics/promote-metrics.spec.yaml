@@ -1,7 +1,7 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.promote-metrics
 description: Promotes all the metrics from the evaluate module into the experiment
-version: 0.2.0
+version: 0.2.1
 display_name: 'Promote metrics'
 type: CommandComponent
 is_deterministic: false
@@ -69,9 +69,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
-        - azureml-sdk==0.1.0.*
+        - jobtools
+        - azureml-core==1.19
         - azureml-designer-core==0.0.54
-        - azureml-dataset-runtime[fuse,pandas]
-        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
-        - --extra-index-url https://pypi.org/simple
   os: Linux
