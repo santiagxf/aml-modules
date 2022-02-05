@@ -19,7 +19,7 @@ runs:
         echo "::debug::Installing Azure CLI"
         if [ -x "$(command -v az)" ]; then
           echo "::debug::Azure CLI is already installed"
-          python -m pip install -U --force-reinstall pip pip install azure-cli==2.29
+          sudo apt-get install azure-cli=2.29.0-1~bullseye
         else
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
         fi
