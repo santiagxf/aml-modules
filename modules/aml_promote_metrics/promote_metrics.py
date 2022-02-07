@@ -1,4 +1,3 @@
-import argparse
 import pandas as pd
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.core import Run

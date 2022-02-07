@@ -1,13 +1,11 @@
-import argparse
 import numpy as np
-from typing import Union
-
+from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
 
-def RunModule(input_dataset: str, column_name: str, contains_time: bool, output_dataset: str):
-    data_folder = load_data_frame_from_directory(input_dataset)
+def RunModule(dataset: str, output_dataset: str, column_name: str, contains_time: bool = False):
+    data_folder = load_data_frame_from_directory(dataset)
     
     # Check if column is available
     if data_folder.schema:
@@ -36,11 +34,5 @@ def RunModule(input_dataset: str, column_name: str, contains_time: bool, output_
     save_data_frame_to_directory(output_dataset, data)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
-    parser.add_argument("--column-name", dest="column_name", type=str, required=True)
-    parser.add_argument("--contains-time", dest="contains_time", type=bool, default=False)
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str)
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

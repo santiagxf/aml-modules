@@ -24,7 +24,7 @@ runs:
           if [ -n "${{ inputs.cli-version }}" ]; then
             if [[ "$(az version | jq -r '.["azure-cli"]')" != "${{ inputs.cli-version }}" ]]; then
               echo "::debug::Reinstalling azure-cli with version ${{ inputs.cli-version }}"
-              sudo apt-get update
+              
               sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
               curl -sL https://packages.microsoft.com/keys/microsoft.asc |
                 gpg --dearmor |

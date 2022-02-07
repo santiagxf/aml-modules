@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.featurize-date-column
-version: 0.0.4
+version: 0.0.5
 display_name: 'Featurize date column'
 description: Creates basic features from a data column.
 type: CommandComponent
@@ -39,6 +39,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
+        - jobtools
         - azureml-sdk==1.35.*
         - azureml-designer-core==0.0.66
         - azureml-dataset-runtime[fuse,pandas]

@@ -1,16 +1,19 @@
-import argparse
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import Pipeline
+from jobtools.runner import TaskRunner
+from jobtools.arguments import StringEnum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.transformation_directory import save_pickle_transform_to_directory
 
-SVD_SOLVERS = ['arpack', 'randomized']
+class SVDSolver(StringEnum):
+    ARPACK = 'arpack'
+    RANDOMIZED = 'randomized'
 
-def RunModule(input_dataset: str, number_of_dimensions: int, iterations: int, solver: str, 
-              output_dataset: str, output_model: str, output_singular_values: str, output_components: str):
-    data_folder = load_data_frame_from_directory(input_dataset)
+def RunModule(dataset: str, output_dataset: str, output_model: str, output_singular_values: str, output_components: str,
+              number_of_dimensions: int, solver: SVDSolver, iterations: int = 5):
+    data_folder = load_data_frame_from_directory(dataset)
 
     if data_folder.schema:
         if any([col['type'] != 'Numeric' for col in data_folder.schema['columnAttributes']]):
@@ -20,9 +23,6 @@ def RunModule(input_dataset: str, number_of_dimensions: int, iterations: int, so
     
     if number_of_dimensions <= 0:
         raise ValueError('The number of components cannot be less or equal to zero.')
-
-    if solver not in SVD_SOLVERS:
-        raise ValueError(f'Solver {solver} is not a valid SVD solver. Possible values are {SVD_SOLVERS}')
 
     data = data_folder.data
     tranformations = []
@@ -50,15 +50,5 @@ def RunModule(input_dataset: str, number_of_dimensions: int, iterations: int, so
         save_data_frame_to_directory(output_components, components)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", required=True, type=str, help="Input dataset")
-    parser.add_argument("--number-of-dimensions", dest="number_of_dimensions", type=int, help="Number of dimensions to reduce to", required=True)
-    parser.add_argument("--iterations", dest="iterations", type=int, required=False, default=5)
-    parser.add_argument("--solver", dest="solver", type=str, choices=SVD_SOLVERS, help="Solver to calculate SVD")
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str, help="Transformed dataset")
-    parser.add_argument("--output-model", dest="output_model", type=str, help="Trained model")
-    parser.add_argument("--output-singular-values", dest="output_singular_values", type=str)
-    parser.add_argument("--output-components", dest="output_components", type=str)
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

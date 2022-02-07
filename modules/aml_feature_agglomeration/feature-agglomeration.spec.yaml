@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformations.feature-agglomeration
-version: 0.0.7
+version: 0.0.8
 display_name: 'Hicherical feature agglomeration'
 type: CommandComponent
 is_deterministic: true
@@ -70,6 +70,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
+        - jobtools
         - azureml-sdk==0.1.0.*
         - azureml-designer-core==0.0.54
         - scikit-learn==0.24.*

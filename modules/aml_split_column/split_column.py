@@ -1,18 +1,17 @@
-import argparse
 from typing import Union
-from enum import Enum
+from jobtools.runner import TaskRunner
+from jobtools.arguments import StringEnum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 
-class SplitMode(Enum):
-    def __str__(self):
-        return str(self.value)
+class SplitMode(StringEnum):
     COLUMNS = 'Into columns'
     ROWS = 'Into rows'
     ARRAY = 'As array-like'
 
-def RunModule(input_dataset: str, column_name: str, split_mode: str, split_by: str, output_dataset: str, new_columns_name:Union[str, None]=None):
-    data_folder = load_data_frame_from_directory(input_dataset)
+def RunModule(dataset: str, output_dataset: str, column_name: str, split_mode: SplitMode = SplitMode.ARRAY,
+              split_by: str = ' ', new_columns_name:Union[str, None]=None):
+    data_folder = load_data_frame_from_directory(dataset)
     
     # Check if column is available
     if data_folder.schema:
@@ -52,13 +51,5 @@ def RunModule(input_dataset: str, column_name: str, split_mode: str, split_by: s
     save_data_frame_to_directory(output_dataset, data)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
-    parser.add_argument("--column-name", dest="column_name", type=str, required=True)
-    parser.add_argument("--split-by", dest="split_by", type=str, required=False, default=' ')
-    parser.add_argument("--split-mode", dest="split_mode", type=str, choices=list(map(str, SplitMode)), default=SplitMode.ARRAY)
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str)
-    parser.add_argument("--new-columns-name", dest="new_columns_name", type=str, required=False)
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

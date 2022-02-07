@@ -1,9 +1,9 @@
-import argparse
 import math
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from enum import Enum
+from jobtools.runner import TaskRunner
+from jobtools.arguments import StringEnum
 
 from sklearn.cluster import FeatureAgglomeration
 from sklearn.feature_extraction.image import grid_to_graph
@@ -14,10 +14,6 @@ from scipy.cluster.hierarchy import dendrogram
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.transformation_directory import save_pickle_transform_to_directory
-
-class StringEnum(Enum):
-    def __str__(self):
-        return str(self.value)
 
 class ConnectivtyStrategy(StringEnum):
     NONE = 'none'
@@ -61,10 +57,12 @@ def plot_dendrogram(model, file_name:str, **kwargs):
     dendrogram(linkage_matrix, **kwargs)
     plt.savefig(file_name, format='png', bbox_inches='tight')
 
-def RunModule(input_dataset: str, number_of_features: int, normalize: bool, connectivity_type: str,
-              affinity:str, linkage: str, output_dataset: str, output_model: str):
+def RunModule(dataset: str, output_dataset: str, output_model: str, number_of_features: int, normalize: bool = True,
+              connectivity_type: ConnectivtyStrategy = ConnectivtyStrategy.NONE,
+              affinity:AffinityStrategy = AffinityStrategy.EUCLIDEAN,
+              linkage: LinkageStrategy = LinkageStrategy.WARD):
 
-    data_folder = load_data_frame_from_directory(input_dataset)
+    data_folder = load_data_frame_from_directory(dataset)
     data = data_folder.data
     tranformations = []
     connectivity = None
@@ -103,15 +101,5 @@ def RunModule(input_dataset: str, number_of_features: int, normalize: bool, conn
     plot_dendrogram(agglo, 'outputs/dendrogram.png')
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", required=True, type=str, help="Input dataset")
-    parser.add_argument("--number-of-features", dest="number_of_features", type=int, help="Number of dimensions to reduce to", required=True)
-    parser.add_argument("--normalize", dest="normalize", type=bool, help="Whether or not to normalize data to zero mean", required=True, default=True)
-    parser.add_argument("--connectivity-type", dest="connectivity_type", choices=list(map(str, ConnectivtyStrategy)), default=ConnectivtyStrategy.NONE)
-    parser.add_argument("--affinity", dest="affinity", choices=list(map(str, AffinityStrategy)), default=AffinityStrategy.EUCLIDEAN)
-    parser.add_argument("--linkage", dest="linkage", choices=list(map(str, LinkageStrategy)), default=LinkageStrategy.WARD)
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str, help="Transformed dataset")
-    parser.add_argument("--output-model", dest="output_model", type=str, help="Trained model")
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

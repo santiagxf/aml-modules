@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformations.extract-svd
-version: 0.0.3
+version: 0.0.4
 display_name: 'Truncated SVD extraction'
 description: 'Dimensionality reduction using truncated SVD (aka LSA). This transformer performs linear dimensionality reduction by means of truncated singular value decomposition (SVD).'
 type: CommandComponent
@@ -57,6 +57,7 @@ environment:
       - pip=20.2
       - scikit-learn==0.24.*
       - pip:
+        - jobtools
         - azureml-sdk==0.1.0.*
         - azureml-designer-core==0.0.54
         - azureml-dataset-runtime[fuse,pandas]
