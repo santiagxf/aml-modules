@@ -6,11 +6,11 @@ inputs:
     description: Indicates if you want component support in the installation
     required: true
   cli-version:
-    description: Minimum version required
+    description: Version of the Azure CLI to install and enforce.
     required: false
   ml-min-version:
     default: '2.0'
-    description: Minimum version required
+    description: Minimum version required for Azure ML.
     required: false
 runs:
   using: "composite"
@@ -41,33 +41,32 @@ runs:
         else
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
         fi
-
-        echo "::debug::Installing azure-cli-ml extension with components support"
-        if [[ $(az extension show --name azure-cli-ml) ]]; then
-          echo "::debug::azure-cli-ml extension is already installed."
-        else
-          az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
-        fi
   
     - id: install-ml-cli
       shell: bash
       run: |
-        echo "::debug::Installing azure-cli-ml extension with components support"
-        if [[ ${{ inputs.component-support == 'true' }} ]]; then
+        echo "::debug::Installing azure-cli-ml extension"
+        if ${{ inputs.component-support }}; then
+          echo "::debug::Installing azure-cli-ml extension with components support"
+          
           if [[ $(az extension show --name azure-cli-ml) ]]; then
             echo "::debug::azure-cli-ml extension is already installed."
           else
+            echo "::debug::Adding extension from a preview build. This is experimental."
             az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
           fi
         else
+          echo "::debug::Installing azure-cli-ml extension version ${{ inputs.ml-min-version }}"
+
           if [[ $(az extension show --name ml) ]]; then
             echo "::debug::azure-cli-ml extension is already installed."
             
-            if [[ $(az extension show --name ml | jq -r .version) < "${{ inputs.min-version }}" ]]; then
-              echo "::debug::Updating version to ${{ inputs.min-version }}."
+            if [[ $(az extension show --name ml | jq -r .version) < "${{ inputs.ml-min-version }}" ]]; then
+              echo "::debug::Updating version to ${{ inputs.ml-min-version }}."
               az extension update -n ml
             fi
           else
+            echo "::debug::Adding extension"
             az extension add -n ml -y
           fi
         fi
