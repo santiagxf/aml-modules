@@ -22,7 +22,7 @@ def test_pca_matches_shapes():
 
     extract_pca(**args)
 
-    input_data = load_data_frame_from_directory(args['input_dataset']).data
+    input_data = load_data_frame_from_directory(args['dataset']).data
     output_data = load_data_frame_from_directory(args['output_dataset']).data
     output_eigen = load_data_frame_from_directory(args['output_eigenvectors']).data
 
@@ -51,7 +51,7 @@ def test_pca_apply_transform():
     transform_output = 'samples_data/transform_transformed'
 
     extract_pca(**args)
-    apply_transformation(args['input_dataset'], args['output_model'], transform_output)
+    apply_transformation(args['dataset'], args['output_model'], transform_output)
 
     output_data = load_data_frame_from_directory(args['output_dataset']).data
     transform_output_data = load_data_frame_from_directory(transform_output).data
