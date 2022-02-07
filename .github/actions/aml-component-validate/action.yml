@@ -12,36 +12,7 @@ inputs:
     required: true
 runs:
   using: "composite"
-  steps:
-    - id: install-dependecies
-      shell: bash
-      run: |
-        echo "::debug::Installing Azure CLI"
-        if [ -x "$(command -v az)" ]; then
-          echo "::debug::Azure CLI is already installed"
-          sudo apt-get update
-          sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
-          curl -sL https://packages.microsoft.com/keys/microsoft.asc |
-            gpg --dearmor |
-            sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-          AZ_REPO=$(lsb_release -cs)
-          echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
-              sudo tee /etc/apt/sources.list.d/azure-cli.list
-          sudo apt-get update
-          apt-cache policy azure-cli
-          sudo apt remove azure-cli --yes
-          sudo apt-get install azure-cli=2.29.0-1~focal
-        else
-          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-        fi
-
-        echo "::debug::Installing azure-cli-ml extension with components support"
-        if [[ $(az extension show --name azure-cli-ml) ]]; then
-          echo "::debug::azure-cli-ml extension is already installed."
-        else
-          az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
-        fi
-        
+  steps:        
     - id: validate
       shell: bash
       run: |

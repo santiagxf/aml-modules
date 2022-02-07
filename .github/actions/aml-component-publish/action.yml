@@ -13,27 +13,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - id: install-dependecies
-      shell: bash
-      run: |
-        echo "::debug::Installing Azure CLI"
-        if [ -x "$(command -v az)" ]; then
-          echo "::debug::Azure CLI is already installed"
-          sudo apt-get install azure-cli=2.29.0-1~focal
-        else
-          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-        fi
-
-        echo "::debug::Installing azure-cli-ml extension with components support"
-        if [[ $(az extension show --name azure-cli-ml) ]]; then
-          echo "::debug::azure-cli-ml extension is already installed."
-        else
-          az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
-        fi
-
-        echo "::debug::Installing yq"
-        pip install yq==2.12.2
-
     - id: publish
       shell: bash
       run: |
