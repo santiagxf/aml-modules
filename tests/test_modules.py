@@ -5,15 +5,16 @@ from azureml.studio.core.io.data_frame_directory import load_data_frame_from_dir
 from azureml.studio.core.io.transformation_directory import PickleTransformationDirectory
 
 from modules.aml_extract_pca.extract_pca import RunModule as extract_pca
+from modules.aml_extract_pca.extract_pca import PCASolvers
 from modules.aml_apply_transformation.apply_transformation import RunModule as apply_transformation
 
 
 def test_pca_matches_shapes():
     args = {
-        'input_dataset': 'samples_data/dataset',
+        'dataset': 'samples_data/dataset',
         'number_of_dimensions': 5,
         'normalize': True,
-        'solver': 'randomized',
+        'solver': PCASolvers.RANDOMIZED,
         'output_dataset': 'samples_data/transformed',
         'output_model': 'samples_data/transform',
         'output_eigenvectors': 'samples_data/eigen'
@@ -38,10 +39,10 @@ def test_pca_matches_shapes():
 
 def test_pca_apply_transform():
     args = {
-        'input_dataset': 'samples_data/dataset',
+        'dataset': 'samples_data/dataset',
         'number_of_dimensions': 5,
         'normalize': True,
-        'solver': 'randomized',
+        'solver': PCASolvers.RANDOMIZED,
         'output_dataset': 'samples_data/transformed',
         'output_model': 'samples_data/transform',
         'output_eigenvectors': 'samples_data/eigen'
