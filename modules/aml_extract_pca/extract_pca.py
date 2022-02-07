@@ -36,7 +36,7 @@ def RunModule(dataset: str, number_of_dimensions: int, solver: PCASolvers,
         data = scaler.transform(data)
         tranformations.append(('normalize', scaler))
 
-    pca = PCA(n_components=number_of_dimensions, svd_solver=solver, whiten=True).fit(data)
+    pca = PCA(n_components=number_of_dimensions, svd_solver=str(solver), whiten=True).fit(data)
     transformed_data = pca.transform(data)
     tranformations.append(('pca', pca))
 

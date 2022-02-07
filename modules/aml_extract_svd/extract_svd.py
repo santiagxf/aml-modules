@@ -27,7 +27,7 @@ def RunModule(dataset: str, output_dataset: str, output_model: str, output_singu
     data = data_folder.data
     tranformations = []
 
-    svd = TruncatedSVD(n_components=number_of_dimensions, n_iter=iterations, algorithm=solver).fit(data)
+    svd = TruncatedSVD(n_components=number_of_dimensions, n_iter=iterations, algorithm=str(solver)).fit(data)
     USigma = svd.transform(data)
     Sigma = svd.singular_values_
     VT = svd.components_

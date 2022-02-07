@@ -86,7 +86,7 @@ def RunModule(dataset: str, output_dataset: str, output_model: str, number_of_fe
     elif connectivity_type == ConnectivtyStrategy.KNN:
         connectivity = kneighbors_graph(data.T, n_neighbors=math.floor(number_of_features/2), mode='connectivity', metric='minkowski', include_self=False)
 
-    agglo = FeatureAgglomeration(connectivity=connectivity, n_clusters=number_of_features, affinity=affinity, linkage=linkage, compute_distances=True).fit(data)
+    agglo = FeatureAgglomeration(connectivity=connectivity, n_clusters=number_of_features, affinity=str(affinity), linkage=str(linkage), compute_distances=True).fit(data)
     transformed_data = agglo.transform(data)
     tranformations.append(('agglomeration', agglo))
 
