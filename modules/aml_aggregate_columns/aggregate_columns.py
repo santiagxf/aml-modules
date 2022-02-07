@@ -1,6 +1,7 @@
-import argparse
+from argparse import ArgumentError
 import pandas as pd
 from typing import Union, List
+from jobtools.runner import TaskRunner
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
@@ -59,11 +60,15 @@ AGG_SHORT = {
 def get_columns_by_type(data_folder, dtype: str, exclude: Union[List[str], None]=None):
     return [column['name'] for column in data_folder.schema['columnAttributes'] if column['type'] == dtype and column['name'] not in exclude]
 
-def RunModule(input_dataset: str, group_by_columns: str, aggregate_booleans_by: str, 
-              aggregate_numbers_by: str, aggregate_strings_by: str, aggregate_datetimes_by: str,
-              output_dataset: str):
+def RunModule(dataset: str, 
+              output_dataset: str,
+              group_by_columns: str, 
+              aggregate_booleans_by: str, 
+              aggregate_numbers_by: str, 
+              aggregate_strings_by: str, 
+              aggregate_datetimes_by: str):
 
-    data_folder = load_data_frame_from_directory(input_dataset)
+    data_folder = load_data_frame_from_directory(dataset)
     group_by = [x.strip() for x in group_by_columns.split(',')]
     
     if data_folder.schema:
@@ -73,6 +78,15 @@ def RunModule(input_dataset: str, group_by_columns: str, aggregate_booleans_by: 
         datetime_columns = get_columns_by_type(data_folder, dtype=ColumnTypeName.DATETIME, exclude=group_by)
     else:
         raise TypeError("Input data doesn't have an schema available")
+
+    if aggregate_booleans_by not in BOOL_AGG.keys():
+        raise ArgumentError(f"{aggregate_booleans_by} is not a valid funtion for boolean.")
+    if aggregate_numbers_by not in NUMERIC_AGG.keys():
+        raise ArgumentError(f"{aggregate_numbers_by} is not a valid funtion for boolean.")
+    if aggregate_strings_by not in STRING_AGG.keys():
+        raise ArgumentError(f"{aggregate_strings_by} is not a valid funtion for boolean.")
+    if aggregate_datetimes_by not in DATETIME_AGG.keys():
+        raise ArgumentError(f"{aggregate_datetimes_by} is not a valid funtion for boolean.")
 
     # Build aggregations
     aggregations = {}
@@ -106,14 +120,5 @@ def RunModule(input_dataset: str, group_by_columns: str, aggregate_booleans_by: 
     save_data_frame_to_directory(output_dataset, grouped_data)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
-    parser.add_argument("--group-by-columns", dest="group_by_columns", type=str, required=True)
-    parser.add_argument("--aggregate-booleans-by", dest="aggregate_booleans_by", type=str, choices=BOOL_AGG.keys())
-    parser.add_argument("--aggregate-numbers-by", dest="aggregate_numbers_by", type=str, choices=NUMERIC_AGG.keys())
-    parser.add_argument("--aggregate-strings-by", dest="aggregate_strings_by", type=str, choices=STRING_AGG.keys())
-    parser.add_argument("--aggregate-dates-by", dest="aggregate_datetimes_by", type=str, choices=DATETIME_AGG.keys())
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str, required=True)
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

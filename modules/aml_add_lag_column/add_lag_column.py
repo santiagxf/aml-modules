@@ -1,18 +1,17 @@
-import argparse
-from typing import Union
+from jobtools.runner import TaskRunner
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 
 
-def RunModule(input_dataset: str, 
+def RunModule(dataset: str, 
+              output_dataset: str,
               column_name: str, 
               lag_columns: int, 
-              lag_by: int, 
-              output_dataset: str,
+              lag_by: int = 1, 
               average: bool = False, 
-              drop_nulls: bool=True):
+              drop_nulls: bool = True):
     
-    data_folder = load_data_frame_from_directory(input_dataset)
+    data_folder = load_data_frame_from_directory(dataset)
     
     if ',' in column_name:
         print('[DEBUG] Multiple columns has been indicated. Identifying them...')
@@ -47,14 +46,5 @@ def RunModule(input_dataset: str,
     save_data_frame_to_directory(output_dataset, data)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
-    parser.add_argument("--column-name", dest="column_name", type=str, required=True)
-    parser.add_argument("--lag-columns", dest="lag_columns", type=int, required=True)
-    parser.add_argument("--lag-by", dest="lag_by", type=int, required=False, default=1)
-    parser.add_argument("--average", dest="average", type=bool, required=False, default=False)
-    parser.add_argument("--drop-nulls", dest="drop_nulls", type=bool, required=False, default=True)
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str)
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

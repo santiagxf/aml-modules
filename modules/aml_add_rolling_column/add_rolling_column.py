@@ -1,13 +1,8 @@
-import argparse
 import pandas as pd
-from typing import Union
-from enum import Enum
+from jobtools.runner import TaskRunner
+from jobtools.arguments import StringEnum
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
-
-class StringEnum(Enum):
-    def __str__(self):
-        return str(self.value)
 
 class RollingDirection(StringEnum):
     FORWARD='Forward'
@@ -61,15 +56,15 @@ AGG_SHORT = {
     'Number of days': 'days'
 }
 
-def RunModule(input_dataset: str, 
+def RunModule(dataset: str,
+              output_dataset: str,
               column_name: str, 
               window_size: int, 
               aggregate_by: str,
-              direction: RollingDirection, 
-              output_dataset: str,
-              drop_nulls: bool=True):
+              direction: RollingDirection = RollingDirection.BACKWARD, 
+              drop_nulls: bool = True):
     
-    data_folder = load_data_frame_from_directory(input_dataset)
+    data_folder = load_data_frame_from_directory(dataset)
     
     if ',' in column_name:
         print('[DEBUG] Multiple columns has been indicated. Identifying them...')
@@ -106,14 +101,5 @@ def RunModule(input_dataset: str,
     save_data_frame_to_directory(output_dataset, data)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
-    parser.add_argument("--column-name", dest="column_name", type=str, required=True)
-    parser.add_argument("--window-size", dest="window_size", type=int, required=True)
-    parser.add_argument("--aggregate-by", dest="aggregate_by", type=str, required=True)
-    parser.add_argument("--direction", dest="direction", type=str, required=False, default=RollingDirection.BACKWARD)
-    parser.add_argument("--drop-nulls", dest="drop_nulls", type=bool, required=False, default=True)
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str)
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

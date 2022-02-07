@@ -1,12 +1,12 @@
-import argparse
 import pandas as pd
 from pathlib import Path
+from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.transformation_directory import PickleTransformationDirectory
 
 
-def RunModule(input_dataset: str, transformation: str, output_dataset: str):
-    data_folder = load_data_frame_from_directory(input_dataset)
+def RunModule(dataset: str, transformation: str, output_dataset: str):
+    data_folder = load_data_frame_from_directory(dataset)
     data = data_folder.data
     tranformation = PickleTransformationDirectory(transformation).load(Path(transformation))
 
@@ -21,10 +21,5 @@ def RunModule(input_dataset: str, transformation: str, output_dataset: str):
     save_data_frame_to_directory(output_dataset, df)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", required=True, type=str, help="Input dataset")
-    parser.add_argument("--transformation", dest="transformation", type=str, help="Transformation with Scikit-learn transformation API")
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str, help="Transformed dataset")
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

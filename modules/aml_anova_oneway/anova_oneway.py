@@ -1,12 +1,12 @@
-import argparse
 import pandas as pd
 import scipy.stats as stats
 
+from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
-def RunModule(input_dataset: str, column_name: str, groups_column_name: str, evaluation_results: str):
-    data_folder = load_data_frame_from_directory(input_dataset)
+def RunModule(dataset: str, column_name: str, groups_column_name: str, evaluation_results: str):
+    data_folder = load_data_frame_from_directory(dataset)
     
     # Check if column is available
     if data_folder.schema:
@@ -30,11 +30,5 @@ def RunModule(input_dataset: str, column_name: str, groups_column_name: str, eva
     save_data_frame_to_directory(evaluation_results, evaluation)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", type=str, required=True)
-    parser.add_argument("--groups-column-name", dest="groups_column_name", type=str, required=True)
-    parser.add_argument("--column-name", dest="column_name", type=str, required=True)
-    parser.add_argument("--evaluation-results", dest="evaluation_results", type=str)
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

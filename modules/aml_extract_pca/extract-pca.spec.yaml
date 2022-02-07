@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.extract-pca
-version: 0.0.3
+version: 0.0.4
 display_name: 'PCA extraction'
 type: CommandComponent
 is_deterministic: true
@@ -54,6 +54,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
+        - jobtools
         - azureml-sdk==0.1.0.*
         - azureml-designer-core==0.0.54
         - scikit-learn==0.24.*

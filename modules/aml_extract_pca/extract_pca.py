@@ -1,18 +1,23 @@
-import argparse
 import pandas as pd
 from numpy.core.fromnumeric import partition
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
+from jobtools.runner import TaskRunner
+from jobtools.arguments import StringEnum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.transformation_directory import save_pickle_transform_to_directory
 
-PCA_SOLVERS = ['auto', 'full', 'arpack', 'randomized']
+class PCASolvers(StringEnum):
+    AUTO = 'auto'
+    FULL = 'full'
+    ARPACK = 'arpack'
+    RANDOMIZED = 'randomized'
 
-def RunModule(input_dataset: str, number_of_dimensions: int, normalize: bool, solver: str, 
-              output_dataset: str, output_model: str, output_eigenvectors: str):
-    data_folder = load_data_frame_from_directory(input_dataset)
+def RunModule(dataset: str, number_of_dimensions: int, solver: PCASolvers, 
+              output_dataset: str, output_model: str, output_eigenvectors: str, normalize: bool = True):
+    data_folder = load_data_frame_from_directory(dataset)
 
     if data_folder.schema:
         if any([col['type'] != 'Numeric' for col in data_folder.schema['columnAttributes']]):
@@ -22,9 +27,6 @@ def RunModule(input_dataset: str, number_of_dimensions: int, normalize: bool, so
     
     if number_of_dimensions <= 0:
         raise ValueError('The number of components cannot be less or equal to zero.')
-
-    if solver not in PCA_SOLVERS:
-        raise ValueError(f'Solver {solver} is not a valid PCA solver. Possible values are {PCA_SOLVERS}')
 
     data = data_folder.data
     tranformations = []
@@ -51,14 +53,5 @@ def RunModule(input_dataset: str, number_of_dimensions: int, normalize: bool, so
         save_data_frame_to_directory(output_eigenvectors, eigenvectors)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("aml-module")
-    parser.add_argument("--dataset", dest="input_dataset", required=True, type=str, help="Input dataset")
-    parser.add_argument("--number-of-dimensions", dest="number_of_dimensions", type=int, help="Number of dimensions to reduce to", required=True)
-    parser.add_argument("--normalize", dest="normalize", type=bool, help="Whether or not to normalize data to zero mean", required=True, default=True)
-    parser.add_argument("--solver", dest="solver", type=str, choices=PCA_SOLVERS, help="Solver to calculate PCA")
-    parser.add_argument("--output-dataset", dest="output_dataset", type=str, help="Transformed dataset")
-    parser.add_argument("--output-model", dest="output_model", type=str, help="Trained model")
-    parser.add_argument("--output-eigenvectors", dest="output_eigenvectors", required=False, type=str, help="Eigenvectors values")
-    args = parser.parse_args()
-
-    RunModule(**vars(args))
+    tr = TaskRunner()
+    tr.run(RunModule)

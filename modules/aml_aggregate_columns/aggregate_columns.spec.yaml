@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.aggregate-columns
-version: 0.0.2
+version: 0.0.3
 display_name: 'Aggregate columns'
 description: Groups and aggregates the columns in a dataset depending on the their types.
 type: CommandComponent
@@ -51,7 +51,7 @@ inputs:
       - Last
       - Mode
       - Count
-  aggregate_dates_by:
+  aggregate_datetimes_by:
     type: Enum
     optional: false
     default: Number of days
@@ -66,7 +66,7 @@ outputs:
 command: >-
   python aggregate_columns.py --dataset {inputs.dataset} --group-by-columns {inputs.group_by_columns} 
   --aggregate-booleans-by {inputs.aggregate_booleans_by} --aggregate-numbers-by {inputs.aggregate_numbers_by} 
-  --aggregate-strings-by {inputs.aggregate_strings_by} --aggregate-dates-by {inputs.aggregate_dates_by} 
+  --aggregate-strings-by {inputs.aggregate_strings_by} --aggregate-datetimes-by {inputs.aggregate_datetimes_by} 
   --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
@@ -80,6 +80,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
+        - jobtools
         - azureml-sdk==1.35.*
         - azureml-designer-core==0.0.66
         - azureml-dataset-runtime[fuse,pandas]

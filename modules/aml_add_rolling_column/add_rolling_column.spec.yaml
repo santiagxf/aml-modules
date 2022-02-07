@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.add-rolling-column
-version: 0.0.2
+version: 0.0.3
 display_name: 'Add rolling window column'
 description: Adds a rolling window column into the dataset.
 type: CommandComponent
@@ -69,6 +69,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
+        - jobtools
         - azureml-sdk==1.35.*
         - azureml-designer-core==0.0.66
         - azureml-dataset-runtime[fuse,pandas]
