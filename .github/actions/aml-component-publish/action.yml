@@ -29,7 +29,7 @@ runs:
           COMPONENT_INSTALLED=$(az ml component list -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }} | jq -r --arg COMPONENT_NAME $COMPONENT_NAME '.[].name | select(contains($COMPONENT_NAME))')
 
           echo "::debug::Installing component $COMPONENT_NAME @ $COMPONENT_VERSION"
-          if [[ "$COMPONENT_INSTALLED" == "$COMPONENT_NAME" ]];
+          if [ -n "$COMPONENT_INSTALLED" ]];
           then
             az ml component create --file $COMP -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }}
 
