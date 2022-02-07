@@ -20,7 +20,7 @@ runs:
         if [ -x "$(command -v az)" ]; then
           echo "::debug::Azure CLI is already installed"
           apt-cache policy azure-cli
-          sudo apt remove azure-cli
+          sudo apt remove azure-cli --yes
           sudo apt-get install azure-cli=2.0.81+ds-4ubuntu0.2
         else
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
