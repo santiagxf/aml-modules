@@ -1,5 +1,6 @@
 import pandas as pd
 from jobtools.arguments import StringEnum
+from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
@@ -98,3 +99,7 @@ def RunModule(dataset: str,
         data.dropna(inplace=True)
 
     save_data_frame_to_directory(output_dataset, data)
+
+if __name__ == "__main__":
+    tr = TaskRunner()
+    tr.run(RunModule)
