@@ -1,4 +1,3 @@
-from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 
 def RunModule(dataset: str, output_dataset: str, column_name: str, lag_columns: int, 
@@ -67,7 +66,3 @@ def RunModule(dataset: str, output_dataset: str, column_name: str, lag_columns: 
         data.dropna(inplace=True)
 
     save_data_frame_to_directory(output_dataset, data)
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)
