@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.add-lag-column
-version: 0.1.1
+version: 0.1.2
 display_name: 'Add lag column'
 description: Adds one or many lag columns into the current dataset.
 type: CommandComponent
@@ -56,7 +56,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
-        - jobtools
+        - jobtools==0.0.7
         - azureml-sdk==1.35.*
         - azureml-designer-core==0.0.66
         - azureml-dataset-runtime[fuse,pandas]
