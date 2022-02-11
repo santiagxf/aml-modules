@@ -1,7 +1,7 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
-name: microsoft.csu.azureml.components.transformation.add-lag-column
-version: 0.0.1
-display_name: 'Score MLModel'
+name: microsoft.csu.azureml.components.scoring.mlmodel-run
+version: 0.0.2
+display_name: 'Score MLFlow model'
 description: Scores predictions for a trained classification or regression model with MLFlow MLModel.
 type: CommandComponent
 is_deterministic: false
@@ -22,7 +22,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  pyrunit mlmodel_run.py RunModule --dataset {inputs.dataset} --model {inputs.model} --output-dataset {outputs.transformed_dataset}
+  python mlmodel_run.py --dataset {inputs.dataset} --model {inputs.model} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04

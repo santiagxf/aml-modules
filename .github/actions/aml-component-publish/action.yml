@@ -26,15 +26,13 @@ runs:
           COMPONENT_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/${GITHUB_REF##*/}/$COMP
 
           echo "::debug::Verifying component installation for $COMPONENT_NAME @ $COMPONENT_VERSION"
-          COMPONENT_INSTALLED=$(az ml component list -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }} | jq -r --arg COMPONENT_NAME $COMPONENT_NAME '.[].name | select(contains($COMPONENT_NAME))')
+          COMPONENT_INSTALLED=$(each $INSTALLED | jq 'select(contains($COMPONENT_NAME))')
 
           echo "::debug::Installing component $COMPONENT_NAME @ $COMPONENT_VERSION"
           if [ -n "$COMPONENT_INSTALLED" ];
           then
-            az ml component create --file $COMP -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }}
-
-            echo "::debug::Updating default version for component $COMPONENT_NAME to $COMPONENT_VERSION"
-            az ml component update --name "$COMPONENT_NAME" --version $COMPONENT_VERSION --label default -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }}
+            echo "::debug::Installing and upgrading default version"
+            az ml component create --file $COMP -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }} --label default
           else
             az ml component create --file $COMP -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }}
           fi
