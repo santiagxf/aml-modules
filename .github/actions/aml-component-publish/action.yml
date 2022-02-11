@@ -26,7 +26,7 @@ runs:
           COMPONENT_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/${GITHUB_REF##*/}/$COMP
 
           echo "::debug::Verifying component installation for $COMPONENT_NAME @ $COMPONENT_VERSION"
-          COMPONENT_INSTALLED=$(each $INSTALLED | jq 'select(contains($COMPONENT_NAME))')
+          COMPONENT_INSTALLED=$(echo $INSTALLED | jq --arg COMPONENT_NAME $COMPONENT_NAME 'select(contains($COMPONENT_NAME))')
 
           echo "::debug::Installing component $COMPONENT_NAME @ $COMPONENT_VERSION"
           if [ -n "$COMPONENT_INSTALLED" ];
