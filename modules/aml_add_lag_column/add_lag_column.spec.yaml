@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.add-lag-column
-version: 0.1.0
+version: 0.1.1
 display_name: 'Add lag column'
 description: Adds one or many lag columns into the current dataset.
 type: CommandComponent
@@ -42,7 +42,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python -m jobtools add_lag_column.py RunModule --dataset {inputs.dataset} --column-name {inputs.column_name} --lag-columns {inputs.lag_columns}
+  python add_lag_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} --lag-columns {inputs.lag_columns}
   --lag-by {inputs.lag_by} --average {inputs.average_lag} --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
