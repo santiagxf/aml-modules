@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.evaluation.anova-one-way
-version: 0.0.3
+version: 0.0.4
 display_name: 'Run one-way ANOVA'
 description: Runs a one-way ANOVA evaluation.
 type: CommandComponent
@@ -8,6 +8,7 @@ is_deterministic: true
 tags:
   contact: Facundo Santiago <fasantia@microsoft.com>
   helpDocument: https://github.com/santiagxf/aml-modules
+  azureml.prebuildComponent.category: Model Scoring & Evaluation
 inputs:
   dataset:
     type: DataFrameDirectory
@@ -25,7 +26,7 @@ outputs:
   evaluation_results:
     type: DataFrameDirectory
 command: >-
-  python anova_oneway.py --dataset {inputs.dataset} --groups-column-name {inputs.groups_column_name} 
+  pyrunit anova_oneway.py RunModule --dataset {inputs.dataset} --groups-column-name {inputs.groups_column_name} 
   --column-name {inputs.column_name} --evaluation-results {outputs.evaluation_results}
 environment:
   docker:

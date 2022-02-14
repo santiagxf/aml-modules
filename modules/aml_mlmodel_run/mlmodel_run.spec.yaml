@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.scoring.mlmodel-run
-version: 0.0.2
+version: 0.0.3
 display_name: 'Score MLFlow model'
 description: Scores predictions for a trained classification or regression model with MLFlow MLModel.
 type: CommandComponent
@@ -8,7 +8,7 @@ is_deterministic: false
 tags:
   contact: Facundo Santiago <fasantia@microsoft.com>
   helpDocument: https://github.com/santiagxf/aml-modules
-  category: Model Scoring & Evaluation
+  azureml.prebuildComponent.category: Model Scoring & Evaluation
 inputs:
   dataset:
     type: DataFrameDirectory
@@ -18,11 +18,19 @@ inputs:
     type: String
     optional: false
     description: Name of the column to split.
+  mode:
+    type: Enum
+    optional: false
+    description: Output mode for the results
+    default: Append score columns to output
+    enum:
+      - Append score columns to output
+      - Score columns only
 outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python mlmodel_run.py --dataset {inputs.dataset} --model {inputs.model} --output-dataset {outputs.transformed_dataset}
+  pyrunit mlmodel_run.py RunModule --dataset {inputs.dataset} --model {inputs.model} --mode {inputs.mode} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
@@ -35,7 +43,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
-        - jobtools
+        - jobtools==0.0.8
         - mlflow
         - azureml-mlflow
         - azureml-core==1.19

@@ -67,7 +67,3 @@ def RunModule(dataset: str, output_dataset: str, column_name: str, lag_columns: 
         data.dropna(inplace=True)
 
     save_data_frame_to_directory(output_dataset, data)
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)
