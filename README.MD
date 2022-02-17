@@ -38,14 +38,17 @@ You can install this modules in your workspace manually using the UI, an install
 You can add a new module by following this steps:
  1. In your workspace, go to the `Modules` option inside the `Assets` section in the navigation menu.
  2. Click on option `New module` and then `From Yaml file`.
- 3. Copy the URL of the YAML file of the module you want to install. For instance, for the module `Promote metrics` the Yaml file is `https://github.com/santiagxf/aml-modules/blob/main/aml-promote-metrics/promote-metrics.spec.yaml`
+ 3. Copy the URL of the YAML file of the module you want to install. For instance, for the module `Promote metrics` the Yaml file is `https://github.com/santiagxf/aml-modules/blob/main/aml-promote-metrics/promote-metrics.spec.yaml`. You can also do right click on the link `Get YAML` and select `Copy link`.
 
-!['Manual installation'](docs/assets/add-modules.png)
+    ![Copy](docs/assets/add-module-yaml.png)
 
  4. Paste the URL of the yaml file in the wizard and confirm the changes.
+
+    !['Manual installation'](docs/assets/add-modules.png)
+
  5. The new module will be available across all the pipelines in the workspace.
 
-> Important: Notice that you will need to perform this action for each module you want to install. If you have multiple Azure Machine Learning workspaces available, then you will have to perform the operation on each of them. For automatic deployment options see Script-based installation.
+> Important: Notice that you will need to perform this action for each module you want to install. If you have multiple Azure Machine Learning workspaces available, then you will have to perform the operation on each of them.
 
 ### Using an installation script
 In the folder [`scripts`](scripts/install.sh) you will find a sample bash script to install all the modules in your workspace.
