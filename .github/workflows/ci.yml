@@ -29,12 +29,18 @@ jobs:
 
       - name: Logining in into Azure
         uses: Azure/login@v1
-        env:
-          CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
         with:
-          creds: ${{ env.CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Running test on modules
-        uses: ./.github/actions/pytest-run
+      - name: Configure conda
+        uses: pyrunit/conda-setup-action@v1.0.0
         with:
-          test-folder: tests
+          envName: cicd
+          condaFile: tests/conda.yml
+
+      - name: Run tests with PyTest
+        uses: pyrunit/pytest-action@v1.0.0
+        with:
+          useConda: true
+          condaEnvName: cicd
+

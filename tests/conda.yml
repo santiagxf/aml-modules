@@ -1,0 +1,12 @@
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip=20.2.4
+  - pip:
+      - azureml-designer-core==0.0.54
+      - azureml-dataset-runtime[fuse,pandas]
+      - pandas==1.0.4
+      - scikit-learn==0.24.*
+      - jobtools
+      - scipy

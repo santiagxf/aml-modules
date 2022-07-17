@@ -1,10 +1,6 @@
 name: 'Installing Azure ML CLI'
 description: 'Installs Azure ML CLI in the current worker'
 inputs:
-  component-support:
-    default: 'false'
-    description: Indicates if you want component support in the installation
-    required: true
   cli-version:
     description: Version of the Azure CLI to install and enforce.
     required: false
@@ -46,29 +42,18 @@ runs:
       shell: bash
       run: |
         echo "::debug::Installing azure-cli-ml extension"
-        if ${{ inputs.component-support }}; then
-          echo "::debug::Installing azure-cli-ml extension with components support"
+        echo "::debug::Installing azure-cli-ml extension version ${{ inputs.ml-min-version }}"
+
+        if [[ $(az extension show --name ml) ]]; then
+          echo "::debug::azure-cli-ml extension is already installed."
           
-          if [[ $(az extension show --name azure-cli-ml) ]]; then
-            echo "::debug::azure-cli-ml extension is already installed."
-          else
-            echo "::debug::Adding extension from a preview build. This is experimental."
-            az extension add --source https://azuremlsdktestpypi.blob.core.windows.net/wheels/componentsdk/azure_cli_ml-0.9.1-py3-none-any.whl --pip-extra-index-urls https://azuremlsdktestpypi.azureedge.net/componentsdk/0.9.1 --yes --verbose
+          if [[ $(az extension show --name ml | jq -r .version) < "${{ inputs.ml-min-version }}" ]]; then
+            echo "::debug::Updating version to ${{ inputs.ml-min-version }}."
+            az extension update -n ml
           fi
         else
-          echo "::debug::Installing azure-cli-ml extension version ${{ inputs.ml-min-version }}"
-
-          if [[ $(az extension show --name ml) ]]; then
-            echo "::debug::azure-cli-ml extension is already installed."
-            
-            if [[ $(az extension show --name ml | jq -r .version) < "${{ inputs.ml-min-version }}" ]]; then
-              echo "::debug::Updating version to ${{ inputs.ml-min-version }}."
-              az extension update -n ml
-            fi
-          else
-            echo "::debug::Adding extension"
-            az extension add -n ml -y
-          fi
+          echo "::debug::Adding extension"
+          az extension add -n ml -y
         fi
 
     - id: install-tools
