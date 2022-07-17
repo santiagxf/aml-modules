@@ -39,7 +39,7 @@ outputs:
   transformation:
     type: TransformationDirectory
 command: >-
-  python extract_pca.py --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} --solver {inputs.solver}
+  jobtools extract_pca.py run_module --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} --solver {inputs.solver}
   --normalize {inputs.normalize} --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
   --output-eigenvectors {outputs.eigenvectors}
 environment:

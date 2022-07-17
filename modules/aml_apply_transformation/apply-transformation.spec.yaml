@@ -1,7 +1,7 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.apply-transformation
 description: Applies a transformation into a new dataset using the Scikit-lean API
-version: 0.0.4
+version: 0.0.5
 display_name: 'Apply Transformation (Scikit API)'
 type: CommandComponent
 is_deterministic: true
@@ -21,7 +21,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python apply_transformation.py --dataset {inputs.dataset} --transformation {inputs.transformation}
+  jobtools apply_transformation.py run_module --dataset {inputs.dataset} --transformation {inputs.transformation}
   --output-dataset {outputs.transformed_dataset}
 environment:
   docker:

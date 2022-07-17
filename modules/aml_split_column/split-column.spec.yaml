@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.split-column
-version: 0.0.4
+version: 0.0.5
 display_name: 'Split column values'
 description: Splits the values of a given string column into either multiple columns, rows or into an array-like.
 type: CommandComponent
@@ -38,7 +38,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python split_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} [--split-by {inputs.split_by}]
+  jobtools split_column.py run_module --dataset {inputs.dataset} --column-name {inputs.column_name} [--split-by {inputs.split_by}]
   --split-mode {inputs.split_mode} [--new-columns-name {inputs.new_columns_name}] --output-dataset {outputs.transformed_dataset}
 environment:
   docker:

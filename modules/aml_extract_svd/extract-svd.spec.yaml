@@ -40,7 +40,7 @@ outputs:
   transformation:
     type: TransformationDirectory
 command: >-
-  python extract_svd.py --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} --solver {inputs.solver}
+  jobtools extract_svd.py run_module --dataset {inputs.dataset} --number-of-dimensions {inputs.number_of_dimensions} --solver {inputs.solver}
   [--iterations {inputs.iterations}] --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
   --output-singular-values {outputs.singular_values} --output-components {outputs.components}
 environment:

@@ -3,7 +3,6 @@ from numpy.core.fromnumeric import partition
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from jobtools.runner import TaskRunner
 from jobtools.arguments import StringEnum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
@@ -15,8 +14,8 @@ class PCASolvers(StringEnum):
     ARPACK = 'arpack'
     RANDOMIZED = 'randomized'
 
-def RunModule(dataset: str, number_of_dimensions: int, solver: PCASolvers, 
-              output_dataset: str, output_model: str, output_eigenvectors: str, normalize: bool = True):
+def run_module(dataset: str, number_of_dimensions: int, solver: PCASolvers, 
+               output_dataset: str, output_model: str, output_eigenvectors: str, normalize: bool = True):
     data_folder = load_data_frame_from_directory(dataset)
 
     if data_folder.schema:
@@ -51,7 +50,3 @@ def RunModule(dataset: str, number_of_dimensions: int, solver: PCASolvers,
     if output_eigenvectors:
         eigenvectors = pd.DataFrame(data = pca.components_.T, columns = components_name)
         save_data_frame_to_directory(output_eigenvectors, eigenvectors)
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

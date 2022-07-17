@@ -1,7 +1,6 @@
-from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 
-def RunModule(dataset: str, output_dataset: str, column_name: str, lag_columns: int, 
+def run_module(dataset: str, output_dataset: str, column_name: str, lag_columns: int, 
               lag_by: int = 1, average: bool = False, drop_nulls: bool = True):
     """
     Adds one or many lag columns into the data set. The amount of time steps to go back can be

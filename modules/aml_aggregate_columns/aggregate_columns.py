@@ -1,8 +1,7 @@
 from argparse import ArgumentError
+
 import pandas as pd
 from typing import Union, List
-from jobtools.runner import TaskRunner
-
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
@@ -60,13 +59,13 @@ AGG_SHORT = {
 def get_columns_by_type(data_folder, dtype: str, exclude: Union[List[str], None]=None):
     return [column['name'] for column in data_folder.schema['columnAttributes'] if column['type'] == dtype and column['name'] not in exclude]
 
-def RunModule(dataset: str, 
-              output_dataset: str,
-              group_by_columns: str, 
-              aggregate_booleans_by: str, 
-              aggregate_numbers_by: str, 
-              aggregate_strings_by: str, 
-              aggregate_datetimes_by: str):
+def run_module(dataset: str, 
+               output_dataset: str,
+               group_by_columns: str, 
+               aggregate_booleans_by: str, 
+               aggregate_numbers_by: str, 
+               aggregate_strings_by: str, 
+               aggregate_datetimes_by: str):
 
     data_folder = load_data_frame_from_directory(dataset)
     group_by = [x.strip() for x in group_by_columns.split(',')]
@@ -118,7 +117,3 @@ def RunModule(dataset: str,
 
     grouped_data = data.groupby(group_by).agg(**aggregations)
     save_data_frame_to_directory(output_dataset, grouped_data)
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

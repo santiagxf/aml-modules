@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.aggregate-columns
-version: 0.0.3
+version: 0.0.4
 display_name: 'Aggregate columns'
 description: Groups and aggregates the columns in a dataset depending on the their types.
 type: CommandComponent
@@ -64,7 +64,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python aggregate_columns.py --dataset {inputs.dataset} --group-by-columns {inputs.group_by_columns} 
+  jobtools aggregate_columns.py run_module --dataset {inputs.dataset} --group-by-columns {inputs.group_by_columns} 
   --aggregate-booleans-by {inputs.aggregate_booleans_by} --aggregate-numbers-by {inputs.aggregate_numbers_by} 
   --aggregate-strings-by {inputs.aggregate_strings_by} --aggregate-datetimes-by {inputs.aggregate_datetimes_by} 
   --output-dataset {outputs.transformed_dataset}

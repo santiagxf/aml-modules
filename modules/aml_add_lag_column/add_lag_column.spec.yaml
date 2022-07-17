@@ -42,7 +42,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  pyrunit add_lag_column.py RunModule --dataset {inputs.dataset} --column-name {inputs.column_name} --lag-columns {inputs.lag_columns}
+  jobtools add_lag_column.py run_module --dataset {inputs.dataset} --column-name {inputs.column_name} --lag-columns {inputs.lag_columns}
   --lag-by {inputs.lag_by} --average {inputs.average_lag} --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
@@ -56,7 +56,7 @@ environment:
       - python=3.7.6
       - pip=20.2
       - pip:
-        - jobtools==0.0.8
+        - jobtools
         - azureml-sdk==1.35.*
         - azureml-designer-core==0.0.66
         - azureml-dataset-runtime[fuse,pandas]

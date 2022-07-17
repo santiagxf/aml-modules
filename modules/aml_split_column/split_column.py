@@ -1,5 +1,4 @@
 from typing import Union
-from jobtools.runner import TaskRunner
 from jobtools.arguments import StringEnum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
@@ -9,8 +8,8 @@ class SplitMode(StringEnum):
     ROWS = 'Into rows'
     ARRAY = 'As array-like'
 
-def RunModule(dataset: str, output_dataset: str, column_name: str, split_mode: SplitMode = SplitMode.ARRAY,
-              split_by: str = ' ', new_columns_name:Union[str, None]=None):
+def run_module(dataset: str, output_dataset: str, column_name: str, split_mode: SplitMode = SplitMode.ARRAY,
+               split_by: str = ' ', new_columns_name:Union[str, None]=None):
     data_folder = load_data_frame_from_directory(dataset)
     
     # Check if column is available
@@ -49,7 +48,3 @@ def RunModule(dataset: str, output_dataset: str, column_name: str, split_mode: S
         print('[DEBUG] Nothing to do as dataframe is empty.')
 
     save_data_frame_to_directory(output_dataset, data)
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

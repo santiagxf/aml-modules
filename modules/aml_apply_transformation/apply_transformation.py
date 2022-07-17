@@ -1,11 +1,10 @@
 import pandas as pd
 from pathlib import Path
-from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.transformation_directory import PickleTransformationDirectory
 
 
-def RunModule(dataset: str, transformation: str, output_dataset: str):
+def run_module(dataset: str, transformation: str, output_dataset: str):
     data_folder = load_data_frame_from_directory(dataset)
     data = data_folder.data
     tranformation = PickleTransformationDirectory(transformation).load(Path(transformation))
@@ -20,6 +19,3 @@ def RunModule(dataset: str, transformation: str, output_dataset: str):
     df = pd.DataFrame(data = transformed_data, columns = column_names)
     save_data_frame_to_directory(output_dataset, df)
 
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

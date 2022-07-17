@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.featurize-date-column
-version: 0.0.5
+version: 0.0.6
 display_name: 'Featurize date column'
 description: Creates basic features from a data column.
 type: CommandComponent
@@ -25,7 +25,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python featurize_date_column.py --dataset {inputs.dataset} --column-name {inputs.column_name} --contains-time {inputs.contains_time}
+  jobtools featurize_date_column.py run_module --dataset {inputs.dataset} --column-name {inputs.column_name} --contains-time {inputs.contains_time}
   --output-dataset {outputs.transformed_dataset}
 environment:
   docker:

@@ -1,7 +1,6 @@
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import Pipeline
-from jobtools.runner import TaskRunner
 from jobtools.arguments import StringEnum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
@@ -11,8 +10,8 @@ class SVDSolver(StringEnum):
     ARPACK = 'arpack'
     RANDOMIZED = 'randomized'
 
-def RunModule(dataset: str, output_dataset: str, output_model: str, output_singular_values: str, output_components: str,
-              number_of_dimensions: int, solver: SVDSolver, iterations: int = 5):
+def run_module(dataset: str, output_dataset: str, output_model: str, output_singular_values: str, output_components: str,
+               number_of_dimensions: int, solver: SVDSolver, iterations: int = 5):
     data_folder = load_data_frame_from_directory(dataset)
 
     if data_folder.schema:
@@ -48,7 +47,3 @@ def RunModule(dataset: str, output_dataset: str, output_model: str, output_singu
     if output_components:
         components = pd.DataFrame(data = VT.T, columns = components_name)
         save_data_frame_to_directory(output_components, components)
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

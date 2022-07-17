@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.scoring.mlmodel-run
-version: 0.0.3
+version: 0.0.4
 display_name: 'Score MLFlow model'
 description: Scores predictions for a trained classification or regression model with MLFlow MLModel.
 type: CommandComponent
@@ -30,7 +30,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  pyrunit mlmodel_run.py RunModule --dataset {inputs.dataset} --model {inputs.model} --mode {inputs.mode} --output-dataset {outputs.transformed_dataset}
+  jobtools mlmodel_run.py run_module --dataset {inputs.dataset} --model {inputs.model} --mode {inputs.mode} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04

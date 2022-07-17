@@ -1,12 +1,12 @@
 from pathlib import Path
 import numpy as np
-import shutil, sys
+import shutil
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, DataFrameDirectory
 from azureml.studio.core.io.transformation_directory import PickleTransformationDirectory
 
-from modules.aml_extract_pca.extract_pca import RunModule as extract_pca
+from modules.aml_extract_pca.extract_pca import run_module as extract_pca
 from modules.aml_extract_pca.extract_pca import PCASolvers
-from modules.aml_apply_transformation.apply_transformation import RunModule as apply_transformation
+from modules.aml_apply_transformation.apply_transformation import run_module as apply_transformation
 
 
 def test_pca_matches_shapes():

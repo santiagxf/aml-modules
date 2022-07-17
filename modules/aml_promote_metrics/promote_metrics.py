@@ -1,7 +1,6 @@
 import pandas as pd
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.core import Run
-from jobtools.runner import TaskRunner
 from jobtools.arguments import StringEnum
 
 class PromoteStrategy(StringEnum):
@@ -13,10 +12,10 @@ class CompareStrategy(StringEnum):
     SMALLER_BETTER = 'Smaller is better'
 
 
-def RunModule(evaluation_results: str, promoted_metrics: str, compare_by: str,
-             promote_method: PromoteStrategy = PromoteStrategy.BEST_MODEL,
-             compare_by_logic: CompareStrategy = CompareStrategy.BIGGER_BETTER, 
-             models_name: str = None):
+def run_module(evaluation_results: str, promoted_metrics: str, compare_by: str,
+               promote_method: PromoteStrategy = PromoteStrategy.BEST_MODEL,
+               compare_by_logic: CompareStrategy = CompareStrategy.BIGGER_BETTER, 
+               models_name: str = None):
     # Load the metrics as a Pandas dataframe
     results = load_data_frame_from_directory(evaluation_results).data
     models_count = results.shape[0]
@@ -64,7 +63,3 @@ def RunModule(evaluation_results: str, promoted_metrics: str, compare_by: str,
         save_data_frame_to_directory(promoted_metrics, data=results)
     else:
         save_data_frame_to_directory(promoted_metrics, data=results.to_frame().T)
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

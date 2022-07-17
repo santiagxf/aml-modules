@@ -1,6 +1,6 @@
 $schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
 name: microsoft.csu.azureml.components.transformation.add-rolling-column
-version: 0.0.5
+version: 0.0.6
 display_name: 'Add rolling window column'
 description: Adds a rolling window column into the dataset.
 type: CommandComponent
@@ -56,7 +56,7 @@ outputs:
   transformed_dataset:
     type: DataFrameDirectory
 command: >-
-  python -m jobtools add_rolling_column.py RunModule --dataset {inputs.dataset} --column-name {inputs.column_name} --window-size {inputs.window_size}
+  jobtools add_rolling_column.py run_module --dataset {inputs.dataset} --column-name {inputs.column_name} --window-size {inputs.window_size}
   --aggregate-by {inputs.aggregate_by} --direction {inputs.direction} --drop-nulls {inputs.drop_nulls} --output-dataset {outputs.transformed_dataset}
 environment:
   docker:

@@ -2,7 +2,6 @@ import math
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from jobtools.runner import TaskRunner
 from jobtools.arguments import StringEnum
 
 from sklearn.cluster import FeatureAgglomeration
@@ -57,10 +56,10 @@ def plot_dendrogram(model, file_name:str, **kwargs):
     dendrogram(linkage_matrix, **kwargs)
     plt.savefig(file_name, format='png', bbox_inches='tight')
 
-def RunModule(dataset: str, output_dataset: str, output_model: str, number_of_features: int, normalize: bool = True,
-              connectivity_type: ConnectivtyStrategy = ConnectivtyStrategy.NONE,
-              affinity:AffinityStrategy = AffinityStrategy.EUCLIDEAN,
-              linkage: LinkageStrategy = LinkageStrategy.WARD):
+def run_module(dataset: str, output_dataset: str, output_model: str, number_of_features: int, normalize: bool = True,
+               connectivity_type: ConnectivtyStrategy = ConnectivtyStrategy.NONE,
+               affinity:AffinityStrategy = AffinityStrategy.EUCLIDEAN,
+               linkage: LinkageStrategy = LinkageStrategy.WARD):
 
     data_folder = load_data_frame_from_directory(dataset)
     data = data_folder.data
@@ -99,7 +98,3 @@ def RunModule(dataset: str, output_dataset: str, output_model: str, number_of_fe
     save_data_frame_to_directory(output_dataset, df)
     save_pickle_transform_to_directory(output_model, tranformations_pipe)
     plot_dendrogram(agglo, 'outputs/dendrogram.png')
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

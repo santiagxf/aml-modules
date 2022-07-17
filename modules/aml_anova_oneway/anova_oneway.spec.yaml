@@ -26,7 +26,7 @@ outputs:
   evaluation_results:
     type: DataFrameDirectory
 command: >-
-  pyrunit anova_oneway.py RunModule --dataset {inputs.dataset} --groups-column-name {inputs.groups_column_name} 
+  jobtools anova_oneway.py run_module --dataset {inputs.dataset} --groups-column-name {inputs.groups_column_name} 
   --column-name {inputs.column_name} --evaluation-results {outputs.evaluation_results}
 environment:
   docker:

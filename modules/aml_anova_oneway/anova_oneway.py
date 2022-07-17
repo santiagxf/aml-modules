@@ -4,7 +4,7 @@ import scipy.stats as stats
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
-def RunModule(dataset: str, column_name: str, groups_column_name: str, evaluation_results: str):
+def run_module(dataset: str, column_name: str, groups_column_name: str, evaluation_results: str):
     data_folder = load_data_frame_from_directory(dataset)
     
     # Check if column is available

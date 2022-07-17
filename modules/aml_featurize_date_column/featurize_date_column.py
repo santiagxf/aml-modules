@@ -1,10 +1,9 @@
 import numpy as np
-from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
 
-def RunModule(dataset: str, output_dataset: str, column_name: str, contains_time: bool = False):
+def run_module(dataset: str, output_dataset: str, column_name: str, contains_time: bool = False):
     data_folder = load_data_frame_from_directory(dataset)
     
     # Check if column is available
@@ -33,6 +32,3 @@ def RunModule(dataset: str, output_dataset: str, column_name: str, contains_time
 
     save_data_frame_to_directory(output_dataset, data)
 
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

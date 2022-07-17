@@ -55,7 +55,7 @@ outputs:
   transformation:
     type: TransformationDirectory
 command: >-
-  python feature_agglomeration.py --dataset {inputs.dataset} --number-of-features {inputs.number_of_features}
+  jobtools feature_agglomeration.py run_module --dataset {inputs.dataset} --number-of-features {inputs.number_of_features}
   --affinity {inputs.affinity} --linkage {inputs.linkage} --connectivity-type {inputs.connectivity} --normalize {inputs.normalize} 
   --output-dataset {outputs.transformed_dataset} --output-model {outputs.transformation}
 environment:

@@ -2,7 +2,6 @@ import argparse
 import pandas as pd
 import numpy as pd
 import itertools
-from jobtools.runner import TaskRunner
 from jobtools.arguments import StringEnum
 
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
@@ -11,8 +10,8 @@ class ExplodeStrategy(StringEnum):
     COLUMNS = 'Into columns'
     ROWS = 'Into rows'
 
-def RunModule(dataset: str, output_dataset: str, column_name: str,
-              explode_mode: ExplodeStrategy = ExplodeStrategy.ROWS, new_columns_name: str = None):
+def run_module(dataset: str, output_dataset: str, column_name: str,
+               explode_mode: ExplodeStrategy = ExplodeStrategy.ROWS, new_columns_name: str = None):
     data_folder = load_data_frame_from_directory(dataset)
     
     # Check if column is available
@@ -45,6 +44,3 @@ def RunModule(dataset: str, output_dataset: str, column_name: str,
 
     save_data_frame_to_directory(output_dataset, data)
 
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)

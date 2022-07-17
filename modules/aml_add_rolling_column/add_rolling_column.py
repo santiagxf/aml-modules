@@ -1,6 +1,5 @@
 import pandas as pd
 from jobtools.arguments import StringEnum
-from jobtools.runner import TaskRunner
 from azureml.studio.core.io.data_frame_directory import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.io.data_frame_visualizer import ColumnTypeName
 
@@ -56,13 +55,13 @@ AGG_SHORT = {
     'Number of days': 'days'
 }
 
-def RunModule(dataset: str,
-              output_dataset: str,
-              column_name: str, 
-              window_size: int, 
-              aggregate_by: str,
-              direction: RollingDirection = RollingDirection.BACKWARD, 
-              drop_nulls: bool = True):
+def run_module(dataset: str,
+               output_dataset: str,
+               column_name: str, 
+               window_size: int, 
+               aggregate_by: str,
+               direction: RollingDirection = RollingDirection.BACKWARD, 
+               drop_nulls: bool = True):
     
     data_folder = load_data_frame_from_directory(dataset)
     
@@ -99,7 +98,3 @@ def RunModule(dataset: str,
         data.dropna(inplace=True)
 
     save_data_frame_to_directory(output_dataset, data)
-
-if __name__ == "__main__":
-    tr = TaskRunner()
-    tr.run(RunModule)
