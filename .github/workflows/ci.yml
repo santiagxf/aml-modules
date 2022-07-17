@@ -23,7 +23,6 @@ jobs:
       - name: Installing Azure ML CLI
         uses: ./.github/actions/aml-cli-install
         with:
-          component-support: true
           cli-version: '2.29.1'
           ml-min-version: '2.0'
 
