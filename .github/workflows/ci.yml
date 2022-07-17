@@ -38,10 +38,3 @@ jobs:
         uses: ./.github/actions/pytest-run
         with:
           test-folder: tests
-
-      - name: Validating Azure ML componets
-        uses: ./.github/actions/aml-component-validate
-        with:
-          component-spec: ${{ env.COMPONENTS_PATH }}/*/*.yaml
-          resource-group: ${{ env.RESOURE_GROUP }}
-          workspace: ${{ env.WORKSPACE }}
