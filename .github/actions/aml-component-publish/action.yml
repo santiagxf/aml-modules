@@ -32,7 +32,8 @@ runs:
           if [ -n "$COMPONENT_INSTALLED" ];
           then
             echo "::debug::Installing and upgrading default version"
-            az ml component create --file $COMP -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }} --label default
+            az ml component create --file $COMP -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }} 
+            #--label default
           else
             az ml component create --file $COMP -g ${{ inputs.resource-group }} -w ${{ inputs.workspace }}
           fi
